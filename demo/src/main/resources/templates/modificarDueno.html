@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Modificar Dueño</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/modificarDueno.css}">
+</head>
+<body>
+    <div class="form-container">
+        <h2> Modificar Dueño</h2>
+        <form th:object="${dueno}" th:action="@{/modificardueno/{id}(id=${dueno.id})}" method="post">
+            <!-- Campo oculto para preservar la contraseña -->
+            <input type="hidden" th:field="*{password}" />
+            
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input th:field="*{nombre}" type="text" id="nombre" placeholder="Ingrese nombre">
+            </div>
+            <div class="form-group">
+                <label for="cedula">Cédula</label>
+                <input th:field="*{cedula}" type="text" id="cedula" placeholder="Ingrese el número de cédula">
+            </div>
+            <div class="form-group">
+                <label for="correo">Correo</label>
+                <input th:field="*{email}" type="text" id="email" placeholder="Ingrese correo electrónico">
+            </div>
+            <div class="form-group">
+                <label for="celular">Celular</label>
+                <input th:field="*{telefono}" type="text" id="telefono" placeholder="Ingrese número de teléfono">
+            </div>
+            <div class="form-group">
+                <label for="imagenUrl">URL de la Imagen</label>
+                <input th:field="*{imagenUrl}" type="url" id="imagenUrl" placeholder="Ingrese la URL de la imagen del dueño" required>
+            </div>
+            <button type="submit">Modificar Dueño</button>
+        </form>
+    </div>
+</body>
+</html>

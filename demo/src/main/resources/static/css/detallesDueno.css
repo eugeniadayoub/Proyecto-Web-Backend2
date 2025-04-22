@@ -1,0 +1,58 @@
+/* Tarjeta principal */
+.dueno-card {
+    max-width: 200px;                /* Ancho máximo de la tarjeta */
+    margin: 2rem auto;               /* Centra vertical y horizontal */
+    background-color: #fff;          /* Fondo blanco */
+    border-radius: 8px;              /* Bordes redondeados */
+    padding: 2rem;                   /* Espacio interno */
+    text-align: center;              /* Centra texto e imagen */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  }
+  
+  /* Título principal (h1) */
+  .dueno-card h1 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  /* Nombre del dueño (h2) */
+  .dueno-card h2 {
+    font-size: 1.4rem;
+    color: #23969F; /* Tono teal */
+    margin-bottom: 1rem;
+  }
+  
+  /* Imagen del dueño */
+  .dueno-card img {
+    width: 300px;           /* Ajusta ancho de la imagen */
+    height: auto;           /* Mantén proporción */
+    border-radius: 8px;     /* Bordes redondeados */
+    margin-bottom: 1rem;
+    border: 3px solid #23969F; /* Borde del mismo color teal */
+    background-color: white;   /* Contraste para el borde */
+  }
+  
+  /* Párrafos */
+  .dueno-card p {
+    margin: 0.5rem 0;
+    color: #555;
+  }
+  
+  /* Botón de volver */
+  .btn-volver {
+    display: inline-block;
+    margin-top: 1.5rem;
+    background-color: #23969F; /* Fondo teal */
+    color: #fff;               /* Texto blanco */
+    text-decoration: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-volver:hover {
+    background-color: #5EB896; /* Color hover */
+  }
+  

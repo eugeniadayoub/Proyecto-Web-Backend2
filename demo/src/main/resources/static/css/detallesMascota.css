@@ -1,0 +1,20 @@
+.nombre{
+    color: #23969F !important;
+}
+
+.btn.btn-primary {
+    background-color: #23969F !important; 
+    border-color:#23969F !important;
+    color: white !important;
+}
+
+.btn-primary:hover {
+    background-color: #5EB896 !important;
+    border-color: #5EB896 !important;
+}
+
+.img-fluid {
+    border: 3px solid #5EB896;
+    border-radius: 10px; 
+    margin-left: 150px;
+}

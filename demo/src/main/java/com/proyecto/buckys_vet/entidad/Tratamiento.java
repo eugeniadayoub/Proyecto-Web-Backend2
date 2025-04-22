@@ -1,0 +1,112 @@
+package com.proyecto.buckys_vet.entidad;
+
+import java.time.LocalDate;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+
+@Entity
+public class Tratamiento {
+
+    @Id
+    @GeneratedValue
+    private Long id;
+    
+    private LocalDate fecha;
+    private String descripcion;
+    private Integer cantidad; 
+    
+    @ManyToOne
+    @JoinColumn(name = "veterinario_id")
+    private Veterinario veterinario;
+
+    @ManyToOne
+    @JoinColumn(name = "mascota_id")
+    private Mascota mascota;
+    
+    @ManyToOne
+    @JoinColumn(name = "medicamento_id")
+    private Medicamento medicamento;
+    
+    public Tratamiento() {}
+
+    public Tratamiento(LocalDate fecha, String descripcion, Veterinario veterinario, 
+                       Mascota mascota, Medicamento medicamento, Integer cantidad) {
+        this.fecha = fecha;
+        this.descripcion = descripcion;
+        this.veterinario = veterinario;
+        this.mascota = mascota;
+        this.medicamento = medicamento;
+        this.cantidad = cantidad;
+    }
+
+    public Tratamiento(Long id, LocalDate fecha, String descripcion, Veterinario veterinario, 
+                       Mascota mascota, Medicamento medicamento, Integer cantidad) {
+        this.id = id;
+        this.fecha = fecha;
+        this.descripcion = descripcion;
+        this.veterinario = veterinario;
+        this.mascota = mascota;
+        this.medicamento = medicamento;
+        this.cantidad = cantidad;
+    }
+    
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Veterinario getVeterinario() {
+        return veterinario;
+    }
+
+    public void setVeterinario(Veterinario veterinario) {
+        this.veterinario = veterinario;
+    }
+    
+    public Mascota getMascota() {
+        return mascota;
+    }
+    
+    public void setMascota(Mascota mascota) {
+        this.mascota = mascota;
+    }
+    
+    public Medicamento getMedicamento() {
+        return medicamento;
+    }
+    
+    public void setMedicamento(Medicamento medicamento) {
+        this.medicamento = medicamento;
+    }
+    
+    public Integer getCantidad() {
+        return cantidad;
+    }
+    
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
+    }
+}

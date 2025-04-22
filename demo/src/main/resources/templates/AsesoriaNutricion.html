@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asesoria en Nutrición</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/stylessAsesoriaNutricion.css">
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="LandingPage.html">
+                    <img src="../images/imagesLandingPage/Buckys_Vet_LOGO_sin_fondo.png" alt="Bucky's Vet Logo" class="logo-img">
+                </a>
+                <div class="logo-text">
+                    Bucky's Vet
+                    <span class="slogan">Peludos sanos y felices</span>
+                </div>
+            </div>
+            
+            <div class="menu">
+                <div class="menu-item">
+                    <a href="#">PLANES DE MEDICINA</a>
+                    <div class="submenu">
+                        <a href="PlanMedicoIntegralAccidente+Enfermedad.html">PLAN MÉDICO INTEGRAL ACCIDENTE + ENFERMEDAD</a>
+                        <a href="PlanCuidadoPreventivo.html">PLAN CUIDADO PREVENTIVO</a>
+                        <a href="PlanPacientesCronicos.html">PLAN PACIENTES CRÓNICOS</a>
+                    </div>
+                </div>
+    
+                <div class="menu-item">
+                    <a href="#">SERVICIOS</a>
+                    <div class="submenu">
+                        <a href="ProgramaCitaPresencial.html">PROGRAMA TU CITA PRESENCIAL</a>
+                        <a href="BañosBuckysVet.html">BAÑOS BUCKY'S VET</a>
+                        <a href="AsesoriaNutricion.html">ASESORÍA EN NUTRICIÓN</a>
+                        <a href="ConsultaVirtual.html">CONSULTA VIRTUAL</a>
+                        <a href="#">TIENDA PUPPIS</a>
+                    </div>
+                </div>
+    
+                <div class="menu-item">
+                    <a href="Sedes.html">SEDES</a>
+                </div>
+    
+                <div class="menu-item">
+                    <a href="#">HOSPITAL 24 HORAS</a>
+                    <div class="submenu">
+                        <a href="HospitalVeterinario24HrsSedeNorte.html">HOSPITAL NORTE</a>
+                        <a href="HospitalVeterinario24HrsSedeCentro.html">HOSPITAL CENTRO</a>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <a href="#">BLOG</a>
+                </div>
+    
+                <div class="menu-item">
+                    <a href="Contacto.html">CONTACTO</a>
+                </div>
+
+                <div class="menu-item">
+                    <a href="login.html">INICIO SESION</a>
+                </div>
+            </div>
+    
+            <div class="carrito">
+                <img class="imagen-carrito" src="../images/imagesLandingPage/carrito-de-compras (1).png" alt="Carrito de Compras">
+                <span class="mensaje-carrito">El carrito esta vacio</span>
+                <span id="cantidad"> 0 </span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Contenido principal -->
+    <main>
+
+        <!-- Sección de Asesoría en Nutrición -->
+        <section class="nutricion">
+            <!-- Imagen de fondo con texto -->
+            <div class="nutricion-encabezado">
+                <img src="../images/imagesAsesoriaNutricion/nutricion-bg.jpg" alt="Asesorías de Nutrición">
+                <h1>ASESORÍAS DE NUTRICIÓN <br> PARA PERROS Y GATOS</h1>
+            </div>
+
+            <!-- Contenedor principal -->
+            <div class="contenedor-nutricion">
+                <!-- Texto a la izquierda -->
+                <div class="texto-nutricion1">
+                    <h2>NUESTRAS ASESORÍAS EN NUTRICIÓN SON GRATIS, PIDE LA TUYA AHORA PARA TU MASCOTA</h2>
+                    <p>
+                        Hoy se reconoce mundialmente la necesidad de una buena nutrición para el mantenimiento de una buena salud, 
+                        proporcionando mayor calidad y expectativa de vida para las mascotas.
+                    </p>
+                    <p>
+                        Por esto <strong>Bucky's Vet</strong> quiere ayudarte a mejorar la alimentación de tu perro o gato con el programa 
+                        del plan de nutrición GRATIS, desde la primera hasta la última cita que requiera tu mascota.
+                    </p>
+                </div>
+
+                <!-- Formulario -->
+                <div class="formulario-nutricion" id="formulario-nutricion">
+                    <h3>COMPLETA EL SIGUIENTE FORMULARIO</h3>
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="nombre" placeholder="Nombre*" required>
+                            <input type="text" name="apellidos" placeholder="Apellidos*" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="telefono" placeholder="📞 321 1234567" required>
+                            <input type="email" name="email" placeholder="✉️ Email*" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="mascota" placeholder="Nombre de la Mascota*" required>
+                            <select name="clase-mascota">
+                                <option value="" disabled selected>Clase de Mascota</option>
+                                <option value="perro">Perro</option>
+                                <option value="gato">Gato</option>
+                            </select>
+                        </div>
+                        <div class="input-checkbox">
+                            <input type="checkbox" name="acepto-politica" required>
+                            <label>He leído y acepto la política de privacidad <a href="#">Leer Políticas de privacidad</a></label>
+                        </div>
+                        <button type="submit" class="boton-enviar">PEDIR UNA ASESORÍA GRATIS</button>
+                    </form>
+                </div>
+            </div>
+        </section> 
+
+        <!-- Sección de Importancia de la Nutrición -->
+        <section class="nutricion-importancia">
+            <div class="contenedor-nutricion1">
+                
+                <!-- Columna de Texto -->
+                <div class="texto-nutricion">
+                    <h2>¿POR QUÉ ES IMPORTANTE UN BUEN PLAN DE NUTRICIÓN PARA MI PERRO O MI GATO?</h2>
+                    <p>
+                        Una alimentación balanceada con todos los nutrientes esenciales, en las proporciones adecuadas, 
+                        repercute en una mejor salud y por tanto en mayor calidad y cantidad de vida para tu mascota.
+                    </p>
+                    <blockquote>
+                        <span class="comillas">“</span>
+                        <strong>Una asesoría nutricional</strong>, hace parte de las rutinas de medicina preventiva como vacunar, 
+                        desparasitar o la profilaxis dental.
+                        <span class="comillas">”</span>
+                    </blockquote>
+                </div>
+
+                <!-- Columna de Imagen -->
+                <div class="imagen-nutricion">
+                    <img src="../images/imagesAsesoriaNutricion/nutricion-perro.png" alt="Perro comiendo">
+                    <div class="texto-imagen">
+                        <p>
+                            LOS DUEÑOS DE MASCOTAS OFRECEN UNA RACIÓN DE COMIDA 
+                            <span class="resaltado">HASTA UN 50% MAYOR O MENOR</span> 
+                            DE LO QUE NECESITA UN PERRO O UN GATO
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Seguimiento Nutricional -->
+        <section class="seguimiento-nutricional">
+            <h2>¿CÓMO SE REALIZA EL SEGUIMIENTO EN UN PLAN DE NUTRICIÓN PARA PERROS Y GATOS EN BUCKY'S VET?</h2>
+            
+            <div class="contenedor-seguimiento">
+                <!-- Paso 1 -->
+                <div class="paso">
+                    <img src="../images/imagesAsesoriaNutricion/paso1.png" alt="Valoración nutricional">
+                    <p>Valoración nutricional en las diferentes etapas de la vida de tu mascota.</p>
+                </div>
+
+                <!-- Paso 2 -->
+                <div class="paso">
+                    <img src="../images/imagesAsesoriaNutricion/paso2.png" alt="Ajuste en la alimentación">
+                    <p>Hacer ajustes necesarios en la alimentación según etapa de la vida, nivel de actividad, estado nutricional y estado de salud.</p>
+                </div>
+
+                <!-- Paso 3 -->
+                <div class="paso">
+                    <img src="../images/imagesAsesoriaNutricion/paso3.png" alt="Seguimiento periódico">
+                    <p>Seguimiento semanal, mensual o semestral, según las necesidades de tu mascota.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Asesoría Nutricional -->
+        <section class="asesoria-nutricional">
+            <h2>TODAS LAS MASCOTAS REQUIEREN UNA ASESORÍA NUTRICIONAL</h2>
+            <p class="subtitulo">Tu mascota se puede encontrar en alguna de estas <strong>3 categorías</strong>:</p>
+
+            <div class="contenedor-categorias">
+                <div class="categoria">
+                    <div class="imagen-container">
+                        <img src="../images/imagesAsesoriaNutricion/mascota-sana.jpg" alt="Mascota Sana">
+                    </div>
+                    <p><strong>MASCOTA SANA</strong></p>
+                </div>
+                <div class="categoria">
+                    <div class="imagen-container">
+                        <img src="../images/imagesAsesoriaNutricion/mascota-enfermedad.jpg" alt="Mascota con Enfermedad">
+                    </div>
+                    <p><strong>MASCOTA CON ALGUNA ENFERMEDAD</strong></p>
+                </div>
+                <div class="categoria">
+                    <div class="imagen-container">
+                        <img src="../images/imagesAsesoriaNutricion/mascota-condicion.jpg" alt="Mascota con Condición Corporal No Adecuada">
+                    </div>
+                    <p><strong>MASCOTA CON CONDICIÓN CORPORAL NO ADECUADA</strong></p>
+                </div>
+            </div>
+
+            <p class="texto-final">
+                En cualquiera de los tres casos tu mascota se verá beneficiada de una asesoría nutricional individual 
+                que nos permita hacerle una recomendación nutricional específica para mantener su estado de salud, 
+                tratar su enfermedad o corregir el exceso o defecto en su condición corporal.
+            </p>
+
+            <div class="boton-container">
+                <a href="#formulario-nutricion" class="boton-asesoria">
+                    ➜ SOLICITA UNA CITA GRATIS PARA ASESORÍA NUTRICIONAL
+                </a>
+            </div>
+        </section>
+
+        <!-- Sección de Tabla de Condición Corporal -->
+        <section class="tabla-condicion">
+            <h2>TABLA DE CONDICIÓN CORPORAL</h2>
+            <div class="contenedor-condicion">
+                <!-- Bajo Peso -->
+                <div class="tarjeta-condicion bajo-peso">
+                    <h3>BAJO PESO</h3>
+                    <div class="icono-mascota">
+                        <img src="../images/imagesAsesoriaNutricion/bajo-peso.png" alt="Bajo peso">
+                    </div>
+                    <p>Entre el 10% y el 20% por debajo del peso ideal</p>
+                    <strong>Las principales características son:</strong>
+                    <ul>
+                        <li>Las costillas son apreciables.</li>
+                        <li>La cintura se ve claramente.</li>
+                        <li>No hay grasa en el pecho.</li>
+                    </ul>
+                </div>
+
+                <!-- Peso Ideal -->
+                <div class="tarjeta-condicion peso-ideal">
+                    <h3>PESO IDEAL</h3>
+                    <div class="icono-mascota">
+                        <img src="../images/imagesAsesoriaNutricion/peso-ideal.png" alt="Peso ideal">
+                    </div>
+                    <p>Peso ideal según la edad de la mascota</p>
+                    <strong>Las principales características son:</strong>
+                    <ul>
+                        <li>Las costillas y vértebras se sienten pero no se ven.</li>
+                        <li>Se siente una fina capa de grasa en el pecho.</li>
+                        <li>Pliegue abdominal evidente.</li>
+                    </ul>
+                </div>
+
+                <!-- Sobrepeso / Obesidad -->
+                <div class="tarjeta-condicion sobrepeso">
+                    <h3>SOBRE PESO / OBESO</h3>
+                    <div class="icono-mascota">
+                        <img src="../images/imagesAsesoriaNutricion/sobrepeso.png" alt="Sobrepeso">
+                    </div>
+                    <p>Entre el 10% y 20% por encima del peso ideal</p>
+                    <strong>Las principales características son:</strong>
+                    <ul>
+                        <li>Las costillas y vértebras son difíciles de apreciar.</li>
+                        <li>La cintura no se encuentra con facilidad.</li>
+                        <li>Hay una capa de grasa en la base de la cola.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Errores Comunes en la Alimentación -->
+        <section class="errores-alimentacion">
+            <div class="contenedor-errores">
+                <!-- Columna de Texto -->
+                <div class="texto-errores">
+                    <h2>ERRORES COMUNES EN EL DÍA A DÍA EN LA ALIMENTACIÓN DE MI PERRO O MI GATO</h2>
+                    <p>
+                        Es muy común administrar una dieta de baja calidad por no entender el riesgo, o el costo-beneficio que implica en su salud una dieta totalmente balanceada.
+                    </p>
+                    <p>
+                        <strong>La sobrealimentación es una de las causas más comunes de sobrepeso y enfermedades de nuestras mascotas;</strong> usualmente relacionamos el alimentar y dar premios como muestra de afecto y esto nos lleva a cometer errores que pueden tener consecuencias importantes en el detrimento de la salud de mi mascota.
+                    </p>
+                </div>
+
+                <!-- Columna de Cifra Destacada -->
+                <div class="cifra-obesidad">
+                    <blockquote>
+                        <span class="comillas">“</span>
+                        <span class="porcentaje">54%</span> de los perros y <span class="porcentaje">59%</span> <br>
+                        <strong>de los gatos</strong> <br>
+                        <span class="resaltado">TIENEN PROBLEMAS DE PESO</span> <br>
+                        <span class="comillas">”</span>
+                    </blockquote>
+                    <p class="fuente">association for pet obesity prevention</p>
+                </div>
+            </div>
+
+            <!-- Texto Inferior -->
+            <p class="mensaje-final">
+                Los alimentos extras son la principal causa de obesidad en nuestros perros y gatos, la siguiente tabla te ayuda a dar una idea de la ingesta calórica de algunos alimentos comunes en nuestros hogares.
+            </p>
+            
+            <div class="botones-tabla">
+                <button id="btnPerros" class="activo" onclick="mostrarTabla('perros')">TABLA CALÓRICA PARA PERROS</button>
+                <button id="btnGatos" onclick="mostrarTabla('gatos')">TABLA CALÓRICA PARA GATOS</button>
+            </div>
+        
+            <div id="tablaPerros" class="tabla-mostrar">
+                <img src="../images/imagesAsesoriaNutricion/tabla_calorica_perros.png" alt="Tabla Calórica Perros">
+            </div>
+        
+            <div id="tablaGatos" class="tabla-oculta">
+                <img src="../images/imagesAsesoriaNutricion/tabla_calorica_gatos.png" alt="Tabla Calórica Gatos">
+            </div>
+
+            <blockquote>
+                <span class="comillas1">“</span>
+                <em>Evita al máximo</em> los extras y snacks que hacen lento su metabolismo y son la causa de obesidad.
+                <span class="comillas1">”</span>
+            </blockquote>
+        </section>
+    
+        <!-- Sección de Enfermedades Comunes -->
+        <section class="enfermedades-mascotas">
+            <h2>¿CUÁLES SON LAS ENFERMEDADES MÁS COMUNES QUE REQUIEREN UNA DIETA ESPECIAL EN MI MASCOTA?</h2>
+            <div class="contenedor-imagen">
+                <img src="../images/imagesAsesoriaNutricion/enfermedades-mascotas.png" alt="Enfermedades Comunes en Mascotas">
+            </div>
+            <div class="boton-container">
+                <a href="#formulario-nutricion" class="boton-asesoria1">
+                    ➜ SOLICITA UNA CITA GRATIS PARA ASESORÍA NUTRICIONAL
+                </a>
+            </div>
+        </section>
+
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-contenedor">
+                <!-- Publicaciones del Blog -->
+                <div class="footer-blog">
+                    <h4>PUBLICACIONES DE NUESTRO BLOG</h4>
+                    <div class="footer-blog-item">
+                        <a href="#">OTITIS EN PERROS</a>
+                        <span>08 MARCH, 2024</span>
+                    </div>
+                    <div class="footer-blog-item">
+                        <a href="#">Desparasitación de mascotas: todo lo que debes saber.</a>
+                        <span>13 APRIL, 2024</span>
+                    </div>
+                    <div class="footer-blog-item">
+                    <a href="#">Vacunación de mascotas: Prevención de enfermedades mortales</a>
+                        <span>02 SEPTEMBER, 2024</span>
+                    </div>
+                </div>
+
+                <!-- Políticas y condiciones -->
+                <div class="footer-politicas">
+                    <h4>CONECE NUESTRAS POLÍTICAS Y CONDICIONES</h4>
+                    <a href="#">- Políticas de Privacidad</a>
+                    <a href="#">- Términos y condiciones</a>
+                </div>
+
+                <!-- Redes sociales y logo -->
+                <div class="footer-contacto">
+                    <!-- Redes sociales -->
+                    <div class="footer-redes">
+                        <a href="https://www.facebook.com/" target="_blank">
+                            <img class="footer-logo1" src="../images/imagesLandingPage/facebook-logo.png" alt="Facebook">
+                        </a>
+                        <a href="https://www.instagram.com/" target="_blank">
+                            <img class="footer-logo2" src="../images/imagesLandingPage/instagram-logo.png" alt="Instagram">
+                        </a>
+                        <a href="https://x.com/" target="_blank">
+                            <img class="footer-logo3" src="../images/imagesLandingPage/twitter-logo.png" alt="Twitter">
+                        </a>
+                    </div>
+
+                    <!-- Logo -->
+                    <div class="footer-logo">
+                        <img src="../images/imagesLandingPage/Buckys_Vet_LOGO_y_NOMBRE_sin_fondo.png" alt="Bucky's Vet Logo">
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script src="../js/sriptAsesoriaNutricion.js"></script>
+</body>
+</html>

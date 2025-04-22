@@ -1,0 +1,233 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;           /* Quita márgenes globales */
+    padding: 0;          /* Quita padding global */
+  }
+  
+h1 {
+    text-align: center;
+    font-size: 35px;
+    color: #23969F;
+}
+
+.container h2 {
+    text-align: center;
+    font-size: 35px;
+    color: #054a29;
+}
+
+.table {
+    width: 90%;         
+    margin: 2rem auto;  /* 2rem de margen vertical (arriba y abajo) y centrado horizontal */
+    border: 1px solid #ddd;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+.table thead {
+    background-color: #23969F;
+    color: white;
+    text-align: left;
+}
+
+.table tbody .id{
+    color: #23969F;
+    text-decoration: none;
+}
+
+.table th, .table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.table tbody tr:hover {
+    background-color: #e9f5db;
+}
+
+.table tbody tr td  {
+    color: #000000;
+    text-decoration: none;
+}
+.table   {
+    color: #23969F;
+    text-decoration: none;
+}
+
+.table tbody tr td :hover {
+    text-decoration: underline;
+}
+
+.table tbody tr td img {
+    border: 3px solid #057a55; /* Borde verde */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 3px; /* Espaciado entre la imagen y el borde */
+    background-color: white; /* Fondo para resaltar el borde */
+    width: 100px; /* Mantener el tamaño de la imagen */
+    height: auto;
+}
+
+.btn-info {
+    background-color: #23969F;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+    margin-top: 10px;
+}
+.btn-info a {
+    text-decoration: none;
+    color: white;
+}
+
+.btn-info:hover {
+    background-color: #113f42;
+    color: white;
+}
+
+.actions {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.btn-primary {
+    background-color: #23969F;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+    margin-top: 10px;
+    margin-left: 0; /* Quitar el margen izquierdo */
+}
+
+.btn-primary:hover {
+    background-color: #113f42;
+}
+
+/* Estilos del Footer */
+.footer {
+    background-color: #23969F;
+    margin-top: 25px;  /* O ajústalo a 0 si no quieres espacio arriba */
+    padding: 30px 10px;
+    width: 100%;
+    color: white;
+    text-align: left;
+}
+
+
+
+/* Contenedor principal con 4 columnas */
+.footer-contenedor {
+    display: grid;
+    grid-template-columns: repeat(3, 0.5fr); /* 3 columnas de igual tamaño */
+    max-width: 1400px;
+    margin: auto;
+    gap: 1rem;
+    flex: 1;
+}
+
+/* Información de Bucky's Vet */
+.footer-info {
+    font-size: 1rem;
+    line-height: 1;
+    text-align: justify;
+}
+
+/* Sección del Blog */
+.footer-blog h4,
+.footer-politicas h4{
+    margin: 0 4rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.footer-politicas a{
+    margin: 0 4rem;
+}
+
+/* Cada publicación del blog */
+.footer-blog-item {
+    margin: 0 4rem;
+    display: flex;
+    width: 470px;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.footer-blog-item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.footer-blog-item a {
+    font-size: 0.9rem;
+    color: white;
+    text-decoration: none;
+}
+
+.footer-blog-item a:hover {
+    color: #5EB896;
+}
+
+.footer-blog-item span {
+    font-size: 0.8rem;
+    color: #ddd;
+}
+
+/* Políticas y condiciones */
+.footer-politicas a {
+    display: block;
+    font-size: 0.9rem;
+    color: white;
+    text-decoration: none;
+}
+
+.footer-politicas a:hover {
+    color: #5EB896;
+}
+
+/* Redes sociales y contacto */
+.footer-contacto {
+    text-align: center;
+}
+
+/* Redes sociales */
+.footer-redes {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.footer-redes img {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+}
+
+
+.footer-redes img:hover {
+    transform: scale(1.1);
+}
+
+/* Logo */
+.footer-logo img {
+    width: 110px;
+    height: 120px
+    
+}
+
+

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/error404.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>¡Oops! Ha ocurrido un error</h1>
+        <p th:text="${error}">Ha ocurrido un error inesperado.</p>
+        <a href="/mascotas" class="btn">Volver a la lista de mascotas</a>
+        <img src="/images/imagesError/perro-triste.jpg" alt="Error">
+    </div>
+</body>
+</html> 

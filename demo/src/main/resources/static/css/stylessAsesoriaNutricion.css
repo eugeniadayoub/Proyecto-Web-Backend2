@@ -1,0 +1,914 @@
+    /* Estilos generales */
+    body {
+        font-family: 'Sen', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #FFFFFF;
+    }
+
+    /* Navbar */
+    .navbar {
+        background-color: #23969F;
+        padding: 20px 40px;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+    }
+
+    .logo-img {
+        height: 90px;
+        margin-right: 5px;
+        margin-right: 15px;
+    }
+
+    .logo-text {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .slogan {
+        display: block;
+        font-size: 1rem;
+        font-weight: normal;
+        color: #FFFFFF;
+        opacity: 0.8;
+    }
+
+    /* Menú */
+.menu {
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 1;
+    text-align: center;
+    gap: 40px;
+    font-size: 1.4rem;
+    margin: 0 auto;
+}
+
+/* Elementos del menú */
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+.menu a:hover {
+    color: #5EB896;
+}
+
+/* Contenedor de menú desplegable */
+.menu-item {
+    position: relative;
+}
+
+/* Submenú */
+.submenu {
+    display: none;
+    position: absolute;
+    background-color: #5EB896;
+    top: 100%;
+    left: 0;
+    width: 250px;
+    padding: 10px 0;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.submenu a {
+    display: block;
+    padding: 10px 20px;
+    color: white;
+    text-align: left;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background 0.3s ease-in-out;
+}
+
+.submenu a:hover {
+    background-color: #ffffff;
+}
+
+/* Mostrar submenú al pasar el cursor */
+.menu-item:hover .submenu {
+    display: block;
+}
+
+    .carrito{
+        height: 50px;
+        margin-right: 60px;
+        margin-left: 60px;
+        align-items: center;
+    } 
+
+    .imagen-carrito{
+        height: 40px;
+        margin-right: 10px;
+        margin-top: 5px;
+    }
+
+    .mensaje-carrito {
+        position: absolute;
+        bottom: 130%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(0, 0, 0, 0.75);
+        color: #fff;
+        padding: 6px 10px;
+        font-size: 14px;
+        border-radius: 5px;
+        white-space: nowrap;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    }
+    
+    .carrito:hover .mensaje-carrito {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    #cantidad {
+        background-color: white;
+        color: #23969F;
+        font-weight: bold;
+        padding: 4px 8px;
+        border-radius: 50%;
+        font-size: 0.8rem;
+    }
+
+/* Sección de Nutrición */
+.nutricion {
+    width: 100%;
+    background-color: #FFFFFF;
+}
+
+.nutricion-encabezado {
+    position: relative;
+    width: 100%;
+    height: 650px;
+    overflow: hidden;
+    margin-top: 100px; /* Ajusta según la altura de tu header */
+}
+
+.nutricion-encabezado img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.nutricion-encabezado h1 {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #23969F;
+    font-size: 2.3rem;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 10px 20px;
+}
+
+/* Contenedor de Nutrición */
+.contenedor-nutricion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 10%;
+}
+
+/* Texto */
+.texto-nutricion1 {
+    width: 40%;
+    text-align: justify;
+    margin : 0 auto;
+}
+
+.texto-nutricion1 h2 {
+    color: #2176C1; /* Azul */
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.texto-nutricion1 p {
+    font-weight: normal;
+    font-size: 1.2rem;
+}
+
+/* Formulario */
+.formulario-nutricion {
+    width: 50%;
+    background: #caf0e1;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.formulario-nutricion h3 {
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* Inputs */
+.form-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #5EB896;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.input-checkbox {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.input-checkbox input {
+    margin-right: 10px;
+}
+
+.input-checkbox a {
+    color: #210beb;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.input-checkbox a:hover {
+    text-decoration: underline;
+}
+
+/* Botón */
+.boton-enviar {
+    background-color: #23969F; 
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    width: 100%;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.boton-enviar:hover {
+    background-color: #5EB896;
+}
+
+/* Sección de Importancia de Nutrición */
+.nutricion-importancia {
+    background-color: #B0C4CF; /* Color de fondo */
+    padding: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Contenedor principal con flexbox */
+.contenedor-nutricion1 {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* Columna de Texto */
+.texto-nutricion {
+    flex: 1;
+    padding: 80px;
+    text-align: justify;
+    color: #1F2D3D;
+    margin-left: 2%;
+    margin-top: 50px;
+}
+
+.texto-nutricion h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #1F2D3D;
+    margin-bottom: 40px;
+}
+
+.texto-nutricion p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin-bottom: 40px;
+}
+
+/* Estilos para el bloque de cita */
+blockquote {
+    font-style: italic;
+    font-size: 1.2rem;
+    color: #333;
+    position: relative;
+}
+
+.comillas {
+    font-size: 2rem;
+    color: white;
+    font-weight: bold;
+}
+
+/* Columna de Imagen */
+.imagen-nutricion {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Asegura que la imagen se pegue completamente a la derecha */
+}
+
+.imagen-nutricion img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Texto sobre la imagen */
+.texto-imagen {
+    position: absolute;
+    top: 50px;
+    right: 100px;
+    left: 100px;
+    padding: 10px 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #FFFFFF;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.resaltado {
+    color: #23969F; /* Color azul */
+    font-weight: bold;
+}
+
+/* Sección de Seguimiento Nutricional */
+.seguimiento-nutricional {
+    background-color: #23969F; /* Color anaranjado */
+    padding: 30px 20%;
+    text-align: center;
+    color: white;
+}
+
+/* Título de la sección */
+.seguimiento-nutricional h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+/* Contenedor de los pasos */
+.contenedor-seguimiento {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;;
+    flex-wrap: wrap;
+}
+
+/* Estilo individual de cada paso */
+.paso {
+    text-align: center;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Imágenes de cada paso */
+.paso img {
+    width: 240px; /* Tamaño estándar para todas las imágenes */
+    height: 140px;
+    margin-bottom: 15px;
+}
+
+/* Texto descriptivo de cada paso */
+.paso p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* Sección Principal */
+.asesoria-nutricional {
+    text-align: center;
+    padding: 30px 10%;
+    background-color: #FFFFFF;
+}
+
+/* Título */
+.asesoria-nutricional h2 {
+    font-size: 1.8rem;
+    font-weight: normal;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Subtítulo */
+.subtitulo {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* Contenedor de Categorías */
+.contenedor-categorias {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+/* Estilos de Cada Categoría */
+.categoria {
+    text-align: center;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Contenedor de Imágenes para que sean del mismo tamaño */
+.imagen-container {
+    width: 290px;  /* Tamaño uniforme para todas las imágenes */
+    height: 200px; /* Altura fija */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.imagen-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que todas las imágenes se ajusten sin deformarse */
+}
+
+/* Estilos de Texto */
+.categoria p {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #444;
+    text-align: center;
+    word-wrap: break-word; /* Permite que el texto se divida en palabras largas */
+    white-space: normal; /* Permite saltos de línea */
+    min-height: 40px; /* Establece una altura mínima para alinear las filas */
+    max-width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Texto Final */
+.texto-final {
+    font-size: 1rem;
+    color: #666;
+    margin-top: 20px;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Botón de Solicitar Cita */
+.boton-container {
+    margin-top: 30px;
+}
+
+.boton-asesoria {
+    display: inline-block;
+    background-color: #23969F;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.boton-asesoria:hover {
+    background-color: #5EB896;
+}
+
+/* Estilos Generales */
+.tabla-condicion {
+    background-color: #4682B4;
+    color: white;
+    text-align: center;
+    padding: 20px 10%;
+}
+
+.tabla-condicion h2 {
+    font-size: 2rem;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+/* Contenedor de las tarjetas */
+.contenedor-condicion {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Tarjetas */
+.tarjeta-condicion {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 5px;
+    width: 20%;
+    min-width: 280px;
+    text-align: center;
+}
+
+/* Encabezados */
+.tarjeta-condicion h3 {
+    font-size: 1.5rem;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+/* Iconos de arriba */
+.icono-mascota img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* Listado de características */
+.tarjeta-condicion ul {
+    text-align: left;
+    padding: 0 20px;
+    margin-top: 10px;
+    list-style-type: disc;
+    font-size: 1.1rem;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .contenedor-condicion {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .tarjeta-condicion {
+        width: 90%;
+    }
+}
+
+/* Estilos Generales */
+.errores-alimentacion {
+    background-color: #5EB896; 
+    color: #333;
+    padding: 20px 15%;
+    text-align: center;
+}
+
+/* Contenedor de la sección */
+.contenedor-errores {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Columna de Texto */
+.texto-errores {
+    width: 50%;
+    text-align: left;
+}
+
+.texto-errores h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.texto-errores p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Bloque de la Cifra de Obesidad */
+.cifra-obesidad {
+    width: 40%;
+    text-align: right;
+    font-size: 1.5rem;
+    color: #0056b3; /* Azul */
+    margin-bottom: 0px;
+}
+
+blockquote {
+    font-weight: normal;
+    font-size: 2rem;
+    text-align: right;
+    color: #0056b3;
+}
+
+.porcentaje {
+    font-size: 3rem;
+    font-weight: normal;
+    color: #FFFFFF;
+}
+
+.resaltado {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #0056b3; /* Azul fuerte */
+}
+
+.comillas {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #0056b3;
+}
+
+/* Fuente de la Cifra */
+.fuente {
+    font-size: 0.9rem;
+    color: #0056b3;
+    text-align: right;
+    margin-top: -10px;
+    margin-right: 65px;
+}
+
+/* Mensaje Final */
+.mensaje-final {
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 30px;
+    font-weight: normal;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .contenedor-errores {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .texto-errores, .cifra-obesidad {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.botones-tabla {
+    display: flex;
+    justify-content: center;
+    margin-bottom: -5px;
+    margin-top: 50px;
+}
+
+.botones-tabla button {
+    background-color: #23969F;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 12px 10px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    margin: 2px;
+    border-radius: 5px;
+}
+
+.botones-tabla button.activo {
+    background-color: #d4d803;
+}
+
+.botones-tabla button:hover {
+    background-color: #f8d407;
+}
+
+.tabla-mostrar {
+    display: block;
+    margin: auto;
+}
+
+.tabla-oculta {
+    display: none;
+}
+
+.tabla-mostrar img, .tabla-oculta img {
+    max-width: 70%; 
+    height: auto; /* Mantiene la proporción de la imagen */
+    display: block;
+    margin: auto; /* Centra la imagen */
+}
+
+/* Estilos para el Bloque de Cita */
+.errores-alimentacion blockquote {
+    font-size: 1.5rem;
+    font-style: italic;
+    color: white;
+    max-width: 900px;
+    margin: auto;
+    line-height: 1;
+    position: relative;
+    text-align: center; 
+    margin-top: 25px;
+}
+
+/* Estilos para las comillas */
+.errores-alimentacion .comillas1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+/* Estilos para la sección de Enfermedades */
+.enfermedades-mascotas {
+    background-color: #FFFFFF; /* Fondo blanco */
+    text-align: center;
+    padding: 20px 40px;
+}
+
+/* Estilo del título */
+.enfermedades-mascotas h2 {
+    color: #23969F; 
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    font-weight: normal;
+}
+
+/* Contenedor de la Imagen */
+.contenedor-imagen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor-imagen img {
+    max-width: 60%;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* Botón de Solicitar Cita */
+.boton-container {
+    margin-top: 30px;
+}
+
+.boton-asesoria1 {
+    display: inline-block;
+    background-color: #23969F; /* Naranja */
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.boton-asesoria:hover {
+    background-color: #5EB896; /* Azul */
+}
+
+/* Estilos del Footer */
+.footer {
+    background-color: #23969F; /* Color de fondo */
+    padding: 30px 10px;
+    height: 170px;
+    color: white;
+    text-align: left;
+}
+
+
+/* Contenedor principal con 4 columnas */
+.footer-contenedor {
+    display: grid;
+    grid-template-columns: repeat(3, 0.5fr); /* 3 columnas de igual tamaño */
+    max-width: 1400px;
+    margin: auto;
+    gap: 1rem;
+    flex: 1;
+}
+
+/* Información de Bucky's Vet */
+.footer-info {
+    font-size: 1rem;
+    line-height: 1;
+    text-align: justify;
+}
+
+/* Sección del Blog */
+.footer-blog h4,
+.footer-politicas h4{
+    margin: 0 4rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.footer-politicas a{
+    margin: 0 4rem;
+}
+
+/* Cada publicación del blog */
+.footer-blog-item {
+    margin: 0 4rem;
+    display: flex;
+    width: 470px;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.footer-blog-item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.footer-blog-item a {
+    font-size: 0.9rem;
+    color: white;
+    text-decoration: none;
+}
+
+.footer-blog-item a:hover {
+    color: #5EB896;
+}
+
+.footer-blog-item span {
+    font-size: 0.8rem;
+    color: #ddd;
+}
+
+/* Políticas y condiciones */
+.footer-politicas a {
+    display: block;
+    font-size: 0.9rem;
+    color: white;
+    text-decoration: none;
+}
+
+.footer-politicas a:hover {
+    color: #5EB896;
+}
+
+/* Redes sociales y contacto */
+.footer-contacto {
+    text-align: center;
+}
+
+/* Redes sociales */
+.footer-redes {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.footer-redes img {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+}
+
+
+.footer-redes img:hover {
+    transform: scale(1.1);
+}
+
+/* Logo */
+.footer-logo img {
+    width: 110px;
+    height: 120px
+    
+}

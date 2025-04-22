@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="es">
+<html xmlns:th="http://www.thymeleaf.org"></html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan médico integral accidente + enfermedad</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/stylessPlanMedicoIntegralAccidente+Enfermedad.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="LandingPage.html">
+                    <img src="../images/imagesLandingPage/Buckys_Vet_LOGO_sin_fondo.png" alt="Bucky's Vet Logo" class="logo-img">
+                </a>
+                <div class="logo-text">
+                    Bucky's Vet
+                    <span class="slogan">Peludos sanos y felices</span>
+                </div>
+            </div>
+            
+            <div class="menu">
+                <div class="menu-item">
+                    <a href="#">PLANES DE MEDICINA</a>
+                    <div class="submenu">
+                        <a href="PlanMedicoIntegralAccidente+Enfermedad.html">PLAN MÉDICO INTEGRAL ACCIDENTE + ENFERMEDAD</a>
+                        <a href="PlanCuidadoPreventivo.html">PLAN CUIDADO PREVENTIVO</a>
+                        <a href="PlanPacientesCronicos.html">PLAN PACIENTES CRÓNICOS</a>
+                    </div>
+                </div>
+    
+                <div class="menu-item">
+                    <a href="#">SERVICIOS</a>
+                    <div class="submenu">
+                        <a href="ProgramaCitaPresencial.html">PROGRAMA TU CITA PRESENCIAL</a>
+                        <a href="BañosBuckysVet.html">BAÑOS BUCKY'S VET</a>
+                        <a href="AsesoriaNutricion.html">ASESORÍA EN NUTRICIÓN</a>
+                        <a href="ConsultaVirtual.html">CONSULTA VIRTUAL</a>
+                        <a href="#">TIENDA PUPPIS</a>
+                    </div>
+                </div>
+    
+                <div class="menu-item">
+                    <a href="Sedes.html">SEDES</a>
+                </div>
+    
+                <div class="menu-item">
+                    <a href="#">HOSPITAL 24 HORAS</a>
+                    <div class="submenu">
+                        <a href="HospitalVeterinario24HrsSedeNorte.html">HOSPITAL NORTE</a>
+                        <a href="HospitalVeterinario24HrsSedeCentro.html">HOSPITAL CENTRO</a>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <a href="#">BLOG</a>
+                </div>
+    
+                <div class="menu-item">
+                    <a href="Contacto.html">CONTACTO</a>
+                </div>
+
+                <div class="menu-item">
+                    <a href="login.html">INICIO SESION</a>
+                </div>
+            </div>
+    
+            <div class="carrito">
+                <img class="imagen-carrito" src="../images/imagesLandingPage/carrito-de-compras (1).png" alt="Carrito de Compras">
+                <span class="mensaje-carrito">El carrito esta vacio</span>
+                <span id="cantidad"> 0 </span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Contenido principal -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <img src="../images/imagesPlanMedicoIntegral+Enfermedad/VeterinarioMain.jpg" alt="Veterinario Principal">
+        </section>
+
+        <!-- Sección de Información del Plan -->
+        <section class="plan-info" id="contacto">
+            
+            <!-- Título General -->
+            <div class="plan-titulo">
+                <h2>SEGURO MÉDICO PARA MASCOTAS, EPS O PREPAGADA PARA MASCOTAS. ¿CUÁL ES LA DIFERENCIA?</h2>
+            </div>
+
+            <div class="plan-contenedor">
+                <div class="plan-texto">
+                    <p>
+                        Un seguro médico para mascotas se diferencia de nuestro PLAN DE SALUD MÉDICO porque este es un programa 
+                        diseñado para cubrir las necesidades y los cuidados rutinarios que tu mascota necesita para aumentar su 
+                        esperanza de vida. Ayuda a evitar posibles enfermedades, incluye una cobertura de ACCIDENTES Y ENFERMEDADES 
+                        para que nuestros tutores siempre estén tranquilos.
+                    </p>
+
+                    <div class="beneficio">
+                        <img src="../images/imagesPlanMedicoIntegral+Enfermedad/CoberturaEmergencias.png" alt="Cobertura Emergencias">
+                        <div>
+                            <h3>COBERTURA ANTE EMERGENCIAS</h3>
+                            <p>
+                                Los accidentes o enfermedades imprevistas pueden ser costosos. Con un plan Prevenciónplus Integral, 
+                                tienes la seguridad de recibir atención inmediata sin preocuparte por altos costos imprevistos.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="beneficio">
+                        <img src="../images/imagesPlanMedicoIntegral+Enfermedad/AtencionVeterinaria.png" alt="Atención Veterinaria">
+                        <div>
+                            <h3>ATENCIÓN VETERINARIA DE CALIDAD</h3>
+                            <p>
+                                Este plan te permite acceder a nuestra red de clínicas, asegurando que tu mascota reciba el mejor 
+                                tratamiento posible, desde revisiones rutinarias hasta intervenciones más complejas.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="beneficio">
+                        <img src="../images/imagesPlanMedicoIntegral+Enfermedad/Prevencion.png" alt="Prevención">
+                        <div>
+                            <h3>PREVENCIÓN ANTE TODO</h3>
+                            <p>
+                                Prevenciónplus Integral fomenta un enfoque preventivo en la salud de las mascotas, cubriendo vacunaciones, 
+                                desparasitaciones y chequeos regulares incluyendo pruebas diagnósticas, lo que ayuda a detectar problemas 
+                                antes de que se conviertan en situaciones más graves.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="plan-formulario">
+                    <h3>INGRESA TUS DATOS Y UN ASESOR TE CONTACTARÁ PARA DARTE MÁS INFORMACIÓN SOBRE NUESTROS PLANES DE SALUD</h3>
+                    <form action="#" method="POST">
+                        <div class="input-group">
+                            <input type="text" name="nombre" placeholder="Nombre*" required>
+                            <input type="text" name="apellidos" placeholder="Apellidos*" required>
+                        </div>
+                        <div class="input-group">
+                            <input type="email" name="email" placeholder="Email*" required>
+                            <input type="tel" name="telefono" placeholder="321 1234567" required>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" name="mascota" placeholder="Nombre de la Mascota*" required>
+                            <select name="clase-mascota">
+                                <option value="" disabled selected>Clase de Mascota</option>
+                                <option value="perro">Perro</option>
+                                <option value="gato">Gato</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <select name="plan-interes">
+                                <option value="" disabled selected>QUIERO INFORMACIÓN PARA EL SIGUIENTE PLAN</option>
+                                <option value="integral">Plan Médico Integral</option>
+                                <option value="preventivo">Plan Cuidado Preventivo</option>
+                                <option value="cronicos">Plan Pacientes Crónicos</option>
+                            </select>
+                        </div>
+                        <div class="input-checkbox">
+                            <input type="checkbox" name="acepto-politica" required>
+                            <label>He leído y acepto la política de privacidad <a href="#">Leer Políticas de privacidad</a></label>
+                        </div>
+                        <button type="submit" class="boton-consultar">CONSULTAR</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de estadísticas sobre la importancia del seguro -->
+        <section class="estadisticas">
+            <div class="estadisticas-contenedor">
+                <h2>CIFRAS QUE SUSTENTAN LA COMPRA DE UN PLAN DE SALUD O SEGURO MÉDICO PARA MASCOTAS</h2>
+                <p>
+                    Las cifras no mienten: las mascotas son parte fundamental de nuestras familias, y sus cuidados pueden suponer un gasto importante si no se cuenta con un respaldo médico. Aquí te mostramos algunas estadísticas clave:
+                </p>
+                
+                <div class="estadisticas-grid">
+                    <div class="estadistica">
+                        <h3><span>01</span> IMPREVISTOS</h3>
+                        <p><strong>El 70% de las familias</strong> que no tienen un plan de salud o seguro médico para su mascota, pueden enfrentar dificultades económicas cuando deben pagar por una intervención de emergencia.</p>
+                    </div>
+                    <div class="estadistica">
+                        <h3><span>02</span> ALTOS PRESUPUESTOS</h3>
+                        <p>Muchos de los tratamientos necesarios para mascotas que tienen accidentes o enfermedad pueden superar los <strong>$4.000.000 de pesos</strong>.</p>
+                    </div>
+                    <div class="estadistica">
+                        <h3><span>03</span> TRANQUILIDAD</h3>
+                        <p><strong>1 de cada 3 perros y gatos</strong> tiene que ir al médico veterinario por una enfermedad o accidente cada año. Con un plan de salud estarás tranquilo frente a estos eventos.</p>
+                    </div>
+                    <div class="estadistica">
+                        <h3><span>04</span> RUTINAS PREVENTIVAS</h3>
+                        <p>Las visitas de rutinas preventivas, que incluyen chequeos, vacunaciones y desparasitaciones, pueden sumar hasta <strong>$600.000</strong> al año, una cifra que puede cubrirse fácilmente con nuestro plan <strong>PrevenciónPlus Integral</strong>.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de ventajas del seguro -->
+        <section class="ventajas">
+            <div class="ventajas-contenedor">
+                <!-- Imagen y logo -->
+                <div class="ventajas-imagen">
+                    <img src="../images/imagesPlanMedicoIntegral+Enfermedad/PreventionLogo.png" alt="Logo PrevenciónPlus" class="logo-prevencion">
+                    <img src="../images/imagesPlanMedicoIntegral+Enfermedad/FamiliaLogo.png" alt="Familia con mascotas" class="imagen-familia">
+                </div>
+
+                <!-- Texto y lista de beneficios -->
+                <div class="ventajas-texto">
+                    <h2>VENTAJAS DE UN SEGURO MÉDICO PARA MASCOTAS</h2>
+                    <p>
+                        El plan <strong>PrevenciónPlus Integral</strong> te ofrece numerosas ventajas que lo hacen ideal para el cuidado completo de tu mascota:
+                    </p>
+
+                    <div class="ventaja">
+                        <h3><span>01.</span> COBERTURA INTEGRAL</h3>
+                        <p>Desde consultas regulares hasta intervenciones quirúrgicas, tu mascota estará protegida en todas las fases de su vida.</p>
+                    </div>
+
+                    <div class="ventaja">
+                        <h3><span>02.</span> ACCESO A ESPECIALISTAS</h3>
+                        <p>Con nuestro plan, tienes acceso a veterinarios especializados que garantizan el mejor tratamiento posible.</p>
+                    </div>
+
+                    <div class="ventaja">
+                        <h3><span>03.</span> AHORRO A LARGO PLAZO</h3>
+                        <p>Con una cuota fija mensual, puedes evitar los altos costos de atención veterinaria inesperada. Este tipo de inversión supone un gran ahorro frente a tratamientos de emergencia no cubiertos.</p>
+                    </div>
+
+                    <div class="ventaja">
+                        <h3><span>04.</span> CONSULTAS ILIMITADAS</h3>
+                        <p>PrevenciónPlus es el único plan de medicina que cuenta con consultas médicas ilimitadas.</p>
+                    </div>
+
+                    <div class="ventaja">
+                        <h3><span>05.</span> DESCUENTOS</h3>
+                        <p>Adicionalmente ofrece descuentos en alimentos, productos de droguería, servicios veterinarios y accesorios en las sedes Petplus y tiendas Puppis.</p>
+                    </div>
+
+                    <p class="resumen">
+                        Es el plan más completo del mercado a nivel preventivo con cobertura de accidentes y enfermedad.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Cobertura del Plan -->
+        <section class="cobertura">
+            <h2 class="cobertura-titulo">NUESTRO PLAN DE SALUD PREVENCIÓNPLUS INTEGRAL CUBRE TODO LO SIGUIENTE</h2>
+            
+            <div class="cobertura-contenedor">
+                <!-- Tarjeta 1: Rutinas Preventivas -->
+                <div class="cobertura-item">
+                    <img src="../images/imagesPlanMedicoIntegral+Enfermedad/RutinaPreventiva.png" alt="Rutinas Preventivas">
+                    <h3>RUTINAS PREVENTIVAS</h3>
+                    <ul>
+                        <li>Consultas ilimitadas</li>
+                        <li>Consulta a domicilio</li>
+                        <li>Telemedicina</li>
+                        <li>Asesoría médica virtual</li>
+                        <li>Esquema vacunación completo</li>
+                        <li>Asesoría nutricional</li>
+                        <li>Desparasitación interna</li>
+                        <li>Microchip</li>
+                        <li>Exámenes de laboratorio</li>
+                        <li>Rayos X y ecografía</li>
+                    </ul>
+                </div>
+
+                <!-- Tarjeta 2: Accidente y Enfermedad -->
+                <div class="cobertura-item">
+                    <img src="../images/imagesPlanMedicoIntegral+Enfermedad/AccidenteyEnfermedad.png" alt="Accidente y Enfermedad">
+                    <h3>ACCIDENTE Y ENFERMEDAD</h3>
+                    <ul>
+                        <li>Atención de urgencias</li>
+                        <li>Hospitalización</li>
+                        <li>Cirugía</li>
+                        <li>Consulta por enfermedad</li>
+                        <li>Consulta por especialista</li>
+                        <li>Exámenes laboratorio</li>
+                        <li>Rayos X y ecografía</li>
+                        <li>Resonancia y tomografía</li>
+                        <li>Eutanasia</li>
+                        <li>Cremación individual con entrega de cenizas</li>
+                    </ul>
+                </div>
+
+                <!-- Tarjeta 3: Monto a Cubrir -->
+                <div class="cobertura-item">
+                    <img src="../images/imagesPlanMedicoIntegral+Enfermedad/MontoaCubrir.png" alt="Monto a Cubrir">
+                    <h3>MONTO A CUBRIR Y BENEFICIOS ADICIONALES</h3>
+                    <p><strong>Valor Cobertura</strong></p>
+                    <p>Hasta <strong>$6.000.000</strong> en gastos de servicios médicos veterinarios</p>
+                    <p>Deducible del 10% del valor del gasto médico veterinario</p>
+
+                    <p><strong>Beneficios adicionales</strong></p>
+                    <p>15% descuento en servicios médicos para accidentes & enfermedad, cuando se acaba la bolsa de $6.000.000, durante la vigencia anual del plan.</p>
+                </div>
+            </div>
+
+            <!-- Botón centrado debajo de las tarjetas -->
+            <div class="boton-container">
+                <button class="boton-preventivo">CONOCER LOS PLANES PREVENTIVOS</button>
+            </div>
+        </section>
+
+        <!-- Sección de Precios -->
+        <section class="precios">
+            <h2 class="precios-titulo">PRECIOS DE NUESTROS PLANES DE SALUD PREVENCIÓNPLUS INTEGRAL</h2>
+
+            <div class="precios-contenedor">
+                <!-- Tarjeta 1 -->
+                <div class="precio-item">
+                    <div class="precio-header">PERROS CACHORROS (Hasta 12 meses)</div>
+                    <div class="precio-valor">$1.750.000</div>
+                    <div class="precio-cuotas">
+                        <p>12 CUOTAS MENSUALES</p>
+                        <p class="precio-mensual">$141.883 <span>SIN INTERÉS</span></p>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 2 -->
+                <div class="precio-item">
+                    <div class="precio-header">PERROS ADULTOS (De 1 a 8 años)</div>
+                    <div class="precio-valor">$1.600.000</div>
+                    <div class="precio-cuotas">
+                        <p>12 CUOTAS MENSUALES</p>
+                        <p class="precio-mensual">$133.333 <span>SIN INTERÉS</span></p>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 3 -->
+                <div class="precio-item">
+                    <div class="precio-header">PERROS MAYORES (De 8+ años)</div>
+                    <div class="precio-valor">$1.900.000</div>
+                    <div class="precio-cuotas">
+                        <p>12 CUOTAS MENSUALES</p>
+                        <p class="precio-mensual">$158.333 <span>SIN INTERÉS</span></p>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 4 -->
+                <div class="precio-item">
+                    <div class="precio-header">GATOS CACHORROS (Hasta 12 meses)</div>
+                    <div class="precio-valor">$1.300.000</div>
+                    <div class="precio-cuotas">
+                        <p>12 CUOTAS MENSUALES</p>
+                        <p class="precio-mensual">$108.333 <span>SIN INTERÉS</span></p>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 5 -->
+                <div class="precio-item">
+                    <div class="precio-header">GATOS ADULTOS (De 1 a 9 años)</div>
+                    <div class="precio-valor">$1.250.000</div>
+                    <div class="precio-cuotas">
+                        <p>12 CUOTAS MENSUALES</p>
+                        <p class="precio-mensual">$104.167 <span>SIN INTERÉS</span></p>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 6 -->
+                <div class="precio-item">
+                    <div class="precio-header">GATOS MAYORES (De 9+ años)</div>
+                    <div class="precio-valor">$1.500.000</div>
+                    <div class="precio-cuotas">
+                        <p>12 CUOTAS MENSUALES</p>
+                        <p class="precio-mensual">$125.000 <span>SIN INTERÉS</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección de Pago y Bancos -->
+            <div class="info-pago">
+                <p>Los pagos a 12 cuotas sin interés aplican solo por Mercado Pago y con tarjetas de crédito de los siguientes bancos:</p>
+                <img src="../images/imagesPlanMedicoIntegral+Enfermedad/Bancos.png" alt="Bancos Aceptados" class="bancos-img">
+                <p class="condiciones">* Aplican condiciones y restricciones</p>
+
+                <!-- Botón de Más Información -->
+                <a href="#contacto" id="boton-contactar" class="boton-informacion">QUIERO MÁS INFORMACIÓN</a>
+            </div>
+        </section>
+
+        <!-- Sección de Costos Promedio de Enfermedades -->
+        <section class="costos-enfermedades">
+            <h2>COSTOS PROMEDIO DE ENFERMEDADES MÁS COMUNES</h2>
+            
+            <div class="contenedor-imagen">
+                <img src="../images/imagesPlanMedicoIntegral+Enfermedad/SanBernardo.png" alt="San Bernardo" class="san-bernardo">
+                
+                <!-- Íconos de información -->
+                <div class="info-icon" style="top: 8%; left: 50%;">
+                    <img src="../images/imagesPlanMedicoIntegral+Enfermedad/iIcon.png" alt="Información">
+                    <span class="info-text">Alteraciones oculares<br>$600.000 a $3'000.000</span>
+                </div>
+
+                <div class="info-icon" style="top: 40%; left: 50%;">
+                    <img src="../images/imagesPlanMedicoIntegral+Enfermedad/iIcon.png" alt="Información">
+                    <span class="info-text">Cardiopatías<br>$1'300.000 a $3'500.000</span>
+                </div>
+
+                <div class="info-icon" style="top: 50%; left: 58%;">
+                    <img src="../images/imagesPlanMedicoIntegral+Enfermedad/iIcon.png" alt="Información">
+                    <span class="info-text">Enfermedades dermatológicas<br>$800.000 a $2'000.000</span>
+                </div>
+
+                <div class="info-icon" style="top: 70%; left: 45%;">
+                    <img src="../images/imagesPlanMedicoIntegral+Enfermedad/iIcon.png" alt="Información">
+                    <span class="info-text">Rotura Ligamento Cruzado<br>$7'000.000 a $9'000.000</span>
+                </div>
+
+                <div class="info-icon" style="top: 73%; left: 58%;">
+                    <img src="../images/imagesPlanMedicoIntegral+Enfermedad/iIcon.png" alt="Información">
+                    <span class="info-text">Infecciones Urinarias<br>$1'000.000 en perros, en gatos $1'300.000</span>
+                </div>
+            </div>
+
+            <!-- Botón de Más Información -->
+            <div class="boton-contenedor">
+                <a href="#contacto" id="boton-contacto" class="boton-mas-informacion">QUIERO MÁS INFORMACIÓN</a>
+            </div>
+        </section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-contenedor">
+        <!-- Publicaciones del Blog -->
+        <div class="footer-blog">
+            <h4>PUBLICACIONES DE NUESTRO BLOG</h4>
+            <div class="footer-blog-item">
+                <a href="#">OTITIS EN PERROS</a>
+                <span>08 MARCH, 2024</span>
+            </div>
+            <div class="footer-blog-item">
+                <a href="#">Desparasitación de mascotas: todo lo que debes saber.</a>
+                <span>13 APRIL, 2024</span>
+            </div>
+            <div class="footer-blog-item">
+            <a href="#">Vacunación de mascotas: Prevención de enfermedades mortales</a>
+                <span>02 SEPTEMBER, 2024</span>
+            </div>
+        </div>
+
+        <!-- Políticas y condiciones -->
+        <div class="footer-politicas">
+            <h4>CONECE NUESTRAS POLÍTICAS Y CONDICIONES</h4>
+            <a href="#">- Políticas de Privacidad</a>
+            <a href="#">- Términos y condiciones</a>
+        </div>
+
+        <!-- Redes sociales y logo -->
+        <div class="footer-contacto">
+            <!-- Redes sociales -->
+            <div class="footer-redes">
+                <a href="https://www.facebook.com/" target="_blank">
+                    <img class="footer-logo1" src="../images/imagesLandingPage/facebook-logo.png" alt="Facebook">
+                </a>
+                <a href="https://www.instagram.com/" target="_blank">
+                    <img class="footer-logo2" src="../images/imagesLandingPage/instagram-logo.png" alt="Instagram">
+                </a>
+                <a href="https://x.com/" target="_blank">
+                    <img class="footer-logo3" src="../images/imagesLandingPage/twitter-logo.png" alt="Twitter">
+                </a>
+            </div>
+
+            <!-- Logo -->
+            <div class="footer-logo">
+                <img src="../images/imagesLandingPage/Buckys_Vet_LOGO_y_NOMBRE_sin_fondo.png" alt="Bucky's Vet Logo">
+            </div>
+        </div>
+    </div>
+</footer>
+    </main>
+    <script src = "../js/scriptPlanMedicoIntegralAccidente+Enfermedad.js"></script>
+</body>
+</html>

@@ -1,0 +1,724 @@
+    /* Estilos generales */
+    body {
+        font-family: 'Sen', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #FFFFFF;
+    }
+
+    /* Navbar */
+    .navbar {
+        background-color: #23969F;
+        padding: 20px 40px;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+    }
+
+    .logo-img {
+        height: 90px;
+        margin-right: 5px;
+        margin-right: 15px;
+    }
+
+    .logo-text {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .slogan {
+        display: block;
+        font-size: 1rem;
+        font-weight: normal;
+        color: #FFFFFF;
+        opacity: 0.8;
+    }
+
+    /* Menú */
+.menu {
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 1;
+    text-align: center;
+    gap: 40px;
+    font-size: 1.4rem;
+    margin: 0 auto;
+}
+
+/* Elementos del menú */
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+.menu a:hover {
+    color: #5EB896;
+}
+
+/* Contenedor de menú desplegable */
+.menu-item {
+    position: relative;
+}
+
+/* Submenú */
+.submenu {
+    display: none;
+    position: absolute;
+    background-color: #5EB896;
+    top: 100%;
+    left: 0;
+    width: 250px;
+    padding: 10px 0;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.submenu a {
+    display: block;
+    padding: 10px 20px;
+    color: white;
+    text-align: left;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background 0.3s ease-in-out;
+}
+
+.submenu a:hover {
+    background-color: #ffffff;
+}
+
+/* Mostrar submenú al pasar el cursor */
+.menu-item:hover .submenu {
+    display: block;
+}
+
+    .carrito{
+        height: 50px;
+        margin-right: 60px;
+        margin-left: 60px;
+        align-items: center;
+    } 
+
+    .imagen-carrito{
+        height: 40px;
+        margin-right: 10px;
+        margin-top: 5px;
+    }
+
+    .mensaje-carrito {
+        position: absolute;
+        bottom: 130%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(0, 0, 0, 0.75);
+        color: #fff;
+        padding: 6px 10px;
+        font-size: 14px;
+        border-radius: 5px;
+        white-space: nowrap;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    }
+    
+    .carrito:hover .mensaje-carrito {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    #cantidad {
+        background-color: white;
+        color: #23969F;
+        font-weight: bold;
+        padding: 4px 8px;
+        border-radius: 50%;
+        font-size: 0.8rem;
+    }
+
+/* Sección de Imagen Principal */
+.hospital-image {
+    width: 100%;
+    height: 100vh; /* La imagen ocupará toda la altura de la pantalla */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.hospital-image img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    display: block;
+}
+
+.hospital-info {
+    background-color: #23969F;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.hospital-info .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.hospital-text {
+    flex: 1;
+    max-width: 55%;
+    text-align: left;
+}
+
+.hospital-text h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.hospital-text p {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.hospital-details {
+    flex: 1;
+    max-width: 35%;
+}
+
+.hospital-details h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #FFD700;
+}
+
+.hospital-details p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+
+}
+
+.waiting-room {
+    background-color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.waiting-room .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.waiting-room-image {
+    flex: 1;
+    max-width: 50%;
+}
+
+.waiting-room-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.waiting-room-text {
+    flex: 1;
+    max-width: 45%;
+    text-align: left;
+    color: #333;
+}
+
+.waiting-room-text h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.waiting-room-text p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .waiting-room .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .waiting-room-image, .waiting-room-text {
+        max-width: 100%;
+        text-align: center;
+    }
+}
+
+.consultorios {
+    background-color: white;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.consultorios h2 {
+    font-size: 1.8rem;
+    max-width: 1000px;
+    margin: 0 auto 20px;
+    font-weight: normal;
+    color: #333;
+}
+
+.consultorios-gallery {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.consultorios-gallery img {
+    width: 20%;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.consultorios-gallery img:hover {
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .consultorios-gallery {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .consultorios-gallery img {
+        width: 90%;
+    }
+}
+
+.espacios-gatos {
+    background-color: white;
+    padding: 20px 20px;
+    text-align: center;
+}
+
+.espacios-gatos h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    font-weight: normal;
+    color: #333;
+}
+
+.gatos-content {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.gato-item {
+    max-width: 25%;
+    text-align: center;
+}
+
+.gato-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.gato-item p {
+    font-size: 1rem;
+    color: #666;
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    .gatos-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .gato-item {
+        max-width: 90%;
+    }
+}
+
+.consulta-medica {
+    background-color: #f4f4f4;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.consulta-medica h2 {
+    font-size: 1.8rem;
+    color: #23969F;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.consulta-medica .subtitulo {
+    font-size: 1.3rem;
+    color: #000000;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+/* Formulario de Citas */
+.formulario-cita {
+    background: #EEEEEE;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 1000px;
+    margin: 20px auto;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #5EB896;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+/* Checkbox de Aceptación */
+.input-checkbox {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.input-checkbox input {
+    margin-right: 10px;
+}
+
+.input-checkbox a {
+    color: #23969F;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.input-checkbox a:hover {
+    text-decoration: underline;
+}
+
+/* Botón de Enviar */
+.boton-enviar {
+    background-color: #23969F;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    width: 100%;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.boton-enviar:hover {
+    background-color: #5EB896;
+}
+
+@media (max-width: 768px) {
+    .form-group {
+        flex-direction: column;
+    }
+    .form-group input,
+    .form-group select {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+.salas-visita {
+    background-color: #ffffff;
+    padding: 30px 20px;
+}
+
+.salas-visita .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1000px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.salas-visita .texto {
+    flex: 1;
+    max-width: 35%;
+    text-align: left;
+}
+
+.salas-visita h2 {
+    font-size: 1.8rem;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.salas-visita p {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.salas-visita .imagen {
+    flex: 1;
+    max-width: 50%;
+    text-align: right;
+}
+
+.salas-visita img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .salas-visita .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .salas-visita .texto {
+        max-width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .salas-visita .imagen {
+        max-width: 100%;
+    }
+}
+
+.rayosx-quirófanos {
+    background-color: #ffffff;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.rayosx-quirófanos .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.rayosx-quirófanos h2 {
+    font-size: 1.8rem;
+    color: #333;
+    font-weight: normal;
+    margin-bottom: 30px;
+}
+
+.rayosx-quirófanos .imagenes {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.rayosx-quirófanos img {
+    width: 30%;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .rayosx-quirófanos .imagenes {
+        flex-direction: column;
+        align-items: center;
+    }
+    .rayosx-quirófanos img {
+        width: 80%;
+    }
+}
+
+.peluqueria-banos {
+    text-align: center;
+    padding: 40px 500px;
+}
+
+.peluqueria-banos p {
+    font-size: 1.5rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.boton-bano {
+    display: inline-block;
+    background-color: #23969F;
+    color: white;
+    padding: 15px 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+}
+
+.boton-bano:hover {
+    background-color: #5EB896;
+}
+
+.mapa-hospital {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.mapa-hospital .container {
+    width: 80%;
+    max-width: 1200px;
+}
+
+.imagen-mapa {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos del Footer */
+.footer {
+    background-color: #23969F; /* Color de fondo */
+    padding: 30px 10px;
+    height: 170px;
+    color: white;
+    text-align: left;
+}
+
+
+/* Contenedor principal con 4 columnas */
+.footer-contenedor {
+    display: grid;
+    grid-template-columns: repeat(3, 0.5fr); /* 3 columnas de igual tamaño */
+    max-width: 1400px;
+    margin: auto;
+    gap: 1rem;
+    flex: 1;
+}
+
+/* Información de Bucky's Vet */
+.footer-info {
+    font-size: 1rem;
+    line-height: 1;
+    text-align: justify;
+}
+
+/* Sección del Blog */
+.footer-blog h4,
+.footer-politicas h4{
+    margin: 0 4rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.footer-politicas a{
+    margin: 0 4rem;
+}
+
+/* Cada publicación del blog */
+.footer-blog-item {
+    margin: 0 4rem;
+    display: flex;
+    width: 470px;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.footer-blog-item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.footer-blog-item a {
+    font-size: 0.9rem;
+    color: white;
+    text-decoration: none;
+}
+
+.footer-blog-item a:hover {
+    color: #5EB896;
+}
+
+.footer-blog-item span {
+    font-size: 0.8rem;
+    color: #ddd;
+}
+
+/* Políticas y condiciones */
+.footer-politicas a {
+    display: block;
+    font-size: 0.9rem;
+    color: white;
+    text-decoration: none;
+}
+
+.footer-politicas a:hover {
+    color: #5EB896;
+}
+
+/* Redes sociales y contacto */
+.footer-contacto {
+    text-align: center;
+}
+
+/* Redes sociales */
+.footer-redes {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.footer-redes img {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+}
+
+
+.footer-redes img:hover {
+    transform: scale(1.1);
+}
+
+/* Logo */
+.footer-logo img {
+    width: 110px;
+    height: 120px
+    
+}

@@ -1,0 +1,974 @@
+    /* Estilos generales */
+    body {
+        font-family: 'Sen', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #FFFFFF;
+    }
+
+    /* Navbar */
+    .navbar {
+        background-color: #23969F;  
+        padding: 20px 40px;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+    }
+
+    .logo-img {
+        height: 90px;
+        margin-right: 5px;
+        margin-right: 15px;
+    }
+
+    .logo-text {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .slogan {
+        display: block;
+        font-size: 1rem;
+        font-weight: normal;
+        color: #FFFFFF;
+        opacity: 0.8;
+    }
+
+    /* Menú */
+.menu {
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 1;
+    text-align: center;
+    gap: 40px;
+    font-size: 1.4rem;
+    margin: 0 auto;
+}
+
+/* Elementos del menú */
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+.menu a:hover {
+    color: #5EB896;
+}
+
+/* Contenedor de menú desplegable */
+.menu-item {
+    position: relative;
+}
+
+/* Submenú */
+.submenu {
+    display: none;
+    position: absolute;
+    background-color: #5EB896;
+    top: 100%;
+    left: 0;
+    width: 250px;
+    padding: 10px 0;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.submenu a {
+    display: block;
+    padding: 10px 20px;
+    color: white;
+    text-align: left;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background 0.3s ease-in-out;
+}
+
+.submenu a:hover {
+    background-color: #ffffff;
+}
+
+/* Mostrar submenú al pasar el cursor */
+.menu-item:hover .submenu {
+    display: block;
+}
+
+    .carrito{
+        height: 50px;
+        margin-right: 60px;
+        margin-left: 60px;
+        align-items: center;
+    } 
+
+    .imagen-carrito{
+        height: 40px;
+        margin-right: 10px;
+        margin-top: 5px;
+    }
+
+    .mensaje-carrito {
+        position: absolute;
+        bottom: 130%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(0, 0, 0, 0.75);
+        color: #fff;
+        padding: 6px 10px;
+        font-size: 14px;
+        border-radius: 5px;
+        white-space: nowrap;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    }
+    
+    .carrito:hover .mensaje-carrito {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    #cantidad {
+        background-color: white;
+        color: #23969F;
+        font-weight: bold;
+        padding: 4px 8px;
+        border-radius: 50%;
+        font-size: 0.8rem;
+    }
+
+/* Hero Section */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 630px; /* Aumentado el tamaño de la altura */
+    margin-top: 100px; /* Para evitar que quede tapado por el navbar */
+    margin-bottom: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Contenedor del texto en el lado izquierdo */
+.hero-text {
+    position: absolute;
+    left: 8%;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+    width: 30%;
+    max-width: 400px;
+    height: auto;
+    min-height: 100px; /* Reducido el alto del contenedor */
+    text-align: justify;
+    background: rgba(0, 0, 0, 0.3); /* Fondo transparente */
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 10%;
+    right: 5%;
+    z-index: 10;
+    max-width: 150px;
+}
+
+.hero-logo {
+    width: 100%;
+    height: auto;
+    opacity: 0.9;
+}
+
+
+.hero-arrow:hover {
+    opacity: 1;
+}
+
+.hero-arrow-left {
+    left: 20px;
+    width: 40px !important; 
+    height: 40px !important;
+}
+
+.hero-arrow-right {
+    right: 20px;
+    width: 40px !important; 
+    height: 40px !important;
+}
+
+/* Botón Escríbenos debajo del texto */
+.hero-text .hero-button {
+    position: relative;
+    display: inline-block;
+    margin-top: 2px;
+    background-color: #23969F;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background 0.3s ease-in-out;
+    
+}
+
+.hero-text .hero-button:hover {
+    background-color: #5EB896;
+}
+
+/* Sección de Contacto */
+.contacto {
+    background-color: #dddddd;
+    padding: 15px 20px;
+    text-align: center;
+    margin-top: -9px; /* Ajuste para pegar la sección al hero */
+}
+
+.contacto h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1;
+}
+
+.contacto .resaltado {
+    color: #23969F;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Formulario */
+
+/* --- Sección de contacto (formulario estilo “card”) --- */
+
+.contacto {
+    background-color: #f9f9f9; /* Color de fondo para toda la sección */
+    padding: 3rem 15rem;
+  }
+  
+  .contacto-container {
+    max-width: 500px;
+    margin: 0 auto;              /* Centra horizontalmente */
+    background-color: #ffffff;   /* Fondo blanco para el “card” */
+    border-radius: 15px;          /* Bordes redondeados */
+    border: 10px solid #ddd;      /* Borde sutil */
+    padding: 2rem;               /* Espacio interno */
+    text-align: center;          /* Centra el contenido */
+  }
+  
+  .contacto-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    color: #333; /* Color del texto */
+  }
+  
+  .contacto-container .resaltado {
+    color: #00a99d;    /* Texto resaltado en tono “teal” */
+    font-weight: bold;
+    margin-bottom: 2rem;
+  }
+  
+  /* Formulario principal */
+  .contacto-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  /* Cada fila de campos (Nombre/Apellido, etc.) */
+  .form-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+  
+  /* Inputs y selects */
+  .form-group input,
+  .form-group select {
+    flex: 1;                /* Se expanden para ocupar espacio */
+    min-width: 200px;       /* Ancho mínimo */
+    padding: 0.75rem;       /* Relleno interno */
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  /* Checkbox y label */
+  .checkbox {
+    text-align: left;
+  }
+  
+  /* Botón de envío */
+  .boton-cita {
+    background-color: #00a99d; /* Botón “teal” */
+    border: none;
+    color: #fff;
+    padding: 0.75rem 2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .boton-cita:hover {
+    background-color: #008c86; /* Oscurece un poco al pasar el mouse */
+  }
+  
+  /* Nota final */
+  .nota {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 1rem;
+  }
+  
+/* Sección de Servicios */
+.servicios {
+    background-color: #FFFFFF;
+    padding: 50px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.servicios-premio img {
+    max-width: 250px;
+    height: auto;
+    margin-bottom: 30px;
+}
+
+.servicios-contenedor {
+    max-width: 1500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+}
+
+/* Lista de Servicios a la derecha en dos columnas */
+.servicios-lista {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+    text-align: left;
+    max-width: 450px;
+}
+
+.servicio {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.servicio img {
+    max-width: 40px;
+    height: auto;
+}
+
+.servicio span {
+    font-size: 1rem;
+    color: #444;
+    font-weight: bold;
+}
+
+/* Información de los servicios a la izquierda */
+.servicios-info {
+    max-width: 500px;
+    text-align: justify;
+}
+
+.servicios-info h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.servicios-info p {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.boton-servicio {
+    background-color: #23969F;
+    color: white;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 15px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.boton-servicio:hover {
+    background-color: #5EB896;
+}
+
+/* Sección de Planes de Medicina Preventiva */
+.planes-medicina {
+    background-color: #dddddd;
+    padding: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 85vh;
+    overflow: hidden; /* Elimina el espacio debajo de la imagen */
+}
+
+.planes-contenedor {
+    max-width: 1500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0px;
+    height: 500%;
+}
+
+/* Texto alineado a la izquierda */
+.planes-texto {
+    max-width: 600px;
+    text-align: left;
+    margin-left: 10px;
+}
+
+.planes-texto h2 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #23969F;
+    margin-bottom: 15px;
+}
+
+.planes-texto p {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Botón */
+.boton-planes {
+    background-color: #23969F;
+    color: white;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 15px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.boton-planes:hover {
+    background-color: #5EB896;
+}
+
+/* Imagen alineada a la derecha, ajustada para que se vea completa */
+.planes-imagen {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+}
+
+.planes-imagen img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain; /* Se asegura que la imagen se vea completa sin recortes */
+    margin-right: -80px; /* Reduce el margen derecho para acercar la imagen */
+    margin-bottom: -40px;
+}
+
+/* Sección de Ubicación */
+.ubicacion {
+    background-color: #23969F; /* Color de fondo */
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ubicacion-contenedor {
+    max-width: 1600px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 200px;
+}
+
+/* Imagen del mapa */
+.ubicacion-mapa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ubicacion-mapa img {
+    max-width: 200px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Título debajo de la imagen */
+.ubicacion-titulo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Texto informativo */
+.ubicacion-texto {
+    max-width: 600px;
+    color: white;
+    text-align: left;
+}
+
+.ubicacion-texto h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    margin-top: 0px;
+}
+
+.ubicacion-texto p {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+/* Botón */
+.boton-sedes {
+    background-color: transparent;
+    color: white;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    border: 2px solid white;
+    border-radius: 15px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.boton-sedes:hover {
+    background-color: white;
+    color: #23969F;
+}
+
+/* Sección de Beneficios */
+.beneficios {
+    background-color: #ffffff;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+/* Contenedor de los beneficios en fila */
+.beneficios-contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinear contenido arriba */
+    gap: 100px; /* Espacio entre los beneficios */
+}
+
+/* Estilos para cada beneficio */
+.beneficio {
+    max-width: 400px;
+    text-align: center;
+}
+
+/* Imágenes de los beneficios */
+.beneficio-imagen img {
+    max-width: 100%;
+    height: 300px; /* Unificar la altura para evitar desajustes */
+    object-fit: contain; /* Mantener proporciones sin deformar */
+}
+
+/* Títulos de los beneficios */
+.beneficio h2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #23969F;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+
+/* Texto descriptivo */
+.beneficio p {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+/* Botones */
+.boton-beneficio {
+    background-color: #23969F;
+    color: white;
+    padding: 12px 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 15px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.boton-beneficio:hover {
+    background-color: #5EB896;
+}
+
+/* Nota sobre beneficios */
+.nota-beneficio {
+    font-size: 0.8rem;
+    color: #666;
+    text-align: center;
+    margin-top: 40px; /* Separación respecto a los botones */
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5;
+}
+
+/* Sección de Hospitales */
+.hospitales {
+    background-color: #dddddd;
+    padding: 20px 20px;
+    text-align: center;
+}
+
+/* Título de la sección */
+.hospitales h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+/* Ícono 24/7 */
+.hospitales-icono img {
+    width: 70px; /* Tamaño reducido */
+    height: auto;
+    margin-bottom: 20px;
+}
+
+/* Imagen del local */
+.hospitales-imagen img {
+    max-width: 40%; /* Se redujo el tamaño */
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+/* Contenedor de hospitales */
+.hospitales-contenedor {
+    display: flex;
+    justify-content: center;
+    gap: 80px; /* Espacio reducido */
+    margin-top: 20px;
+    align-items: flex-start;
+}
+
+/* Cada hospital */
+.hospital {
+    max-width: 350px;
+    text-align: center;
+}
+
+/* Icono de "+" usando imágenes */
+.hospital-icono img {
+    width: 40px; /* Ajusta el tamaño del ícono */
+    height: auto;
+    margin-bottom: 10px;
+    margin-top: 0px;
+    transition: filter 0.3s ease-in-out;
+}
+
+/* Efecto hover: cambia el color del ícono al pasar el cursor */
+.hospital-icono img:hover {
+    filter: brightness(0) saturate(100%) invert(57%) sepia(9%) saturate(308%) hue-rotate(120deg) brightness(90%) contrast(90%);
+}
+
+/* Títulos de los hospitales */
+.hospital h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #23969F;
+    margin-bottom: 5px;
+}
+
+/* Subtítulos (Teléfonos y Dirección) */
+.hospital h4 {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 3px; /* Se redujo espacio */
+    margin-top: 15px; /* Se redujo espacio */
+}
+
+/* Dirección y teléfono */
+.hospital p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 2px; /* Se redujo espacio */
+    line-height: 1.4;
+    margin-top: 5px;
+}
+
+
+/* Sección del Blog */
+.blog {
+    background-color: #ffffff;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+/* Subtítulo */
+.blog-subtitulo {
+    font-size: 1rem;
+    color: #666;
+    text-transform: uppercase;
+}
+
+/* Título */
+.blog-titulo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #23969F;
+    margin-bottom: 30px;
+}
+
+/* Contenedor de tarjetas */
+.blog-contenedor {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+/* Tarjetas del Blog */
+.blog-tarjeta {
+    background-color: #f8f8f8;
+    max-width: 300px;
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+}
+
+.blog-tarjeta:hover {
+    transform: scale(1.05);
+}
+
+/* Contenedor de imagen con hover */
+.blog-imagen {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+/* Imagen dentro de la tarjeta */
+.blog-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: filter 0.3s ease-in-out;
+}
+
+/* Efecto hover: imagen oscurecida */
+.blog-tarjeta:hover .blog-imagen img {
+    filter: brightness(0.5);
+}
+
+/* Efecto hover: icono de "+" */
+.blog-hover {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    background: url("../images/IconoMas.png") no-repeat center;
+    background-size: contain;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Mostrar el ícono "+" al hacer hover */
+.blog-tarjeta:hover .blog-hover {
+    opacity: 1;
+}
+
+/* Títulos dentro de la tarjeta */
+.blog-tarjeta h3 {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+}
+
+/* Texto descriptivo */
+.blog-tarjeta p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+/* Autor y fecha */
+.blog-autor {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #999;
+    text-transform: uppercase;
+}
+
+.blog-fecha {
+    font-size: 0.8rem;
+    color: #aaa;
+}
+
+/* Estilos del Footer */
+.footer {
+    background-color: #23969F; /* Color de fondo */
+    padding: 30px 10px;
+    height: 170px;
+    color: white;
+    text-align: left;
+}
+
+
+/* Contenedor principal con 4 columnas */
+.footer-contenedor {
+    display: grid;
+    grid-template-columns: repeat(3, 0.5fr); /* 3 columnas de igual tamaño */
+    max-width: 1400px;
+    margin: auto;
+    gap: 1rem;
+    flex: 1;
+}
+
+/* Información de Bucky's Vet */
+.footer-info {
+    font-size: 1rem;
+    line-height: 1;
+    text-align: justify;
+}
+
+/* Sección del Blog */
+.footer-blog h4,
+.footer-politicas h4{
+    margin: 0 4rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.footer-politicas a{
+    margin: 0 4rem;
+}
+
+/* Cada publicación del blog */
+.footer-blog-item {
+    margin: 0 4rem;
+    display: flex;
+    width: 470px;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.footer-blog-item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.footer-blog-item a {
+    font-size: 0.9rem;
+    color: white;
+    text-decoration: none;
+}
+
+.footer-blog-item a:hover {
+    color: #5EB896;
+}
+
+.footer-blog-item span {
+    font-size: 0.8rem;
+    color: #ddd;
+}
+
+/* Políticas y condiciones */
+.footer-politicas a {
+    display: block;
+    font-size: 0.9rem;
+    color: white;
+    text-decoration: none;
+}
+
+.footer-politicas a:hover {
+    color: #5EB896;
+}
+
+/* Redes sociales y contacto */
+.footer-contacto {
+    text-align: center;
+}
+
+/* Redes sociales */
+.footer-redes {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.footer-redes img {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+}
+
+
+.footer-redes img:hover {
+    transform: scale(1.1);
+}
+
+/* Logo */
+.footer-logo img {
+    width: 110px;
+    height: 120px
+    
+}

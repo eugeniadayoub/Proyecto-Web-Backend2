@@ -1,0 +1,511 @@
+    /* Estilos generales */
+    body {
+        font-family: 'Sen', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #FFFFFF;
+    }
+
+    /* Navbar */
+    .navbar {
+        background-color: #23969F;
+        padding: 20px 40px;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+    }
+
+    .logo-img {
+        height: 90px;
+        margin-right: 5px;
+        margin-right: 15px;
+    }
+
+    .logo-text {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .slogan {
+        display: block;
+        font-size: 1rem;
+        font-weight: normal;
+        color: #FFFFFF;
+        opacity: 0.8;
+    }
+
+    /* Menú */
+.menu {
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 1;
+    text-align: center;
+    gap: 40px;
+    font-size: 1.4rem;
+    margin: 0 auto;
+}
+
+/* Elementos del menú */
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+.menu a:hover {
+    color: #5EB896;
+}
+
+/* Contenedor de menú desplegable */
+.menu-item {
+    position: relative;
+}
+
+/* Submenú */
+.submenu {
+    display: none;
+    position: absolute;
+    background-color: #5EB896;
+    top: 100%;
+    left: 0;
+    width: 250px;
+    padding: 10px 0;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.submenu a {
+    display: block;
+    padding: 10px 20px;
+    color: white;
+    text-align: left;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background 0.3s ease-in-out;
+}
+
+.submenu a:hover {
+    background-color: #ffffff;
+}
+
+/* Mostrar submenú al pasar el cursor */
+.menu-item:hover .submenu {
+    display: block;
+}
+
+    .carrito{
+        height: 50px;
+        margin-right: 60px;
+        margin-left: 60px;
+        align-items: center;
+    } 
+
+    .imagen-carrito{
+        height: 40px;
+        margin-right: 10px;
+        margin-top: 5px;
+    }
+
+    .mensaje-carrito {
+        position: absolute;
+        bottom: 130%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(0, 0, 0, 0.75);
+        color: #fff;
+        padding: 6px 10px;
+        font-size: 14px;
+        border-radius: 5px;
+        white-space: nowrap;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    }
+    
+    .carrito:hover .mensaje-carrito {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    #cantidad {
+        background-color: white;
+        color: #23969F;
+        font-weight: bold;
+        padding: 4px 8px;
+        border-radius: 50%;
+        font-size: 0.8rem;
+    }
+
+/* Sección de Contacto */
+.contacto {
+    text-align: center;
+    padding: 120px 23%;
+    margin-bottom: -70px;
+}
+
+/* Título principal */
+.contacto-titulo {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #23969F;
+    margin-bottom: 30px;
+}
+
+/* Contenedor flexible */
+.contacto-contenedor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Tarjetas de contacto */
+.contacto-item {
+    text-align: center;
+    width: 23%; /* Distribuye 4 elementos por fila */
+}
+
+/* Imágenes de iconos */
+.contacto-item img {
+    width: 60px;
+    height: 60px;
+    background-color: #23969F;
+    border-radius: 25%;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+/* Títulos de cada categoría */
+.contacto-item h3 {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* Enlaces de contacto */
+.contacto-item a {
+    font-size: 1rem;
+    color: #23969F;
+    text-decoration: none;
+}
+
+.contacto-item a:hover {
+    text-decoration: underline;
+}
+
+/* Sección del formulario de contacto */
+.contacto-formulario {
+    background-color: #dddddd;
+    padding: 0px 0%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Contenedor con imagen y formulario */
+.contacto-contenedor {
+    display: flex;
+    width: 100%;
+    max-width: 1900px;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    align-items: stretch; /* Asegura que ambas columnas tengan la misma altura */
+    gap: 0; /* Elimina cualquier separación extra */
+}
+
+/* Imagen del Call Center */
+.contacto-imagen {
+    width: 49.8%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contacto-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block; 
+}
+
+/* Contenedor del formulario */
+.contacto-form {
+    width: 44%;
+    background-color: #dddddd;
+    padding: 47px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0; /* Asegura que no haya espacio adicional */
+}
+
+/* Títulos y subtítulos */
+.contacto-subtitulo {
+    font-size: 0.9rem;
+    color: #777;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.contacto-titulo {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #23969F;   
+    margin-bottom: 20px;
+}
+
+/* Campos del formulario */
+.contacto-form input,
+.contacto-form textarea {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid black;
+    padding: 10px;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    background: transparent;
+    outline: none;
+}
+
+/* Botón Enviar */
+.boton-enviar {
+    background-color: black;
+    color: white;
+    font-size: 1rem;
+    padding: 12px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out;
+}
+
+.boton-enviar:hover {
+    background-color: #333;
+}
+
+/* Sección de Postulación */
+.postulacion {
+    padding: 50px 10%;
+    background-color: white;
+}
+
+/* Contenedor principal */
+.postulacion-contenedor {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    background-color: white;
+    border-radius: 100px;
+    overflow: hidden;
+    gap: 0;
+}
+
+/* Formulario */
+.postulacion-form {
+    width: 50%;
+    background-color: white;
+    padding: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.postulacion-form h2 {
+    font-size: 1.5rem;
+    color: #23969F; 
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.subtexto {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+/* Estilos de los campos */
+.postulacion-form label {
+    font-size: 1rem;
+    color: #444;
+    margin-top: 15px;
+    display: block;
+}
+
+.postulacion-form input,
+.postulacion-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-top: 5px;
+}
+
+.postulacion-form textarea {
+    height: 100px;
+    resize: none;
+}
+
+/* Botón de Postulación */
+.boton-postulacion {
+    background-color: black;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background 0.3s ease-in-out;
+}
+
+.boton-postulacion:hover {
+    background-color: #333;
+}
+
+/* Imagen */
+.postulacion-imagen {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.postulacion-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Estilos del Footer */
+.footer {
+    background-color: #23969F; /* Color de fondo */
+    padding: 30px 10px;
+    height: 170px;
+    color: white;
+    text-align: left;
+}
+
+
+/* Contenedor principal con 4 columnas */
+.footer-contenedor {
+    display: grid;
+    grid-template-columns: repeat(3, 0.5fr); /* 3 columnas de igual tamaño */
+    max-width: 1400px;
+    margin: auto;
+    gap: 1rem;
+    flex: 1;
+}
+
+/* Información de Bucky's Vet */
+.footer-info {
+    font-size: 1rem;
+    line-height: 1;
+    text-align: justify;
+}
+
+/* Sección del Blog */
+.footer-blog h4,
+.footer-politicas h4{
+    margin: 0 4rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.footer-politicas a{
+    margin: 0 4rem;
+}
+
+/* Cada publicación del blog */
+.footer-blog-item {
+    margin: 0 4rem;
+    display: flex;
+    width: 470px;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.footer-blog-item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.footer-blog-item a {
+    font-size: 0.9rem;
+    color: white;
+    text-decoration: none;
+}
+
+.footer-blog-item a:hover {
+    color: #5EB896;
+}
+
+.footer-blog-item span {
+    font-size: 0.8rem;
+    color: #ddd;
+}
+
+/* Políticas y condiciones */
+.footer-politicas a {
+    display: block;
+    font-size: 0.9rem;
+    color: white;
+    text-decoration: none;
+}
+
+.footer-politicas a:hover {
+    color: #5EB896;
+}
+
+/* Redes sociales y contacto */
+.footer-contacto {
+    text-align: center;
+}
+
+/* Redes sociales */
+.footer-redes {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.footer-redes img {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+}
+
+
+.footer-redes img:hover {
+    transform: scale(1.1);
+}
+
+/* Logo */
+.footer-logo img {
+    width: 110px;
+    height: 120px
+    
+}

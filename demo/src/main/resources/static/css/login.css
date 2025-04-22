@@ -1,0 +1,83 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, white, white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Contenedor principal */
+.login-container {
+    background: #23969F;
+    padding: 40px;
+    border-radius: 12px;    
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    width: 350px;
+    text-align: center;
+}
+
+/* Logo */
+.logo {
+    width: 80px;
+    height: 80px;
+    display: block;
+    margin: 0 auto 15px auto;
+}
+
+/* Título */
+h2 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+/* Campos de entrada */
+.input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-left: 14px;
+    margin-right: 14px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: border 0.3s;
+}
+
+input:focus {
+    border: 2px solid #5EB896;
+}
+
+/* Botón */
+button {
+    width: 100%;    
+    padding: 12px;
+    background: #6bd0a9;
+    color: white;
+    border: none;
+    border-radius: 8px; 
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 20px;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #5EB896;
+}
+
+/* Mensaje de error */
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+}
