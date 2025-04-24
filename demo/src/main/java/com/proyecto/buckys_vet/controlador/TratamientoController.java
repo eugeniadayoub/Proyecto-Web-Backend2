@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.proyecto.buckys_vet.entidad.Tratamiento;
-import com.proyecto.buckys_vet.servicio.MedicamentoServicio;
 import com.proyecto.buckys_vet.servicio.TratamientoServicio;
 
 @RestController 
@@ -26,9 +25,6 @@ public class TratamientoController {
 
     @Autowired
     private TratamientoServicio tratamientoServicio;
-
-    @Autowired
-    private MedicamentoServicio medicamentoServicio;
 
     @GetMapping
     public ResponseEntity<List<Tratamiento>> obtenerTodos() {
@@ -47,27 +43,16 @@ public class TratamientoController {
 
     @PostMapping
     public ResponseEntity<Tratamiento> crearTratamiento(@RequestBody Tratamiento tratamiento) {
+        // Log de los datos recibidos para ver si llegan correctamente
+        System.out.println("Tratamiento recibido: " + tratamiento);
         try {
-            // Imprimir los datos recibidos para verificar
-            System.out.println("Tratamiento recibido: " + tratamiento);
-            
-            // Validar los campos antes de guardar
-            if (tratamiento.getFecha() == null || tratamiento.getDescripcion() == null || tratamiento.getCantidad() <= 0 ||
-                tratamiento.getMascota() == null || tratamiento.getVeterinario() == null || tratamiento.getMedicamento() == null) {
-                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);  // Si algún campo está vacío
-            }
-
-            // Guardar el tratamiento
             Tratamiento nuevoTratamiento = tratamientoServicio.guardar(tratamiento);
             return new ResponseEntity<>(nuevoTratamiento, HttpStatus.CREATED);
         } catch (Exception e) {
-            // Registrar el error para obtener más detalles
             e.printStackTrace();
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);  // Si ocurre un error inesperado
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-    }
-
-
+    }    
 
     @PutMapping("/{id}")
     public ResponseEntity<Tratamiento> actualizarTratamiento(@PathVariable Long id, @RequestBody Tratamiento tratamiento) {

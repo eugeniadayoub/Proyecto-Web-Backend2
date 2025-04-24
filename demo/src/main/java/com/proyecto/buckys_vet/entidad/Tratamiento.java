@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -12,7 +13,7 @@ import jakarta.persistence.ManyToOne;
 public class Tratamiento {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
     private LocalDate fecha;
@@ -31,6 +32,19 @@ public class Tratamiento {
     @JoinColumn(name = "medicamento_id")
     private Medicamento medicamento;
     
+    @Override
+    public String toString() {
+        return "Tratamiento{" +
+                "id=" + id +
+                ", fecha=" + fecha +
+                ", descripcion='" + descripcion + '\'' +
+                ", cantidad=" + cantidad +
+                ", mascota=" + (mascota != null ? mascota.getMascotaId() : "null") +  // o el atributo que quieras mostrar
+                ", veterinario=" + (veterinario != null ? veterinario.getId() : "null") +
+                ", medicamento=" + (medicamento != null ? medicamento.getId() : "null") +
+                '}';
+    }
+
     public Tratamiento() {}
 
     public Tratamiento(LocalDate fecha, String descripcion, Veterinario veterinario, 
