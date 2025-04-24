@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,8 +17,9 @@ import com.proyecto.buckys_vet.servicio.DuenoServicio;
 
 import jakarta.servlet.http.HttpSession;
 
+
 @RestController
-@RequestMapping("api/login")
+@RequestMapping("login")
 @CrossOrigin(origins = "http://localhost:4200")
 public class LoginController {
 
@@ -71,6 +73,34 @@ public Map<String, Object> login(@RequestParam Long cedula, @RequestParam String
     }
     return response;
 }
+
+
+
+
+@PostMapping()
+public ResponseEntity<Dueno> loginDueno(@RequestParam Long cedula, @RequestParam String password) {
+
+    System.out.println("\n=== INICIANDO SESIÓN ===");
+    System.out.println("Cédula recibida: " + cedula);
+    System.out.println("Contraseña recibida: " + password);
+
+    Dueno dueno = duenoServicio.obtenerPorCedula(cedula);
+
+    if (dueno != null) {
+            System.out.println("Dueno encontrado: " + dueno.getNombre());
+            System.out.println("Contraseña almacenada: " + dueno.getPassword());
+
+            if (dueno.getPassword() != null && dueno.getPassword().equals(password)) {
+                return ResponseEntity.ok(dueno);
+            } else {
+                return ResponseEntity.status(401).build();
+            }
+    } else {
+        return ResponseEntity.notFound().build();
+    }
+
+}
+
 
 
     // Ruta GET para cerrar sesión

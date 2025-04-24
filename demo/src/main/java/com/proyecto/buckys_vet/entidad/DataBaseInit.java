@@ -179,6 +179,7 @@ public class DataBaseInit implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
         System.out.println("\n=== INICIALIZANDO BASE DE DATOS ===");
         Random random = new Random();
+        random.setSeed(0);
 
         // Actualizar contraseñas de dueños existentes
         actualizarContrasenasDuenos(random);
@@ -343,7 +344,7 @@ public class DataBaseInit implements ApplicationRunner {
         tratamientoRepositorio.saveAll(Arrays.asList(t1, t2, t3, t4, t5, t6, t7, t8, t9, t10));
         
         // Crear tratamientos adicionales
-        crearTratamientosAdicionales(duenos, mascotaRepositorio, veterinarioRepositorio, medicamentoRepositorio, tratamientoRepositorio, random);
+        //crearTratamientosAdicionales(duenos, mascotaRepositorio, veterinarioRepositorio, medicamentoRepositorio, tratamientoRepositorio, random);
 
         System.out.println("\n=== INICIALIZACIÓN COMPLETADA ===");
     }

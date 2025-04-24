@@ -28,7 +28,12 @@ public class TratamientoServicioImpl implements TratamientoServicio {
 
     @Override
     public Tratamiento guardar(Tratamiento tratamiento) {
-        return tratamientoRepositorio.save(tratamiento);  
+
+        var respuesta = tratamientoRepositorio.save(tratamiento);
+
+        System.out.println("Tratamiento guardado: " + respuesta);
+
+        return respuesta;  
     }
 
     @Override
