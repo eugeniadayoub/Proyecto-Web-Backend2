@@ -15,4 +15,8 @@ public interface TratamientoServicio {
     void eliminar(Long id);
 
     Tratamiento update(Tratamiento tratamiento);
+
+    long contarTratamientosUltimoMes();
+
+    List<Object[]> contarTratamientosPorMedicamentoUltimoMes();
 }

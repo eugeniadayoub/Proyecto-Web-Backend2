@@ -17,6 +17,7 @@ public class Veterinario {
     private String especialidad;
     private String foto;          // Ruta o URL de la foto
     private int numeroAtenciones; // Número de atenciones realizadas
+    private boolean activo = true; // por defecto, cuando se crea un veterinario, está activo
 
     // Constructor por defecto necesario para JPA
     public Veterinario() {}
@@ -29,6 +30,7 @@ public class Veterinario {
         this.especialidad = especialidad;
         this.foto = foto;
         this.numeroAtenciones = numeroAtenciones;
+        this.activo = true; // Por defecto, al crear un veterinario, está activo
     }
 
     // Constructor con id (por ejemplo, al recuperar desde la base de datos)
@@ -40,6 +42,7 @@ public class Veterinario {
         this.especialidad = especialidad;
         this.foto = foto;
         this.numeroAtenciones = numeroAtenciones;
+        this.activo = true; // Por defecto, al crear un veterinario, está activo
     }
 
     // Getters y Setters
@@ -98,5 +101,13 @@ public class Veterinario {
 
     public void setNumeroAtenciones(int numeroAtenciones) {
         this.numeroAtenciones = numeroAtenciones;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+    
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 }

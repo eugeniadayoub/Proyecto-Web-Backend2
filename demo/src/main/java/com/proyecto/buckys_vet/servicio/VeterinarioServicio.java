@@ -17,4 +17,8 @@ public interface VeterinarioServicio {
     void eliminar(Long id);
 
     Veterinario update(Veterinario veterinario);
+
+    long contarVeterinariosActivos();
+
+    long contarVeterinariosInactivos();
 }

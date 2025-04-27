@@ -49,4 +49,20 @@ public class VeterinarioServicioImpl implements VeterinarioServicio {
     public Veterinario update(Veterinario veterinario) {
         return veterinarioRepositorio.save(veterinario);
     }
+
+    @Override
+    public long contarVeterinariosActivos() {
+        List<Veterinario> veterinarios = veterinarioRepositorio.findAll();
+        return veterinarios.stream()
+                .filter(Veterinario::isActivo) // Filtra solo los activos
+                .count();
+    }
+
+    @Override
+    public long contarVeterinariosInactivos() {
+        List<Veterinario> veterinarios = veterinarioRepositorio.findAll();
+        return veterinarios.stream()
+                .filter(v -> !v.isActivo()) // Aquí negamos para que tome los inactivos
+                .count();
+    }
 }

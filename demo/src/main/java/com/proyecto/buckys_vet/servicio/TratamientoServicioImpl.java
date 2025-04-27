@@ -9,6 +9,10 @@ import org.springframework.stereotype.Service;
 import com.proyecto.buckys_vet.entidad.Tratamiento;
 import com.proyecto.buckys_vet.repositorio.TratamientoRepositorio;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.stream.Collectors;
+
 @Service
 public class TratamientoServicioImpl implements TratamientoServicio {
 
@@ -47,5 +51,31 @@ public class TratamientoServicioImpl implements TratamientoServicio {
             return tratamientoRepositorio.save(tratamiento);  
         }
         return null;  
+    }
+
+    @Override
+    public long contarTratamientosUltimoMes() {
+        LocalDate haceUnMes = LocalDate.now().minusMonths(1);
+        List<Tratamiento> tratamientos = tratamientoRepositorio.findAll();
+        return tratamientos.stream()
+                .filter(t -> t.getFecha() != null && t.getFecha().isAfter(haceUnMes))
+                .count();
+    }
+
+    @Override
+    public List<Object[]> contarTratamientosPorMedicamentoUltimoMes() {
+        LocalDate haceUnMes = LocalDate.now().minusMonths(1);
+        List<Tratamiento> tratamientos = tratamientoRepositorio.findAll();
+        
+        return tratamientos.stream()
+                .filter(t -> t.getFecha() != null && t.getFecha().isAfter(haceUnMes))
+                .collect(Collectors.groupingBy(
+                    t -> t.getMedicamento() != null ? t.getMedicamento().getNombre() : "Desconocido",
+                    Collectors.summingInt(t -> t.getCantidad() != null ? t.getCantidad() : 0)
+                ))
+                .entrySet()
+                .stream()
+                .map(entry -> new Object[]{entry.getKey(), entry.getValue()})
+                .collect(Collectors.toList());
     }
 }

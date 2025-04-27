@@ -19,4 +19,8 @@ public interface MascotaServicio {
     List<Mascota> obtenerPorDuenoId(Long duenoId);
     
     void cambiarEstadoMascota(Long id, String nuevoEstado);
+
+    long contarMascotasTotales();
+
+    long contarMascotasActivas();
 }

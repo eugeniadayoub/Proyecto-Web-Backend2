@@ -70,4 +70,16 @@ public class TratamientoController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }  
 
+    @GetMapping("/ultimo-mes/total")
+    public ResponseEntity<Long> obtenerCantidadTratamientosUltimoMes() {
+        long total = tratamientoServicio.contarTratamientosUltimoMes();
+        return new ResponseEntity<>(total, HttpStatus.OK);
+    }
+
+    @GetMapping("/ultimo-mes/por-medicamento")
+    public ResponseEntity<List<Object[]>> obtenerTratamientosPorMedicamentoUltimoMes() {
+        List<Object[]> resultados = tratamientoServicio.contarTratamientosPorMedicamentoUltimoMes();
+        return new ResponseEntity<>(resultados, HttpStatus.OK);
+    }
+
 }

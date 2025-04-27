@@ -3,6 +3,8 @@ package com.proyecto.buckys_vet.controlador;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -51,5 +53,17 @@ public class VeterinarioController {
     public Veterinario actualizarVeterinario(@PathVariable Long id, @RequestBody Veterinario veterinario) {
         veterinario.setId(id);  // Asigna el ID para asegurarse de que se actualice correctamente
         return veterinarioServicio.update(veterinario);
+    }
+
+    @GetMapping("/activos/total")
+    public ResponseEntity<Long> obtenerCantidadVeterinariosActivos() {
+        long total = veterinarioServicio.contarVeterinariosActivos();
+        return new ResponseEntity<>(total, HttpStatus.OK);
+    }
+
+    @GetMapping("/inactivos/total")
+    public ResponseEntity<Long> obtenerCantidadVeterinariosInactivos() {
+        long total = veterinarioServicio.contarVeterinariosInactivos();
+        return new ResponseEntity<>(total, HttpStatus.OK);
     }
 }

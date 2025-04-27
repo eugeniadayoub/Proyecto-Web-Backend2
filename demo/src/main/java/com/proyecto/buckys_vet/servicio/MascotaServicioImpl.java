@@ -62,4 +62,16 @@ public class MascotaServicioImpl implements MascotaServicio {
         }
     }
 
+    @Override
+    public long contarMascotasTotales() {
+        return mascotaRepositorio.count();
+    }
+
+    @Override
+    public long contarMascotasActivas() {
+        List<Mascota> mascotas = mascotaRepositorio.findAll();
+        return mascotas.stream()
+                .filter(mascota -> "activo".equalsIgnoreCase(mascota.getEstado())) // <<< cambio aquí
+                .count();
+    }
 }
