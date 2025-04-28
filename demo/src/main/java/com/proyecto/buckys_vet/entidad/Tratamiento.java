@@ -2,6 +2,7 @@ package com.proyecto.buckys_vet.entidad;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -23,7 +24,7 @@ public class Tratamiento {
     @JoinColumn(name = "veterinario_id")
     private Veterinario veterinario;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "mascota_id")
     private Mascota mascota;
     

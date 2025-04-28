@@ -1,14 +1,17 @@
 package com.proyecto.buckys_vet.servicio;
 
-import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.proyecto.buckys_vet.entidad.Dueno;
+import com.proyecto.buckys_vet.entidad.Mascota;
 import com.proyecto.buckys_vet.repositorio.DuenoRepositorio;
 import com.proyecto.buckys_vet.repositorio.MascotaRepositorio;
+import com.proyecto.buckys_vet.repositorio.TratamientoRepositorio;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class DuenoServicioImpl implements DuenoServicio {
@@ -18,6 +21,9 @@ public class DuenoServicioImpl implements DuenoServicio {
 
     @Autowired
     private MascotaRepositorio mascotaRepositorio;
+
+    @Autowired
+    private TratamientoRepositorio tratamientoRepositorio;
 
     @Override
     public List<Dueno> obtenerTodos() {
@@ -56,23 +62,28 @@ public class DuenoServicioImpl implements DuenoServicio {
     }
 
     @Override
+    @Transactional
     public void eliminar(Long id) {
         Dueno dueno = duenoRepositorio.findById(id).orElse(null);
-    
+
         if (dueno != null) {
-            if (dueno.getMascotas() != null && !dueno.getMascotas().isEmpty()) {
-                dueno.getMascotas().forEach(mascota -> {
-                    mascota.setDueno(null);  // Quitamos la relación con el dueño
-                    mascotaRepositorio.delete(mascota);  // Eliminar cada mascota
-                });
+            // Primero eliminar los tratamientos asociados a las mascotas
+            for (Mascota mascota : dueno.getMascotas()) {
+                tratamientoRepositorio.deleteByMascota(mascota);  // Llamar al nuevo método
             }
+
+            // Luego eliminar las mascotas
+            dueno.getMascotas().forEach(mascota -> mascotaRepositorio.delete(mascota));  // Eliminar mascotas
+
+            // Finalmente eliminar el dueño
             duenoRepositorio.delete(dueno);
         } else {
             System.out.println("No se encontró el dueño con ID: " + id);
         }
     }
-    
 
+ 
+    
     @Override
     public Dueno update(Dueno dueno) {
         Dueno duenoExistente = duenoRepositorio.findById(dueno.getIdDueno()).orElse(null);
