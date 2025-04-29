@@ -1,23 +1,36 @@
 package com.proyecto.buckys_vet.servicio;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.proyecto.buckys_vet.entidad.Mascota;
+import com.proyecto.buckys_vet.entidad.Medicamento;
 import com.proyecto.buckys_vet.entidad.Tratamiento;
+import com.proyecto.buckys_vet.entidad.Veterinario;
+import com.proyecto.buckys_vet.repositorio.MascotaRepositorio;
+import com.proyecto.buckys_vet.repositorio.MedicamentoRepositorio;
 import com.proyecto.buckys_vet.repositorio.TratamientoRepositorio;
-
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
-import java.util.stream.Collectors;
+import com.proyecto.buckys_vet.repositorio.VeterinarioRepositorio;
 
 @Service
 public class TratamientoServicioImpl implements TratamientoServicio {
 
     @Autowired
     private TratamientoRepositorio tratamientoRepositorio;
+
+    @Autowired
+    private MascotaRepositorio mascotaRepositorio;
+
+    @Autowired
+    private MedicamentoRepositorio medicamentoRepositorio;
+
+    @Autowired
+    private VeterinarioRepositorio veterinarioRepositorio;
 
     @Override
     public List<Tratamiento> obtenerTodos() {
@@ -31,13 +44,24 @@ public class TratamientoServicioImpl implements TratamientoServicio {
     }
 
     @Override
-    public Tratamiento guardar(Tratamiento tratamiento) {
+    public Tratamiento guardar(Tratamiento tratamiento) {   
+        // Asociar entidad existente correctamente
+        Long mascotaId = tratamiento.getMascota().getMascotaId();
+        Mascota mascota = mascotaRepositorio.findById(mascotaId)
+            .orElseThrow(() -> new RuntimeException("Mascota no encontrada"));
+        tratamiento.setMascota(mascota);
 
-        var respuesta = tratamientoRepositorio.save(tratamiento);
+        Long medicamentoId = tratamiento.getMedicamento().getId();
+        Medicamento medicamento = medicamentoRepositorio.findById(medicamentoId)
+            .orElseThrow(() -> new RuntimeException("Medicamento no encontrado"));
+        tratamiento.setMedicamento(medicamento);
 
-        System.out.println("Tratamiento guardado: " + respuesta);
+        Long veterinarioId = tratamiento.getVeterinario().getId();
+        Veterinario veterinario = veterinarioRepositorio.findById(veterinarioId)
+            .orElseThrow(() -> new RuntimeException("Veterinario no encontrado"));
+        tratamiento.setVeterinario(veterinario);
 
-        return respuesta;  
+        return tratamientoRepositorio.save(tratamiento);
     }
 
     @Override

@@ -2,6 +2,8 @@ package com.proyecto.buckys_vet.entidad;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,14 +24,17 @@ public class Tratamiento {
     
     @ManyToOne
     @JoinColumn(name = "veterinario_id")
+    @JsonIgnoreProperties({"especie", "edad", "peso", "enfermedad", "imagenUrl", "estado", "dueno"})
     private Veterinario veterinario;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "mascota_id")
+    @JsonIgnoreProperties({"precioCompra", "precioVenta", "unidadesDisponibles", "unidadesVendidas"})
     private Mascota mascota;
     
     @ManyToOne
     @JoinColumn(name = "medicamento_id")
+    @JsonIgnoreProperties({"especialidad", "numeroAtenciones", "cedula", "contrasena", "foto", "mascotas", "tratamientos"})
     private Medicamento medicamento;
     
     @Override

@@ -19,7 +19,7 @@ import com.proyecto.buckys_vet.entidad.Tratamiento;
 import com.proyecto.buckys_vet.servicio.TratamientoServicio;
 
 @RestController 
-@RequestMapping("/api/tratamientos")
+@RequestMapping("/tratamientos")
 @CrossOrigin(origins = "http://localhost:4200")
 public class TratamientoController {
 
