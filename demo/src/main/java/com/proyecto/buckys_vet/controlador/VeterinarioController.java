@@ -18,7 +18,7 @@ import com.proyecto.buckys_vet.entidad.Veterinario;
 import com.proyecto.buckys_vet.servicio.VeterinarioServicio;
 
 @RestController
-@RequestMapping("/api/veterinarios")
+@RequestMapping("/veterinarios")
 public class VeterinarioController {
 
     @Autowired

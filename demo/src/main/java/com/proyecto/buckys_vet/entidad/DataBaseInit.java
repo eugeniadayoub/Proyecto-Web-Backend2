@@ -259,16 +259,16 @@ public class DataBaseInit implements ApplicationRunner {
             mascotaRepositorio.save(nuevaMascota);
             System.out.println("Mascota " + nuevaMascota.getNombre() + " creada para " + nuevaMascota.getDueno().getNombre() + " - ID Mascota: " + nuevaMascota.getMascotaId());
         }
-         Veterinario v1 = new Veterinario(100100100L, "Dr. Juan Pérez", "claveJuan123", "Cirugía", "https://example.com/fotos/juan.jpg", 150);
-        Veterinario v2 = new Veterinario(100100101L, "Dra. María Gómez", "claveMaria123", "Medicina Interna", "https://example.com/fotos/maria.jpg", 180);
-        Veterinario v3 = new Veterinario(100100102L, "Dr. Carlos López", "claveCarlos123", "Dermatología", "https://example.com/fotos/carlos.jpg", 95);
-        Veterinario v4 = new Veterinario(100100103L, "Dra. Ana Rodríguez", "claveAna123", "Pediatría", "https://example.com/fotos/ana.jpg", 200);
-        Veterinario v5 = new Veterinario(100100104L, "Dr. Luis Martínez", "claveLuis123", "Ortopedia", "https://example.com/fotos/luis.jpg", 110);
-        Veterinario v6 = new Veterinario(100100105L, "Dra. Elena Morales", "claveElena123", "Oftalmología", "https://example.com/fotos/elena.jpg", 130);
-        Veterinario v7 = new Veterinario(100100106L, "Dr. Ricardo Sánchez", "claveRicardo123", "Cardiología", "https://example.com/fotos/ricardo.jpg", 170);
-        Veterinario v8 = new Veterinario(100100107L, "Dra. Sofía Ramírez", "claveSofia123", "Neurología", "https://example.com/fotos/sofia.jpg", 160);
-        Veterinario v9 = new Veterinario(100100108L, "Dr. Andrés Torres", "claveAndres123", "Gastroenterología", "https://example.com/fotos/andres.jpg", 140);
-        Veterinario v10 = new Veterinario(100100109L, "Dra. Laura Fernández", "claveLaura123", "Urología", "https://example.com/fotos/laura.jpg", 125);
+         Veterinario v1 = new Veterinario(100100100L, "Dr. Juan Pérez", "claveJuan123", "Cirugía", "https://media.istockphoto.com/id/2025170211/es/foto/cheerful-mature-doctor-posing-and-smiling-at-camera-healthcare-and-medicine.jpg?s=612x612&w=0&k=20&c=-fcBpqjAZt7kfIDAoU6EdxSqUCBKY0sqIao4ICckCjg=", 150);
+        Veterinario v2 = new Veterinario(100100101L, "Dra. María Gómez", "claveMaria123", "Oncología", "https://media.istockphoto.com/id/1806608544/es/foto/retrato-de-una-doctora-en-el-lugar-de-trabajo.jpg?s=612x612&w=0&k=20&c=6HapTwe196GOqZT0a9b1etZWVM7cz-XiAjaryDNW3oA=", 180);
+        Veterinario v3 = new Veterinario(100100102L, "Dr. Carlos López", "claveCarlos123", "Fisioterapia", "https://media.istockphoto.com/id/2158610739/es/foto/m%C3%A9dico-guapo-con-estetoscopio-sobre-el-cuello-trabajando-mientras-mira-a-la-c%C3%A1mara-en-la.jpg?s=612x612&w=0&k=20&c=meqU3H6FI07LqfM8Iyr8FSTwpMAjcOs6U-bQbilV8HE=", 95);
+        Veterinario v4 = new Veterinario(100100103L, "Dra. Ana Rodríguez", "claveAna123", "Rehabilitación", "https://media.istockphoto.com/id/1633320190/es/foto/mujer-feliz-o-cara-de-m%C3%A9dico-en-un-hospital-ocupado-con-tableta-para-servicios-de-atenci%C3%B3n.jpg?s=612x612&w=0&k=20&c=_vpjC50IXHCcfpPFg_DPcdYSKUmcBxHsGNUz23hcPSU=", 200);
+        Veterinario v5 = new Veterinario(100100104L, "Dr. Luis Martínez", "claveLuis123", "Ortopedia", "https://media.istockphoto.com/id/1346124900/es/foto/m%C3%A9dico-maduro-exitoso-y-seguro-en-el-hospital.jpg?s=612x612&w=0&k=20&c=b78Z4EqidP32vGxSYh4xzacwUZaGdJtj8RLNQwM8ESc=", 110);
+        Veterinario v6 = new Veterinario(100100105L, "Dra. Elena Morales", "claveElena123", "Oftalmología", "https://media.istockphoto.com/id/1189304032/es/foto/m%C3%A9dico-sosteniendo-tableta-digital-en-la-sala-de-reuniones.jpg?s=612x612&w=0&k=20&c=pmijXzja8qGwKXlqt7YWzSUkxFxnODfK6u7B1QXd1wU=", 130);
+        Veterinario v7 = new Veterinario(100100106L, "Dr. Ricardo Sánchez", "claveRicardo123", "Cardiología", "https://media.istockphoto.com/id/1161336374/es/foto/retrato-de-joven-m%C3%A9dico-confiado-sobre-fondo-azul.jpg?s=612x612&w=0&k=20&c=fkXKNaF8fmeibTO8BmKEn4Ntv7vn-vtZRUGph4DwLXc=", 170);
+        Veterinario v8 = new Veterinario(100100107L, "Dra. Sofía Ramírez", "claveSofia123", "Neurología", "https://media.istockphoto.com/id/2153805399/es/foto/retrato-de-una-doctora-feliz-de-pie-afuera-frente-a-un-hospital-moderno.jpg?s=612x612&w=0&k=20&c=oYjJu3Z-qi-T-t4CwC83O2-GLUZ0_EXpVSCATU1JuJw=", 160);
+        Veterinario v9 = new Veterinario(100100108L, "Dr. Andrés Torres", "claveAndres123", "Gastroenterología", "https://media.istockphoto.com/id/1327024466/es/foto/retrato-de-un-m%C3%A9dico-var%C3%B3n-con-bata-blanca-y-estetoscopio-de-pie-en-la-sala-de-la-cl%C3%ADnica.jpg?s=612x612&w=0&k=20&c=JZB2CVdH8kwUVKMSdLS35LBdjcUKrfZsVQY3S46fsaQ=", 140);
+        Veterinario v10 = new Veterinario(100100109L, "Dra. Laura Fernández", "claveLaura123", "Urología", "https://media.istockphoto.com/id/1425798958/es/foto/foto-de-una-doctora-confiada-en-el-hospital-mirando-a-la-c%C3%A1mara-con-una-sonrisa.jpg?s=612x612&w=0&k=20&c=JIu8o3ANyPehV0bJ9GO4pao2P6dejt6mXqEMHUzUYLk=", 125);
         
         veterinarioRepositorio.saveAll(Arrays.asList(v1, v2, v3, v4, v5, v6, v7, v8, v9, v10));
         
