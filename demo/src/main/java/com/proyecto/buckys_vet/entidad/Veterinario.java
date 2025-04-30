@@ -1,8 +1,14 @@
 package com.proyecto.buckys_vet.entidad;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Veterinario {
@@ -18,6 +24,15 @@ public class Veterinario {
     private String foto;          // Ruta o URL de la foto
     private int numeroAtenciones; // Número de atenciones realizadas
     private boolean activo = true; // por defecto, cuando se crea un veterinario, está activo
+
+    @OneToMany(mappedBy = "veterinario")
+    @JsonIgnoreProperties("veterinario") 
+    private List<Tratamiento> tratamientos;
+
+    @OneToMany(mappedBy = "veterinario", fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("veterinario")
+    private List<Mascota> mascotas;
+
 
     // Constructor por defecto necesario para JPA
     public Veterinario() {}
@@ -109,5 +124,21 @@ public class Veterinario {
     
     public void setActivo(boolean activo) {
         this.activo = activo;
+    }
+
+    public List<Tratamiento> getTratamientos() {
+        return tratamientos;
+    }
+
+    public void setTratamientos(List<Tratamiento> tratamientos) {
+        this.tratamientos = tratamientos;
+    }
+
+    public List<Mascota> getMascotas() {
+        return mascotas;
+    }
+
+    public void setMascotas(List<Mascota> mascotas) {
+        this.mascotas = mascotas;
     }
 }

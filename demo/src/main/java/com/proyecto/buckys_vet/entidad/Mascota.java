@@ -1,6 +1,7 @@
 package com.proyecto.buckys_vet.entidad;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -30,6 +31,12 @@ public class Mascota {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "dueno_id")
     private Dueno dueno;
+
+    @ManyToOne
+    @JoinColumn(name = "veterinario_id")
+    @JsonIgnoreProperties("mascotas") // Para evitar recursión infinita al serializar
+    private Veterinario veterinario;
+
     
     public Mascota() {
         // Default constructor
@@ -125,6 +132,14 @@ public class Mascota {
  
     public void setDueno(Dueno dueno) {
         this.dueno = dueno;
+    }
+
+    public Veterinario getVeterinario() {
+        return this.veterinario;
+    }
+ 
+    public void setVeterinario(Veterinario veterinario) {
+        this.veterinario = veterinario;
     }
 
 }
