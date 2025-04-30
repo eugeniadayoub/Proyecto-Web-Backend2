@@ -24,6 +24,7 @@ public class Veterinario {
     private String foto;          // Ruta o URL de la foto
     private int numeroAtenciones; // Número de atenciones realizadas
     private boolean activo = true; // por defecto, cuando se crea un veterinario, está activo
+    private String estado;
 
     @OneToMany(mappedBy = "veterinario")
     @JsonIgnoreProperties("veterinario") 
@@ -38,7 +39,7 @@ public class Veterinario {
     public Veterinario() {}
 
     // Constructor sin el id (para creación)
-    public Veterinario(Long cedula, String nombre, String contrasena, String especialidad, String foto, int numeroAtenciones) {
+    public Veterinario(Long cedula, String nombre, String contrasena, String especialidad, String foto, int numeroAtenciones, String estado) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.contrasena = contrasena;
@@ -46,10 +47,11 @@ public class Veterinario {
         this.foto = foto;
         this.numeroAtenciones = numeroAtenciones;
         this.activo = true; // Por defecto, al crear un veterinario, está activo
+        this.estado = estado;
     }
 
     // Constructor con id (por ejemplo, al recuperar desde la base de datos)
-    public Veterinario(Long id, Long cedula, String nombre, String contrasena, String especialidad, String foto, int numeroAtenciones) {
+    public Veterinario(Long id, Long cedula, String nombre, String contrasena, String especialidad, String foto, int numeroAtenciones, String estado) {
         this.id = id;
         this.cedula = cedula;
         this.nombre = nombre;
@@ -58,6 +60,7 @@ public class Veterinario {
         this.foto = foto;
         this.numeroAtenciones = numeroAtenciones;
         this.activo = true; // Por defecto, al crear un veterinario, está activo
+        this.estado = estado;
     }
 
     // Getters y Setters
@@ -140,5 +143,13 @@ public class Veterinario {
 
     public void setMascotas(List<Mascota> mascotas) {
         this.mascotas = mascotas;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }
