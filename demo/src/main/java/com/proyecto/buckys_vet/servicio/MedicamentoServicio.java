@@ -15,4 +15,10 @@ public interface MedicamentoServicio {
     void eliminar(Long id);
 
     Medicamento update(Medicamento medicamento);
+
+    Double calcularVentasTotales();
+
+    Double calcularGananciasTotales();
+
+    List<Object[]> obtenerGananciasPorMedicamento();
 }

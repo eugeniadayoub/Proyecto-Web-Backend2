@@ -18,7 +18,8 @@ public interface VeterinarioServicio {
 
     Veterinario update(Veterinario veterinario);
 
-    long contarVeterinariosActivos();
+    Long contarVeterinariosActivos();
 
-    long contarVeterinariosInactivos();
+    Long contarVeterinariosInactivos();
+
 }

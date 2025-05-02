@@ -3,6 +3,8 @@ package com.proyecto.buckys_vet.controlador;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -52,4 +54,23 @@ public class MedicamentoController {
         medicamento.setId(id);  // Asigna el ID para asegurarse de que se actualice correctamente
         return medicamentoServicio.update(medicamento);
     }
+
+    @GetMapping("/ventas-totales")
+    public ResponseEntity<Double> obtenerVentasTotales() {
+        Double ventas = medicamentoServicio.calcularVentasTotales();
+        return new ResponseEntity<>(ventas, HttpStatus.OK);
+    }
+
+    @GetMapping("/ganancias-totales")
+    public ResponseEntity<Double> obtenerGananciasTotales() {
+        Double ganancias = medicamentoServicio.calcularGananciasTotales();
+        return ResponseEntity.ok(ganancias != null ? ganancias : 0.0);
+    }
+
+    @GetMapping("/ganancias-por-medicamento")
+    public List<Object[]> obtenerGananciasPorMedicamento() {
+        return medicamentoServicio.obtenerGananciasPorMedicamento();
+    }
+
+
 }

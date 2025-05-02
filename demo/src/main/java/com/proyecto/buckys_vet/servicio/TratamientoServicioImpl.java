@@ -5,8 +5,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.data.domain.PageRequest;
 
 import com.proyecto.buckys_vet.entidad.Mascota;
 import com.proyecto.buckys_vet.entidad.Medicamento;
@@ -31,6 +33,7 @@ public class TratamientoServicioImpl implements TratamientoServicio {
 
     @Autowired
     private VeterinarioRepositorio veterinarioRepositorio;
+    
 
     @Override
     public List<Tratamiento> obtenerTodos() {
@@ -78,28 +81,21 @@ public class TratamientoServicioImpl implements TratamientoServicio {
     }
 
     @Override
-    public long contarTratamientosUltimoMes() {
+    public Long contarTratamientosUltimoMes() {
         LocalDate haceUnMes = LocalDate.now().minusMonths(1);
-        List<Tratamiento> tratamientos = tratamientoRepositorio.findAll();
-        return tratamientos.stream()
-                .filter(t -> t.getFecha() != null && t.getFecha().isAfter(haceUnMes))
-                .count();
+        return tratamientoRepositorio.countTratamientosDesde(haceUnMes);
+    }
+
+
+    @Override
+    public List<Object[]> contarPorMedicamentoUltimoMes() {
+        LocalDate haceUnMes = LocalDate.now().minusMonths(1);
+        return tratamientoRepositorio.contarTratamientosPorMedicamentoUltimoMes(haceUnMes);
     }
 
     @Override
-    public List<Object[]> contarTratamientosPorMedicamentoUltimoMes() {
-        LocalDate haceUnMes = LocalDate.now().minusMonths(1);
-        List<Tratamiento> tratamientos = tratamientoRepositorio.findAll();
-        
-        return tratamientos.stream()
-                .filter(t -> t.getFecha() != null && t.getFecha().isAfter(haceUnMes))
-                .collect(Collectors.groupingBy(
-                    t -> t.getMedicamento() != null ? t.getMedicamento().getNombre() : "Desconocido",
-                    Collectors.summingInt(t -> t.getCantidad() != null ? t.getCantidad() : 0)
-                ))
-                .entrySet()
-                .stream()
-                .map(entry -> new Object[]{entry.getKey(), entry.getValue()})
-                .collect(Collectors.toList());
+    public List<Tratamiento> obtenerTop3TratamientosMasVendidos() {
+        Pageable topThree = PageRequest.of(0, 3);
+        return tratamientoRepositorio.findTop3ByOrderByCantidadDesc(topThree);
     }
 }

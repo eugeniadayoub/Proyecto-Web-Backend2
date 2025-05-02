@@ -38,4 +38,22 @@ public class MedicamentoServicioImpl implements MedicamentoServicio {
     public Medicamento update(Medicamento medicamento) {
         return medicamentoRepositorio.save(medicamento);
     }
+
+    @Override
+    public Double calcularVentasTotales() {
+        Double total = medicamentoRepositorio.calcularVentasTotales();
+        return total != null ? total : 0.0;
+    }
+
+    @Override
+    public Double calcularGananciasTotales() {
+        return medicamentoRepositorio.calcularGananciasTotales();
+    }
+
+    @Override
+    public List<Object[]> obtenerGananciasPorMedicamento() {
+        return medicamentoRepositorio.obtenerGananciasPorMedicamento();
+    }
+
+
 }

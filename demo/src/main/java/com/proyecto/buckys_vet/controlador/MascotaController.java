@@ -75,14 +75,15 @@ public class MascotaController {
     }
 
     @GetMapping("/totales")
-    public ResponseEntity<Long> obtenerCantidadMascotasTotales() {
-        long total = mascotaServicio.contarMascotasTotales();
-        return new ResponseEntity<>(total, HttpStatus.OK);
+    public ResponseEntity<Long> contarMascotasTotales() {
+        Long cantidad = mascotaServicio.contarMascotasTotales();
+        return new ResponseEntity<>(cantidad, HttpStatus.OK);
+    }
+    
+    @GetMapping("/activas")
+    public long contarMascotasActivas() {
+        return mascotaServicio.contarMascotasActivas();
     }
 
-    @GetMapping("/activas/total")
-    public ResponseEntity<Long> obtenerCantidadMascotasActivas() {
-        long total = mascotaServicio.contarMascotasActivas();
-        return new ResponseEntity<>(total, HttpStatus.OK);
-    }
+
 }

@@ -16,7 +16,10 @@ public interface TratamientoServicio {
 
     Tratamiento update(Tratamiento tratamiento);
 
-    long contarTratamientosUltimoMes();
+    Long contarTratamientosUltimoMes();
 
-    List<Object[]> contarTratamientosPorMedicamentoUltimoMes();
+    List<Object[]> contarPorMedicamentoUltimoMes();
+
+    List<Tratamiento> obtenerTop3TratamientosMasVendidos();
+
 }

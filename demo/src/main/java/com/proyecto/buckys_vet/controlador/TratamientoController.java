@@ -71,15 +71,19 @@ public class TratamientoController {
     }  
 
     @GetMapping("/ultimo-mes/total")
-    public ResponseEntity<Long> obtenerCantidadTratamientosUltimoMes() {
-        long total = tratamientoServicio.contarTratamientosUltimoMes();
-        return new ResponseEntity<>(total, HttpStatus.OK);
+    public ResponseEntity<Long> contarTratamientosUltimoMes() {
+        Long cantidad = tratamientoServicio.contarTratamientosUltimoMes();
+        return new ResponseEntity<>(cantidad, HttpStatus.OK);
     }
 
     @GetMapping("/ultimo-mes/por-medicamento")
-    public ResponseEntity<List<Object[]>> obtenerTratamientosPorMedicamentoUltimoMes() {
-        List<Object[]> resultados = tratamientoServicio.contarTratamientosPorMedicamentoUltimoMes();
-        return new ResponseEntity<>(resultados, HttpStatus.OK);
+    public ResponseEntity<List<Object[]>> contarPorMedicamentoUltimoMes() {
+        List<Object[]> datos = tratamientoServicio.contarPorMedicamentoUltimoMes();
+        return new ResponseEntity<>(datos, HttpStatus.OK);
     }
 
+    @GetMapping("/top3-vendidos")
+    public ResponseEntity<List<Tratamiento>> obtenerTop3TratamientosVendidos() {
+        return new ResponseEntity<>(tratamientoServicio.obtenerTop3TratamientosMasVendidos(), HttpStatus.OK);
+    }
 }

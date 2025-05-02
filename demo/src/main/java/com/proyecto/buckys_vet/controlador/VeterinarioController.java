@@ -56,14 +56,16 @@ public class VeterinarioController {
     }
 
     @GetMapping("/activos/total")
-    public ResponseEntity<Long> obtenerCantidadVeterinariosActivos() {
-        long total = veterinarioServicio.contarVeterinariosActivos();
-        return new ResponseEntity<>(total, HttpStatus.OK);
+    public ResponseEntity<Long> contarVeterinariosActivos() {
+        Long cantidad = veterinarioServicio.contarVeterinariosActivos();
+        return new ResponseEntity<>(cantidad, HttpStatus.OK);
     }
 
+
     @GetMapping("/inactivos/total")
-    public ResponseEntity<Long> obtenerCantidadVeterinariosInactivos() {
-        long total = veterinarioServicio.contarVeterinariosInactivos();
-        return new ResponseEntity<>(total, HttpStatus.OK);
+    public ResponseEntity<Long> contarVeterinariosInactivos() {
+        Long cantidad = veterinarioServicio.contarVeterinariosInactivos();
+        return new ResponseEntity<>(cantidad, HttpStatus.OK);
     }
+
 }

@@ -20,7 +20,7 @@ public interface MascotaServicio {
     
     void cambiarEstadoMascota(Long id, String nuevoEstado);
 
-    long contarMascotasTotales();
+    Long contarMascotasTotales();
 
     long contarMascotasActivas();
 }
