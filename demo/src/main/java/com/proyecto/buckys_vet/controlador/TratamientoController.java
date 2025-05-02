@@ -82,8 +82,10 @@ public class TratamientoController {
         return new ResponseEntity<>(datos, HttpStatus.OK);
     }
 
-    @GetMapping("/top3-vendidos")
-    public ResponseEntity<List<Tratamiento>> obtenerTop3TratamientosVendidos() {
-        return new ResponseEntity<>(tratamientoServicio.obtenerTop3TratamientosMasVendidos(), HttpStatus.OK);
+    @GetMapping("/top3-tratamientos")
+    public ResponseEntity<List<Tratamiento>> obtenerTop3Tratamientos() {
+        List<Tratamiento> top3 = tratamientoServicio.obtenerTop3TratamientosMasVendidos();
+        return new ResponseEntity<>(top3, HttpStatus.OK);
     }
+
 }
