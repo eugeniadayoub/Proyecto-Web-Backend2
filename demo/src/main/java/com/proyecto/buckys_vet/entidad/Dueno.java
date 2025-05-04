@@ -30,6 +30,8 @@ public class Dueno {
     @OneToMany(mappedBy = "dueno", cascade = CascadeType.ALL)
     private List<Mascota> mascotas = new ArrayList<>();
 
+    
+
     // Constructor por defecto necesario para JPA
     public Dueno() {}
 

@@ -1,6 +1,9 @@
 package com.proyecto.buckys_vet.controlador;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.proyecto.buckys_vet.entidad.Mascota;
+import com.proyecto.buckys_vet.entidad.Tratamiento;
 import com.proyecto.buckys_vet.entidad.Veterinario;
 import com.proyecto.buckys_vet.servicio.VeterinarioServicio;
 
@@ -30,10 +35,78 @@ public class VeterinarioController {
         return veterinarioServicio.obtenerTodos();
     }
 
-    // Obtener un veterinario por ID
+    // Obtener un veterinario por ID con datos completos pero sin referencias
+    // circulares
     @GetMapping("/{id}")
-    public Veterinario obtenerVeterinarioPorId(@PathVariable Long id) {
-        return veterinarioServicio.obtenerPorId(id);
+    public ResponseEntity<?> obtenerVeterinarioPorId(@PathVariable Long id) {
+        Veterinario veterinario = veterinarioServicio.obtenerPorId(id);
+        if (veterinario == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        // Preparamos un mapa con los datos del veterinario y sus relaciones
+        Map<String, Object> response = new HashMap<>();
+        response.put("id", veterinario.getId());
+        response.put("cedula", veterinario.getCedula());
+        response.put("nombre", veterinario.getNombre());
+        response.put("especialidad", veterinario.getEspecialidad());
+        response.put("foto", veterinario.getFoto());
+        response.put("numeroAtenciones", veterinario.getNumeroAtenciones());
+        response.put("activo", veterinario.isActivo());
+        response.put("estado", veterinario.getEstado());
+
+        // Simplificamos las listas para evitar referencias circulares
+        if (veterinario.getMascotas() != null) {
+            List<Map<String, Object>> mascotasSimplificadas = veterinario.getMascotas().stream()
+                    .map(m -> {
+                        Map<String, Object> mascotaMap = new HashMap<>();
+                        mascotaMap.put("mascotaId", m.getMascotaId());
+                        mascotaMap.put("nombre", m.getNombre());
+                        mascotaMap.put("especie", m.getEspecie());
+                        mascotaMap.put("edad", m.getEdad());
+                        mascotaMap.put("peso", m.getPeso());
+                        mascotaMap.put("enfermedad", m.getEnfermedad());
+                        mascotaMap.put("imagenUrl", m.getImagenUrl());
+                        mascotaMap.put("estado", m.getEstado());
+                        mascotaMap.put("imagen_url", m.getImagenUrl());
+                        return mascotaMap;
+                    })
+                    .collect(Collectors.toList());
+            response.put("mascotas", mascotasSimplificadas);
+        }
+
+        if (veterinario.getTratamientos() != null) {
+            List<Map<String, Object>> tratamientosSimplificados = veterinario.getTratamientos().stream()
+                    .map(t -> {
+                        Map<String, Object> tratamientoMap = new HashMap<>();
+                        tratamientoMap.put("id", t.getId());
+                        tratamientoMap.put("fecha", t.getFecha());
+                        tratamientoMap.put("descripcion", t.getDescripcion());
+                        tratamientoMap.put("cantidad", t.getCantidad());
+
+                        // Datos simplificados de la mascota
+                        if (t.getMascota() != null) {
+                            Map<String, Object> mascotaMap = new HashMap<>();
+                            mascotaMap.put("mascotaId", t.getMascota().getMascotaId());
+                            mascotaMap.put("nombre", t.getMascota().getNombre());
+                            tratamientoMap.put("mascota", mascotaMap);
+                        }
+
+                        // Datos simplificados del medicamento
+                        if (t.getMedicamento() != null) {
+                            Map<String, Object> medicamentoMap = new HashMap<>();
+                            medicamentoMap.put("id", t.getMedicamento().getId());
+                            medicamentoMap.put("nombre", t.getMedicamento().getNombre());
+                            tratamientoMap.put("medicamento", medicamentoMap);
+                        }
+
+                        return tratamientoMap;
+                    })
+                    .collect(Collectors.toList());
+            response.put("tratamientos", tratamientosSimplificados);
+        }
+
+        return ResponseEntity.ok(response);
     }
 
     // Crear un nuevo veterinario
@@ -51,7 +124,7 @@ public class VeterinarioController {
     // Actualizar un veterinario
     @PutMapping("/{id}")
     public Veterinario actualizarVeterinario(@PathVariable Long id, @RequestBody Veterinario veterinario) {
-        veterinario.setId(id);  // Asigna el ID para asegurarse de que se actualice correctamente
+        veterinario.setId(id); // Asigna el ID para asegurarse de que se actualice correctamente
         return veterinarioServicio.update(veterinario);
     }
 
@@ -61,11 +134,9 @@ public class VeterinarioController {
         return new ResponseEntity<>(cantidad, HttpStatus.OK);
     }
 
-
     @GetMapping("/inactivos/total")
     public ResponseEntity<Long> contarVeterinariosInactivos() {
         Long cantidad = veterinarioServicio.contarVeterinariosInactivos();
         return new ResponseEntity<>(cantidad, HttpStatus.OK);
     }
-
 }

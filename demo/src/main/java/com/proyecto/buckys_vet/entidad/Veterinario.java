@@ -19,39 +19,41 @@ public class Veterinario {
 
     private Long cedula;
     private String nombre;
-    private String contrasena;    // Usamos "contrasena" sin ñ para evitar problemas de codificación
+    private String contrasena; // Usamos "contrasena" sin ñ para evitar problemas de codificación
     private String especialidad;
-    private String foto;          // Ruta o URL de la foto
+    private String foto; // Ruta o URL de la foto
     private int numeroAtenciones; // Número de atenciones realizadas
     private boolean activo = true; // por defecto, cuando se crea un veterinario, está activo
     private String estado;
 
     @OneToMany(mappedBy = "veterinario")
-    @JsonIgnoreProperties("veterinario") 
+    @JsonIgnoreProperties({"veterinario", "mascota"})
     private List<Tratamiento> tratamientos;
 
     @OneToMany(mappedBy = "veterinario", fetch = FetchType.LAZY)
-    @JsonIgnoreProperties("veterinario")
+    @JsonIgnoreProperties({"veterinario", "dueno"})
     private List<Mascota> mascotas;
 
-
     // Constructor por defecto necesario para JPA
-    public Veterinario() {}
+    public Veterinario() {
+    }
 
     // Constructor sin el id (para creación)
-    public Veterinario(Long cedula, String nombre, String contrasena, String especialidad, String foto, int numeroAtenciones, String estado) {
+    public Veterinario(Long cedula, String nombre, String contrasena, String especialidad, String foto,
+            int numeroAtenciones, String estado) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.contrasena = contrasena;
         this.especialidad = especialidad;
         this.foto = foto;
         this.numeroAtenciones = numeroAtenciones;
-        this.activo = true; // Por defecto, al crear un veterinario, está activo
         this.estado = estado;
+        this.activo = "Activo".equalsIgnoreCase(estado);
     }
 
     // Constructor con id (por ejemplo, al recuperar desde la base de datos)
-    public Veterinario(Long id, Long cedula, String nombre, String contrasena, String especialidad, String foto, int numeroAtenciones, String estado) {
+    public Veterinario(Long id, Long cedula, String nombre, String contrasena, String especialidad, String foto,
+            int numeroAtenciones, String estado) {
         this.id = id;
         this.cedula = cedula;
         this.nombre = nombre;
@@ -59,8 +61,8 @@ public class Veterinario {
         this.especialidad = especialidad;
         this.foto = foto;
         this.numeroAtenciones = numeroAtenciones;
-        this.activo = true; // Por defecto, al crear un veterinario, está activo
         this.estado = estado;
+        this.activo = "Activo".equalsIgnoreCase(estado);
     }
 
     // Getters y Setters
@@ -124,7 +126,7 @@ public class Veterinario {
     public boolean isActivo() {
         return activo;
     }
-    
+
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
@@ -151,5 +153,6 @@ public class Veterinario {
 
     public void setEstado(String estado) {
         this.estado = estado;
+        this.activo = "Activo".equalsIgnoreCase(estado);
     }
 }

@@ -34,15 +34,15 @@ public class Mascota {
 
     @ManyToOne
     @JoinColumn(name = "veterinario_id")
-    @JsonIgnoreProperties("mascotas") // Para evitar recursión infinita al serializar
+    @JsonIgnoreProperties({ "mascotas", "tratamientos" })
     private Veterinario veterinario;
 
-    
     public Mascota() {
         // Default constructor
     }
 
-    public Mascota(String nombre, String especie, int edad, double peso, String enfermedad, String imagenUrl, String estado) {
+    public Mascota(String nombre, String especie, int edad, double peso, String enfermedad, String imagenUrl,
+            String estado) {
         this.nombre = nombre;
         this.especie = especie;
         this.edad = edad;
@@ -52,7 +52,8 @@ public class Mascota {
         this.imagenUrl = imagenUrl;
     }
 
-    public Mascota(Long mascotaId, String nombre, String especie, int edad, double peso, String enfermedad, String imagenUrl, String estado) {
+    public Mascota(Long mascotaId, String nombre, String especie, int edad, double peso, String enfermedad,
+            String imagenUrl, String estado) {
         this.mascotaId = mascotaId;
         this.nombre = nombre;
         this.especie = especie;
@@ -62,6 +63,7 @@ public class Mascota {
         this.estado = estado;
         this.imagenUrl = imagenUrl;
     }
+
     public long getMascotaId() {
         return mascotaId;
     }
@@ -129,7 +131,7 @@ public class Mascota {
     public Dueno getDueno() {
         return this.dueno;
     }
- 
+
     public void setDueno(Dueno dueno) {
         this.dueno = dueno;
     }
@@ -137,11 +139,9 @@ public class Mascota {
     public Veterinario getVeterinario() {
         return this.veterinario;
     }
- 
+
     public void setVeterinario(Veterinario veterinario) {
         this.veterinario = veterinario;
     }
 
 }
-
-   

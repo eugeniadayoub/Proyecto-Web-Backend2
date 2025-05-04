@@ -3,6 +3,9 @@ package com.proyecto.buckys_vet.controlador;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -33,19 +36,129 @@ public class MascotaController {
     private DuenoServicio duenoServicio;
 
     @GetMapping
-    public List<Mascota> listarTodas() {
+    public ResponseEntity<List<Map<String, Object>>> listarTodas() {
         Collection<Mascota> mascotasCollection = mascotaServicio.obtenerTodas();
-        return mascotasCollection != null ? new ArrayList<>(mascotasCollection) : new ArrayList<>();
+        if (mascotasCollection == null || mascotasCollection.isEmpty()) {
+            return ResponseEntity.ok(new ArrayList<>());
+        }
+
+        List<Map<String, Object>> mascotasSimplificadas = mascotasCollection.stream()
+                .map(m -> {
+                    Map<String, Object> mascotaMap = new HashMap<>();
+                    mascotaMap.put("mascotaId", m.getMascotaId());
+                    mascotaMap.put("nombre", m.getNombre());
+                    mascotaMap.put("especie", m.getEspecie());
+                    mascotaMap.put("edad", m.getEdad());
+                    mascotaMap.put("peso", m.getPeso());
+                    mascotaMap.put("enfermedad", m.getEnfermedad());
+                    mascotaMap.put("imagenUrl", m.getImagenUrl());
+                    mascotaMap.put("imagen_url", m.getImagenUrl()); // Para compatibilidad
+                    mascotaMap.put("estado", m.getEstado());
+
+                    // Añadir información simplificada del dueño
+                    if (m.getDueno() != null) {
+                        Map<String, Object> duenoMap = new HashMap<>();
+                        duenoMap.put("idDueno", m.getDueno().getIdDueno());
+                        duenoMap.put("nombre", m.getDueno().getNombre());
+                        mascotaMap.put("dueno", duenoMap);
+                    }
+
+                    // Añadir información simplificada del veterinario
+                    if (m.getVeterinario() != null) {
+                        Map<String, Object> vetMap = new HashMap<>();
+                        vetMap.put("id", m.getVeterinario().getId());
+                        vetMap.put("nombre", m.getVeterinario().getNombre());
+                        vetMap.put("especialidad", m.getVeterinario().getEspecialidad());
+                        mascotaMap.put("veterinario", vetMap);
+                    }
+
+                    return mascotaMap;
+                })
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok(mascotasSimplificadas);
     }
 
     @GetMapping("/{id}")
-    public Mascota obtenerPorId(@PathVariable Long id) {
-        return mascotaServicio.obtenerPorId(id);
+    public ResponseEntity<?> obtenerPorId(@PathVariable Long id) {
+        Mascota mascota = mascotaServicio.obtenerPorId(id);
+        if (mascota == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        Map<String, Object> mascotaMap = new HashMap<>();
+        mascotaMap.put("mascotaId", mascota.getMascotaId());
+        mascotaMap.put("nombre", mascota.getNombre());
+        mascotaMap.put("especie", mascota.getEspecie());
+        mascotaMap.put("edad", mascota.getEdad());
+        mascotaMap.put("peso", mascota.getPeso());
+        mascotaMap.put("enfermedad", mascota.getEnfermedad());
+        mascotaMap.put("imagenUrl", mascota.getImagenUrl());
+        mascotaMap.put("imagen_url", mascota.getImagenUrl()); // Para compatibilidad
+        mascotaMap.put("estado", mascota.getEstado());
+
+        // Añadir información simplificada del dueño
+        if (mascota.getDueno() != null) {
+            Map<String, Object> duenoMap = new HashMap<>();
+            duenoMap.put("idDueno", mascota.getDueno().getIdDueno());
+            duenoMap.put("nombre", mascota.getDueno().getNombre());
+            mascotaMap.put("dueno", duenoMap);
+        }
+
+        // Añadir información simplificada del veterinario
+        if (mascota.getVeterinario() != null) {
+            Map<String, Object> vetMap = new HashMap<>();
+            vetMap.put("id", mascota.getVeterinario().getId());
+            vetMap.put("nombre", mascota.getVeterinario().getNombre());
+            vetMap.put("especialidad", mascota.getVeterinario().getEspecialidad());
+            mascotaMap.put("veterinario", vetMap);
+        }
+
+        return ResponseEntity.ok(mascotaMap);
     }
 
     @GetMapping("/dueno/{duenoId}")
-    public List<Mascota> listarPorDueno(@PathVariable Long duenoId) {
-        return mascotaServicio.obtenerPorDuenoId(duenoId);
+    public ResponseEntity<List<Map<String, Object>>> listarPorDueno(@PathVariable Long duenoId) {
+        List<Mascota> mascotas = mascotaServicio.obtenerPorDuenoId(duenoId);
+        if (mascotas == null || mascotas.isEmpty()) {
+            return ResponseEntity.ok(new ArrayList<>());
+        }
+
+        List<Map<String, Object>> mascotasSimplificadas = mascotas.stream()
+                .map(m -> {
+                    Map<String, Object> mascotaMap = new HashMap<>();
+                    mascotaMap.put("mascotaId", m.getMascotaId());
+                    mascotaMap.put("nombre", m.getNombre());
+                    mascotaMap.put("especie", m.getEspecie());
+                    mascotaMap.put("edad", m.getEdad());
+                    mascotaMap.put("peso", m.getPeso());
+                    mascotaMap.put("enfermedad", m.getEnfermedad());
+                    mascotaMap.put("imagenUrl", m.getImagenUrl());
+                    mascotaMap.put("imagen_url", m.getImagenUrl()); // Para compatibilidad
+                    mascotaMap.put("estado", m.getEstado());
+
+                    // Añadir información simplificada del dueño
+                    if (m.getDueno() != null) {
+                        Map<String, Object> duenoMap = new HashMap<>();
+                        duenoMap.put("idDueno", m.getDueno().getIdDueno());
+                        duenoMap.put("nombre", m.getDueno().getNombre());
+                        mascotaMap.put("dueno", duenoMap);
+                    }
+
+                    // Añadir información simplificada del veterinario
+                    if (m.getVeterinario() != null) {
+                        Map<String, Object> vetMap = new HashMap<>();
+                        vetMap.put("id", m.getVeterinario().getId());
+                        vetMap.put("nombre", m.getVeterinario().getNombre());
+                        vetMap.put("especialidad", m.getVeterinario().getEspecialidad());
+                        mascotaMap.put("veterinario", vetMap);
+                    }
+
+                    return mascotaMap;
+                })
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok(mascotasSimplificadas);
     }
 
     @PostMapping
@@ -79,11 +192,10 @@ public class MascotaController {
         Long cantidad = mascotaServicio.contarMascotasTotales();
         return new ResponseEntity<>(cantidad, HttpStatus.OK);
     }
-    
+
     @GetMapping("/activas")
     public long contarMascotasActivas() {
         return mascotaServicio.contarMascotasActivas();
     }
-
 
 }
