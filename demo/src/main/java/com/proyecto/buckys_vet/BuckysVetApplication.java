@@ -13,7 +13,7 @@ import com.proyecto.buckys_vet.servicio.MedicamentoExcelService;
 @SpringBootApplication
 public class BuckysVetApplication {
 
-    @Autowired
+    /*@Autowired
     private MedicamentoExcelService medicamentoExcelService;
 
     public static void main(String[] args) {
@@ -29,5 +29,5 @@ public class BuckysVetApplication {
             medicamentoExcelService.importarDesdeExcel("MEDICAMENTOS_VETERINARIA.xlsx");
 
         };
-    }
+    }*/
 }
