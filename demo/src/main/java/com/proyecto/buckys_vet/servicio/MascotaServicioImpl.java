@@ -5,15 +5,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.proyecto.buckys_vet.entidad.Mascota;
-import com.proyecto.buckys_vet.entidad.Tratamiento;
-import com.proyecto.buckys_vet.entidad.Veterinario;
 import com.proyecto.buckys_vet.entidad.Dueno;
+import com.proyecto.buckys_vet.entidad.Mascota;
 import com.proyecto.buckys_vet.entidad.RecursoNoEncontradoException;
-import com.proyecto.buckys_vet.repositorio.MascotaRepositorio;
+import com.proyecto.buckys_vet.entidad.Veterinario;
 import com.proyecto.buckys_vet.repositorio.DuenoRepositorio;
-import jakarta.persistence.EntityNotFoundException;
+import com.proyecto.buckys_vet.repositorio.MascotaRepositorio;
+import com.proyecto.buckys_vet.repositorio.VeterinarioRepositorio;
 
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 
 @Service
@@ -24,6 +24,10 @@ public class MascotaServicioImpl implements MascotaServicio {
 
     @Autowired
     private DuenoRepositorio duenoRepositorio;
+
+    @Autowired
+    private VeterinarioRepositorio veterinarioRepositorio;
+
 
     @Override
     public List<Mascota> obtenerTodas() {
@@ -48,14 +52,14 @@ public class MascotaServicioImpl implements MascotaServicio {
         }
 
         if (mascota.getVeterinario() != null && mascota.getVeterinario().getId() != null) {
-            // Similar logic to fetch and set Veterinario would go here
-            // Fetch Veterinario based on ID and set it
-            // Veterinario vet =
-            // veterinarioRepositorio.findById(mascota.getVeterinario().getId()).orElseThrow(...);
-            // mascota.setVeterinario(vet);
+        Long idVeterinario = mascota.getVeterinario().getId();
+        Veterinario vet = veterinarioRepositorio.findById(idVeterinario)
+            .orElseThrow(() -> new RecursoNoEncontradoException("Veterinario no encontrado con ID: " + idVeterinario));
+        mascota.setVeterinario(vet);
         } else {
             mascota.setVeterinario(null);
         }
+
 
         return mascotaRepositorio.save(mascota);
     }
@@ -126,4 +130,10 @@ public class MascotaServicioImpl implements MascotaServicio {
     public long contarMascotasActivas() {
         return mascotaRepositorio.contarMascotasActivas();
     }
+
+    @Override
+    public List<Mascota> obtenerPorVeterinarioId(Long veterinarioId) {
+        return mascotaRepositorio.findByVeterinarioId(veterinarioId);
+    }   
+
 }

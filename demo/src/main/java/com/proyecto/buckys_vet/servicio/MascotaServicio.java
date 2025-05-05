@@ -23,4 +23,6 @@ public interface MascotaServicio {
     Long contarMascotasTotales();
 
     long contarMascotasActivas();
+
+    List<Mascota> obtenerPorVeterinarioId(Long veterinarioId);
 }

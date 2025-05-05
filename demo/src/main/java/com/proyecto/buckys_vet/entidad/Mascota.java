@@ -1,6 +1,5 @@
 package com.proyecto.buckys_vet.entidad;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
@@ -27,7 +26,7 @@ public class Mascota {
     @GeneratedValue
     private Long mascotaId;
 
-    @JsonIgnore
+    @JsonIgnoreProperties({ "mascotas", "cedula", "telefono", "imagenUrl" })
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "dueno_id")
     private Dueno dueno;
