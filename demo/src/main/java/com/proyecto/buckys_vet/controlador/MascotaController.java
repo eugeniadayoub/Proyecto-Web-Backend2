@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.proyecto.buckys_vet.entidad.Mascota;
-import com.proyecto.buckys_vet.servicio.DuenoServicio;
 import com.proyecto.buckys_vet.servicio.MascotaServicio;
 import com.proyecto.buckys_vet.servicio.VeterinarioServicio;
 
@@ -32,9 +31,6 @@ public class MascotaController {
 
     @Autowired
     private MascotaServicio mascotaServicio;
-
-    @Autowired
-    private DuenoServicio duenoServicio;
 
     @Autowired
     private VeterinarioServicio veterinarioServicio;

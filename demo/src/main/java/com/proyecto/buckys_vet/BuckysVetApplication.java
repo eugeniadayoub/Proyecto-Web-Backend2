@@ -13,13 +13,13 @@ import com.proyecto.buckys_vet.servicio.MedicamentoExcelService;
 @SpringBootApplication
 public class BuckysVetApplication {
 
-    /*@Autowired
+    @Autowired
     private MedicamentoExcelService medicamentoExcelService;
 
     public static void main(String[] args) {
         SpringApplication.run(BuckysVetApplication.class, args);
     }
-
+/*
     @Bean
     CommandLineRunner runner(DuenoServicio duenoServicio, MascotaServicio mascotaServicio) {
         return args -> {

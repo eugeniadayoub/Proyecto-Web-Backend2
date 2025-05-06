@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -23,6 +24,8 @@ public class Veterinario {
     private String especialidad;
     private String foto; // Ruta o URL de la foto
     private int numeroAtenciones; // Número de atenciones realizadas
+
+    @Column(name = "activo")
     private boolean activo = true; // por defecto, cuando se crea un veterinario, está activo
     private String estado;
 

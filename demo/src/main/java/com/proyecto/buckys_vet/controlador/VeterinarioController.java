@@ -17,8 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.proyecto.buckys_vet.entidad.Mascota;
-import com.proyecto.buckys_vet.entidad.Tratamiento;
+
 import com.proyecto.buckys_vet.entidad.Veterinario;
 import com.proyecto.buckys_vet.servicio.VeterinarioServicio;
 

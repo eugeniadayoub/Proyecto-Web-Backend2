@@ -3,8 +3,6 @@ package com.proyecto.buckys_vet.servicio;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-
 import org.springframework.data.domain.Pageable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,6 +47,10 @@ public class TratamientoServicioImpl implements TratamientoServicio {
     @Override
     public Tratamiento guardar(Tratamiento tratamiento) {   
         // Asociar entidad existente correctamente
+        if (tratamiento.getMedicamento() == null) {
+            throw new IllegalArgumentException("El medicamento no puede ser nulo");
+        }
+
         Long mascotaId = tratamiento.getMascota().getMascotaId();
         Mascota mascota = mascotaRepositorio.findById(mascotaId)
             .orElseThrow(() -> new RuntimeException("Mascota no encontrada"));
@@ -98,4 +100,5 @@ public class TratamientoServicioImpl implements TratamientoServicio {
         Pageable topThree = PageRequest.of(0, 3);
         return tratamientoRepositorio.findTop3ByOrderByCantidadDesc(topThree);
     }
+   
 }

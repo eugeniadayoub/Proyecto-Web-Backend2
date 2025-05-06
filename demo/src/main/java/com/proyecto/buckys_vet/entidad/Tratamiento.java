@@ -27,13 +27,13 @@ public class Tratamiento {
     @JsonIgnoreProperties({"especie", "edad", "peso", "enfermedad", "imagenUrl", "estado", "dueno"})
     private Veterinario veterinario;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST) // Se asegura que cualquier persistencia en Tratamiento también persista
     @JoinColumn(name = "mascota_id")
     @JsonIgnoreProperties({"precioCompra", "precioVenta", "unidadesDisponibles", "unidadesVendidas"})
     private Mascota mascota;
     
     @ManyToOne
-    @JoinColumn(name = "medicamento_id")
+    @JoinColumn(name = "medicamento_id", nullable = false)
     @JsonIgnoreProperties({"especialidad", "numeroAtenciones", "cedula", "contrasena", "foto", "mascotas", "tratamientos"})
     private Medicamento medicamento;
     
@@ -49,8 +49,12 @@ public class Tratamiento {
                 ", medicamento=" + (medicamento != null ? medicamento.getId() : "null") +
                 '}';
     }
+    public Tratamiento(String fecha, String descripcion, int cantidad, Mascota mascota, Veterinario veterinario, Medicamento medicamento) {
+        // Initialize the object's fields here
+    }
+    public Tratamiento() {
 
-    public Tratamiento() {}
+    }
 
     public Tratamiento(LocalDate fecha, String descripcion, Veterinario veterinario, 
                        Mascota mascota, Medicamento medicamento, Integer cantidad) {
