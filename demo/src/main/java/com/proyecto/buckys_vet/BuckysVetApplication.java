@@ -19,7 +19,6 @@ public class BuckysVetApplication {
     public static void main(String[] args) {
         SpringApplication.run(BuckysVetApplication.class, args);
     }
-/*
     @Bean
     CommandLineRunner runner(DuenoServicio duenoServicio, MascotaServicio mascotaServicio) {
         return args -> {
@@ -29,5 +28,5 @@ public class BuckysVetApplication {
             medicamentoExcelService.importarDesdeExcel("MEDICAMENTOS_VETERINARIA.xlsx");
 
         };
-    }*/
+    }
 }
