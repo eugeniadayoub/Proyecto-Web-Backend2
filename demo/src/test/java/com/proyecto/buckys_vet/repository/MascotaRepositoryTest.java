@@ -1,27 +1,28 @@
 package com.proyecto.buckys_vet.repository;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import java.time.LocalDate;
 import java.util.List;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.ActiveProfiles;
 
+import com.proyecto.buckys_vet.entidad.Dueno;
 import com.proyecto.buckys_vet.entidad.Mascota;
 import com.proyecto.buckys_vet.entidad.Medicamento;
 import com.proyecto.buckys_vet.entidad.Tratamiento;
 import com.proyecto.buckys_vet.entidad.Veterinario;
-import com.proyecto.buckys_vet.entidad.Dueno;
+import com.proyecto.buckys_vet.repositorio.DuenoRepositorio;
 import com.proyecto.buckys_vet.repositorio.MascotaRepositorio;
 import com.proyecto.buckys_vet.repositorio.MedicamentoRepositorio;
-import com.proyecto.buckys_vet.repositorio.DuenoRepositorio;
 import com.proyecto.buckys_vet.repositorio.TratamientoRepositorio;
 import com.proyecto.buckys_vet.repositorio.VeterinarioRepositorio;
 
 @DataJpaTest
+@ActiveProfiles("test")
 public class MascotaRepositoryTest {
 
     @Autowired
@@ -41,42 +42,45 @@ public class MascotaRepositoryTest {
 
     @BeforeEach
     public void setUp() {
-        mascotaRepositorio
-                .save(new Mascota("Luna", "Perro", 2, 3.5, "No tiene", "https://example.com/mascota.jpg", "Activa"));
-        mascotaRepositorio
-                .save(new Mascota("Simba", "Gato", 1, 2.5, "No tiene", "https://example.com/mascota.jpg", "Inactiva"));
-        mascotaRepositorio
-                .save(new Mascota("Coco", "Perro", 3, 4.5, "No tiene", "https://example.com/mascota.jpg", "Activa"));
-        mascotaRepositorio
-                .save(new Mascota("Milo", "Perro", 2, 3.5, "No tiene", "https://example.com/mascota.jpg", "Inactiva"));
+        // Guardar mascotas
+        mascotaRepositorio.save(new Mascota("Luna", "Perro", 2, 3.5, "No tiene", "https://example.com/mascota.jpg", "Activa"));
+        mascotaRepositorio.save(new Mascota("Simba", "Gato", 1, 2.5, "No tiene", "https://example.com/mascota.jpg", "Inactiva"));
+        mascotaRepositorio.save(new Mascota("Coco", "Perro", 3, 4.5, "No tiene", "https://example.com/mascota.jpg", "Activa"));
+        mascotaRepositorio.save(new Mascota("Milo", "Perro", 2, 3.5, "No tiene", "https://example.com/mascota.jpg", "Inactiva"));
 
-        duenoRepositorio.save(new Dueno(1234567890L, "Carlos Pérez", "carlos@example.com", "3104567890",
+        // Guardar dueños
+        Dueno dueno = duenoRepositorio.save(new Dueno(1234567890L, "Carlos Pérez", "carlos@example.com", "3104567890",
                 "https://example.com/foto.jpg", "claveSegura123"));
         duenoRepositorio.save(new Dueno(987654321L, "Ana Rodríguez", "ana@example", "3109876543",
                 "https://example.com/foto.jpg", "claveSegura123"));
 
-        Mascota mascota = mascotaRepositorio.findById(1L).get();
-        Dueno dueno = duenoRepositorio.findById(1L).get();
+        // Guardar una mascota para tratamiento
+        Mascota mascota = mascotaRepositorio.save(
+                new Mascota("Rocky", "Perro", 2, 3.2, "Sin condición", "https://example.com/mascota.jpg", "Activo"));
+        mascota.setDueno(dueno);
+        mascota = mascotaRepositorio.save(mascota); // actualizar con dueño
+
         System.out.println("Dueño: " + dueno.getNombre());
-        
+
+        // Crear y guardar veterinario
         Veterinario vet = new Veterinario();
-    vet.setNombre("Dra. María");
-    vet.setEspecialidad("Dermatología");
-    vet.setCedula(100200300L);
-    vet.setContrasena("clave123");
-    vet.setFoto("urlVet");
-    vet = veterinarioRepositorio.save(vet);
+        vet.setNombre("Dra. María");
+        vet.setEspecialidad("Dermatología");
+        vet.setCedula(100200300L);
+        vet.setContrasena("clave123");
+        vet.setFoto("urlVet");
+        vet = veterinarioRepositorio.save(vet);
 
-    // Crear y guardar dueños
-    Dueno dueno1 = new Dueno(1234567890L, "Carlos Pérez", "carlos@example.com", "3104567890",
-            "https://example.com/foto.jpg", "claveSegura123");
-    dueno1 = duenoRepositorio.save(dueno1);
+        // Crear y guardar más dueños (como tenías en el orden original)
+        Dueno dueno1 = new Dueno(1234567890L, "Carlos Pérez", "carlos@example.com", "3104567890",
+                "https://example.com/foto.jpg", "claveSegura123");
+        duenoRepositorio.save(dueno1);
 
-    Dueno dueno2 = new Dueno(987654321L, "Ana Rodríguez", "ana@example.com", "3109876543",
-            "https://example.com/foto.jpg", "claveSegura123");
-    dueno2 = duenoRepositorio.save(dueno2);
+        Dueno dueno2 = new Dueno(987654321L, "Ana Rodríguez", "ana@example.com", "3109876543",
+                "https://example.com/foto.jpg", "claveSegura123");
+        duenoRepositorio.save(dueno2);
 
-        // Crear Medicamento
+        // Crear y guardar medicamento
         Medicamento medicamento = new Medicamento();
         medicamento.setNombre("Antibiótico");
         medicamento.setPrecioCompra(2000.0);
@@ -85,7 +89,7 @@ public class MascotaRepositoryTest {
         medicamento.setUnidadesVendidas(0);
         medicamento = medicamentoRepositorio.save(medicamento);
 
-        // Crear Tratamiento
+        // Crear y guardar tratamiento
         Tratamiento tratamiento = new Tratamiento();
         tratamiento.setFecha(LocalDate.now());
         tratamiento.setDescripcion("Tratamiento para infección de piel");
@@ -93,8 +97,9 @@ public class MascotaRepositoryTest {
         tratamiento.setMascota(mascota);
         tratamiento.setVeterinario(vet);
         tratamiento.setMedicamento(medicamento);
-        tratamiento = tratamientoRepositorio.save(tratamiento);
+        tratamientoRepositorio.save(tratamiento);
     }
+
 
     @Test
     public void MascotaRepository_save_Mascota() {
@@ -119,7 +124,7 @@ public class MascotaRepositoryTest {
         mascotaRepositorio.save(new Mascota("Max", "Gato", 3, 4.0, "No tiene", "url", "Activo"));
 
         var lista = mascotaRepositorio.findAll();
-        Assertions.assertThat(lista).hasSize(2);
+        Assertions.assertThat(lista).hasSize(7);
     }
 
     @Test
@@ -146,10 +151,16 @@ public class MascotaRepositoryTest {
 
     @Test
     public void TratamientoRepository_deleteById_removesTratamiento() {
-        Tratamiento tratamiento = new Tratamiento();
-        tratamiento.setId(1L);
-        tratamientoRepositorio.save(tratamiento);
+        // Obtener el tratamiento que se guardó en el @BeforeEach
+        List<Tratamiento> tratamientos = tratamientoRepositorio.findAll();
+        Assertions.assertThat(tratamientos).isNotEmpty();
+
+        Tratamiento tratamiento = tratamientos.get(0); // usar el primero (único)
+
+        // Eliminarlo
         tratamientoRepositorio.deleteById(tratamiento.getId());
+
+        // Verificar que ya no existe
         boolean existe = tratamientoRepositorio.existsById(tratamiento.getId());
         Assertions.assertThat(existe).isFalse();
     }
@@ -163,8 +174,8 @@ public class MascotaRepositoryTest {
 
         List<Mascota> activas = mascotaRepositorio.findByEstadoIgnoreCase("activo");
 
-        Assertions.assertThat(activas).hasSize(1);
-        Assertions.assertThat(activas.get(0).getNombre()).isEqualTo("Max");
+        Assertions.assertThat(activas).hasSize(2);
+        Assertions.assertThat(activas.get(0).getNombre()).isEqualTo("Rocky");
     }
 
     @Test
@@ -200,7 +211,7 @@ public class MascotaRepositoryTest {
 
         long activas = mascotaRepositorio.contarMascotasActivas();
 
-        Assertions.assertThat(activas).isEqualTo(1);
+        Assertions.assertThat(activas).isEqualTo(2L);
     }
     
     @Test
