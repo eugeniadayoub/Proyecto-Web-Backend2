@@ -47,7 +47,7 @@ public class MedicamentoTests {
     @Timeout(600)
     void suministroMedicamentoYverificacion() {
         String cedulaClienteExistente = "1000043";
-        String nombreMascotaExistente = "Bella";
+        String nombreMascotaExistente = "Toby";
         String idMedicamentoExistente = "11";
         String nombreMedicamentoExistente = "ACOLAN";
         String veterinarioCedula = "100100100";
