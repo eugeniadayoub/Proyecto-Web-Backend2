@@ -31,7 +31,6 @@ public class TratamientoServicioImpl implements TratamientoServicio {
 
     @Autowired
     private VeterinarioRepositorio veterinarioRepositorio;
-    
 
     @Override
     public List<Tratamiento> obtenerTodos() {
@@ -41,11 +40,11 @@ public class TratamientoServicioImpl implements TratamientoServicio {
     @Override
     public Tratamiento obtenerPorId(Long id) {
         Optional<Tratamiento> tratamiento = tratamientoRepositorio.findById(id);
-        return tratamiento.orElse(null); 
+        return tratamiento.orElse(null);
     }
 
     @Override
-    public Tratamiento guardar(Tratamiento tratamiento) {   
+    public Tratamiento guardar(Tratamiento tratamiento) {
         // Asociar entidad existente correctamente
         if (tratamiento.getMedicamento() == null) {
             throw new IllegalArgumentException("El medicamento no puede ser nulo");
@@ -53,17 +52,23 @@ public class TratamientoServicioImpl implements TratamientoServicio {
 
         Long mascotaId = tratamiento.getMascota().getMascotaId();
         Mascota mascota = mascotaRepositorio.findById(mascotaId)
-            .orElseThrow(() -> new RuntimeException("Mascota no encontrada"));
+                .orElseThrow(() -> new RuntimeException("Mascota no encontrada"));
         tratamiento.setMascota(mascota);
 
         Long medicamentoId = tratamiento.getMedicamento().getId();
         Medicamento medicamento = medicamentoRepositorio.findById(medicamentoId)
-            .orElseThrow(() -> new RuntimeException("Medicamento no encontrado"));
+                .orElseThrow(() -> new RuntimeException("Medicamento no encontrado"));
+
+        // Actualizar unidades vendidas del medicamento
+        medicamento.setUnidadesVendidas(medicamento.getUnidadesVendidas() + tratamiento.getCantidad());
+        medicamento.setUnidadesDisponibles(medicamento.getUnidadesDisponibles() - tratamiento.getCantidad());
+        medicamentoRepositorio.save(medicamento);
+
         tratamiento.setMedicamento(medicamento);
 
         Long veterinarioId = tratamiento.getVeterinario().getId();
         Veterinario veterinario = veterinarioRepositorio.findById(veterinarioId)
-            .orElseThrow(() -> new RuntimeException("Veterinario no encontrado"));
+                .orElseThrow(() -> new RuntimeException("Veterinario no encontrado"));
         tratamiento.setVeterinario(veterinario);
 
         return tratamientoRepositorio.save(tratamiento);
@@ -71,15 +76,15 @@ public class TratamientoServicioImpl implements TratamientoServicio {
 
     @Override
     public void eliminar(Long id) {
-        tratamientoRepositorio.deleteById(id);  
+        tratamientoRepositorio.deleteById(id);
     }
 
     @Override
     public Tratamiento update(Tratamiento tratamiento) {
         if (tratamientoRepositorio.existsById(tratamiento.getId())) {
-            return tratamientoRepositorio.save(tratamiento);  
+            return tratamientoRepositorio.save(tratamiento);
         }
-        return null;  
+        return null;
     }
 
     @Override
@@ -87,7 +92,6 @@ public class TratamientoServicioImpl implements TratamientoServicio {
         LocalDate haceUnMes = LocalDate.now().minusMonths(1);
         return tratamientoRepositorio.countTratamientosDesde(haceUnMes);
     }
-
 
     @Override
     public List<Object[]> contarPorMedicamentoUltimoMes() {
@@ -100,5 +104,5 @@ public class TratamientoServicioImpl implements TratamientoServicio {
         Pageable topThree = PageRequest.of(0, 3);
         return tratamientoRepositorio.findTop3ByOrderByCantidadDesc(topThree);
     }
-   
+
 }
