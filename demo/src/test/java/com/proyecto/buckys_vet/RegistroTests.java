@@ -1,3 +1,5 @@
+package com.proyecto.buckys_vet;
+
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -27,15 +29,15 @@ public class RegistroTests {
         options.addArguments("--verbose", "--log-level=0", "--enable-logging", "--v=1");
         // Estabilidad
         options.addArguments("--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu",
-                             "--disable-extensions", "--disable-software-rasterizer",
-                             "--ignore-certificate-errors", "--allow-running-insecure-content");
+                "--disable-extensions", "--disable-software-rasterizer",
+                "--ignore-certificate-errors", "--allow-running-insecure-content");
         // Rendimiento
         options.addArguments("--disable-background-networking", "--disable-background-timer-throttling",
-                             "--disable-backgrounding-occluded-windows", "--disable-breakpad",
-                             "--disable-component-extensions-with-background-pages",
-                             "--disable-features=TranslateUI,BlinkGenPropertyTrees",
-                             "--disable-ipc-flooding-protection", "--disable-renderer-backgrounding",
-                             "--enable-features=NetworkService,NetworkServiceInProcess");
+                "--disable-backgrounding-occluded-windows", "--disable-breakpad",
+                "--disable-component-extensions-with-background-pages",
+                "--disable-features=TranslateUI,BlinkGenPropertyTrees",
+                "--disable-ipc-flooding-protection", "--disable-renderer-backgrounding",
+                "--enable-features=NetworkService,NetworkServiceInProcess");
 
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
@@ -72,7 +74,8 @@ public class RegistroTests {
             wait.until(ExpectedConditions.urlContains("/duenos"));
 
             // Crear nuevo dueño
-            wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[routerLink='/crear-dueno']"))).click();
+            wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[routerLink='/crear-dueno']")))
+                    .click();
             wait.until(ExpectedConditions.urlContains("/crear-dueno"));
 
             nuevaCedulaCliente = "cliente" + System.currentTimeMillis();
@@ -93,7 +96,8 @@ public class RegistroTests {
             // Crear mascota
             driver.get("http://localhost:4200/crear-mascota");
             wait.until(ExpectedConditions.urlContains("/crear-mascota"));
-            wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("input[formControlName='nombre']"))).sendKeys("Mascota Test");
+            wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("input[formControlName='nombre']")))
+                    .sendKeys("Mascota Test");
 
             driver.findElement(By.cssSelector("select[formControlName='especie']")).click();
             wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("option[value='Gato']"))).click();
@@ -101,13 +105,15 @@ public class RegistroTests {
             driver.findElement(By.cssSelector("input[formControlName='edad']")).sendKeys("2");
             driver.findElement(By.cssSelector("input[formControlName='peso']")).sendKeys("5");
             driver.findElement(By.cssSelector("input[formControlName='enfermedad']")).sendKeys("Ninguna");
-            driver.findElement(By.cssSelector("input[formControlName='imagenUrl']")).sendKeys("https://www.example.com/default_pet.png");
+            driver.findElement(By.cssSelector("input[formControlName='imagenUrl']"))
+                    .sendKeys("https://www.example.com/default_pet.png");
 
             driver.findElement(By.cssSelector("select[formControlName='estado']")).click();
             wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("option[value='Activo']"))).click();
 
             // Seleccionar dueño recién creado
-            By duenoOption = By.xpath("//select[@formControlName='idDueno']//option[contains(text(),'" + nuevaCedulaCliente + "')]");
+            By duenoOption = By.xpath(
+                    "//select[@formControlName='idDueno']//option[contains(text(),'" + nuevaCedulaCliente + "')]");
             wait.until(ExpectedConditions.elementToBeClickable(duenoOption)).click();
 
             driver.findElement(By.cssSelector("button[type='submit']")).click();

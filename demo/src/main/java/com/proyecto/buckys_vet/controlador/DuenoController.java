@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.proyecto.buckys_vet.dto.DuenoDTO;
+import com.proyecto.buckys_vet.dto.DuenoMapper;
 import com.proyecto.buckys_vet.entidad.Dueno;
 import com.proyecto.buckys_vet.servicio.DuenoServicio;
 
@@ -26,6 +28,9 @@ public class DuenoController {
 
     @Autowired
     private DuenoServicio duenoServicio;
+
+    @Autowired
+    private DuenoMapper duenoMapper;
 
     @GetMapping
     public List<Dueno> listarDuenos() {
@@ -38,12 +43,13 @@ public class DuenoController {
     }
 
     @PostMapping
-    public ResponseEntity<Dueno> agregarDueno(@RequestBody Dueno dueno) {
+    public ResponseEntity<DuenoDTO> agregarDueno(@RequestBody Dueno dueno) {
         try {
-            Dueno nuevoDueno = duenoServicio.guardar(dueno); 
-            return ResponseEntity.status(HttpStatus.CREATED).body(nuevoDueno); 
+            Dueno nuevoDueno = duenoServicio.guardar(dueno);
+            DuenoDTO duenoDTO = duenoMapper.toDTO(nuevoDueno);
+            return ResponseEntity.status(HttpStatus.CREATED).body(duenoDTO);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null); 
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
 
@@ -55,20 +61,19 @@ public class DuenoController {
         }
 
         dueno.setIdDueno(id);
-        dueno.setMascotas(existente.getMascotas()); 
+        dueno.setMascotas(existente.getMascotas());
         return duenoServicio.update(dueno);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarDueno(@PathVariable Long id) {
         try {
-            duenoServicio.eliminar(id);  
-            return ResponseEntity.noContent().build();  
+            duenoServicio.eliminar(id);
+            return ResponseEntity.noContent().build();
         } catch (Exception e) {
-            e.printStackTrace();  // Esto puede ayudarte a ver la causa del error
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);  
+            e.printStackTrace(); // Esto puede ayudarte a ver la causa del error
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
 
 }
-        

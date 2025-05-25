@@ -3,25 +3,27 @@ package com.proyecto.buckys_vet.entidad;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
+@Data
+@NoArgsConstructor
 public class Medicamento {
 
     @Id
     @GeneratedValue
     private Long id;
-    
+
     private String nombre;
     private double precioCompra;
     private double precioVenta;
     private int unidadesDisponibles;
     private int unidadesVendidas;
 
-    // Constructor por defecto (necesario para JPA)
-    public Medicamento() {}
-
     // Constructor sin id (para crear nuevas instancias)
-    public Medicamento(String nombre, double precioCompra, double precioVenta, int unidadesDisponibles, int unidadesVendidas) {
+    public Medicamento(String nombre, double precioCompra, double precioVenta, int unidadesDisponibles,
+            int unidadesVendidas) {
         this.nombre = nombre;
         this.precioCompra = precioCompra;
         this.precioVenta = precioVenta;
@@ -30,7 +32,8 @@ public class Medicamento {
     }
 
     // Constructor con id (por ejemplo, al recuperar desde la base de datos)
-    public Medicamento(Long id, String nombre, double precioCompra, double precioVenta, int unidadesDisponibles, int unidadesVendidas) {
+    public Medicamento(Long id, String nombre, double precioCompra, double precioVenta, int unidadesDisponibles,
+            int unidadesVendidas) {
         this.id = id;
         this.nombre = nombre;
         this.precioCompra = precioCompra;

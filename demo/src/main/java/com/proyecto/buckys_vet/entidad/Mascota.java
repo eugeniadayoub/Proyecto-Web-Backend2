@@ -7,8 +7,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
+@Data
+@NoArgsConstructor
 public class Mascota {
     @Column(nullable = false)
     private String nombre;
@@ -34,10 +38,6 @@ public class Mascota {
     @JsonIgnoreProperties({ "mascotas", "tratamientos" })
     private Veterinario veterinario;
 
-    public Mascota() {
-        // Constructor por defecto
-    }
-
     public Mascota(String nombre, String especie, int edad, double peso, String enfermedad, String imagenUrl,
             String estado) {
         this.nombre = nombre;
@@ -59,85 +59,5 @@ public class Mascota {
         this.enfermedad = enfermedad;
         this.estado = estado;
         this.imagenUrl = imagenUrl;
-    }
-
-    public long getMascotaId() {
-        return mascotaId;
-    }
-
-    public void setMascotaId(Long mascotaId) {
-        this.mascotaId = mascotaId;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getEspecie() {
-        return especie;
-    }
-
-    public void setEspecie(String especie) {
-        this.especie = especie;
-    }
-
-    public int getEdad() {
-        return edad;
-    }
-
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
-
-    public double getPeso() {
-        return peso;
-    }
-
-    public void setPeso(double peso) {
-        this.peso = peso;
-    }
-
-    public String getEnfermedad() {
-        return enfermedad;
-    }
-
-    public void setEnfermedad(String enfermedad) {
-        this.enfermedad = enfermedad;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public String getImagenUrl() {
-        return imagenUrl;
-    }
-
-    public void setImagenUrl(String imagenUrl) {
-        this.imagenUrl = imagenUrl;
-    }
-
-    public Dueno getDueno() {
-        return this.dueno;
-    }
-
-    public void setDueno(Dueno dueno) {
-        this.dueno = dueno;
-    }
-
-    public Veterinario getVeterinario() {
-        return this.veterinario;
-    }
-
-    public void setVeterinario(Veterinario veterinario) {
-        this.veterinario = veterinario;
     }
 }

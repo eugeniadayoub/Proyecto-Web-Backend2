@@ -11,8 +11,16 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Dueno {
     private Long cedula;
     private String nombre;
@@ -20,7 +28,7 @@ public class Dueno {
     private String telefono;
     private String imagenUrl;
     private String password;
-    
+
     @Id
     @GeneratedValue
     @JsonProperty("id")
@@ -28,12 +36,8 @@ public class Dueno {
 
     @JsonIgnore
     @OneToMany(mappedBy = "dueno", cascade = CascadeType.ALL)
+    @Builder.Default
     private List<Mascota> mascotas = new ArrayList<>();
-
-    
-
-    // Constructor por defecto necesario para JPA
-    public Dueno() {}
 
     public Dueno(Long cedula, String nombre, String email, String telefono, String imagenUrl, String password) {
         this.cedula = cedula;
@@ -44,7 +48,8 @@ public class Dueno {
         this.password = password;
     }
 
-    public Dueno(Long id, Long cedula, String nombre, String email, String telefono, String imagenUrl, String password) {
+    public Dueno(Long id, Long cedula, String nombre, String email, String telefono, String imagenUrl,
+            String password) {
         this.id = id;
         this.cedula = cedula;
         this.nombre = nombre;
@@ -54,11 +59,12 @@ public class Dueno {
         this.password = password;
     }
 
-    // Getters y Setters
+    // Custom getter method to maintain API compatibility
     public Long getIdDueno() {
         return id;
     }
 
+    // Custom setter method to maintain API compatibility
     public void setIdDueno(Long id) {
         this.id = id;
     }
@@ -95,12 +101,12 @@ public class Dueno {
         this.telefono = telefono;
     }
 
-    public String getImagenUrl() { 
-        return imagenUrl; 
+    public String getImagenUrl() {
+        return imagenUrl;
     }
 
-    public void setImagenUrl(String imagenUrl) { 
-        this.imagenUrl = imagenUrl; 
+    public void setImagenUrl(String imagenUrl) {
+        this.imagenUrl = imagenUrl;
     }
 
     public String getPassword() {
@@ -114,10 +120,8 @@ public class Dueno {
     public List<Mascota> getMascotas() {
         return mascotas;
     }
-         
+
     public void setMascotas(List<Mascota> mascotas) {
         this.mascotas = mascotas;
     }
 }
-
-
