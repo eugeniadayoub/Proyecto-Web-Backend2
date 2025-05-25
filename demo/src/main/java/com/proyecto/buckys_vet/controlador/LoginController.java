@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.proyecto.buckys_vet.dto.DuenoDTO;
 import com.proyecto.buckys_vet.dto.DuenoMapper;
+import com.proyecto.buckys_vet.dto.VeterinarioDTO;
+import com.proyecto.buckys_vet.dto.VeterinarioMapper;
 import com.proyecto.buckys_vet.entidad.Dueno;
 import com.proyecto.buckys_vet.entidad.Veterinario;
 import com.proyecto.buckys_vet.servicio.DuenoServicio;
@@ -35,6 +37,9 @@ public class LoginController {
 
     @Autowired
     private DuenoMapper duenoMapper;
+
+    @Autowired
+    private VeterinarioMapper veterinarioMapper;
 
     // Ruta POST para autenticar al dueño
     @PostMapping("/dueno")
@@ -74,18 +79,20 @@ public class LoginController {
             Veterinario veterinario = veterinarioServicio.obtenerPorCedula(cedula);
             if (veterinario != null && veterinario.getContrasena().equals(password)) {
                 session.setAttribute("veterinarioId", veterinario.getId());
+                VeterinarioDTO veterinarioDTO = veterinarioMapper.toDTO(veterinario);
                 response.put("status", "success");
                 response.put("redirectUrl", "/veterinario-dashboard/" + veterinario.getId());
-                return new ResponseEntity<>(response, HttpStatus.OK); // Respuesta exitosa
+                response.put("veterinario", veterinarioDTO);
+                return new ResponseEntity<>(response, HttpStatus.OK);
             } else {
                 response.put("status", "error");
                 response.put("message", "Cédula o contraseña incorrectos.");
-                return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST); // Error con código 400
+                return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
             }
         } catch (Exception e) {
             response.put("status", "error");
             response.put("message", "Error en el sistema.");
-            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR); // Error 500
+            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -102,16 +109,16 @@ public class LoginController {
                 session.setAttribute("adminUsuario", usuario);
                 response.put("status", "success");
                 response.put("redirectUrl", "/dashboard-admin");
-                return new ResponseEntity<>(response, HttpStatus.OK); // Respuesta exitosa
+                return new ResponseEntity<>(response, HttpStatus.OK);
             } else {
                 response.put("status", "error");
                 response.put("message", "Usuario o contraseña incorrectos.");
-                return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST); // Error con código 400
+                return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
             }
         } catch (Exception e) {
             response.put("status", "error");
             response.put("message", "Error en el sistema.");
-            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR); // Error 500
+            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -121,6 +128,6 @@ public class LoginController {
         session.invalidate();
         Map<String, String> response = new HashMap<>();
         response.put("status", "logged_out");
-        return new ResponseEntity<>(response, HttpStatus.OK); // Respuesta exitosa
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }
