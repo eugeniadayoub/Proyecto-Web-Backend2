@@ -15,6 +15,9 @@ import com.proyecto.buckys_vet.repositorio.MascotaRepositorio;
 import com.proyecto.buckys_vet.repositorio.MedicamentoRepositorio;
 import com.proyecto.buckys_vet.repositorio.TratamientoRepositorio;
 import com.proyecto.buckys_vet.repositorio.VeterinarioRepositorio;
+import com.proyecto.buckys_vet.repositorio.RoleRepository;
+import com.proyecto.buckys_vet.repositorio.UserRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Controller
 @Transactional
@@ -32,6 +35,15 @@ public class DataBaseInit implements ApplicationRunner {
 
         @Autowired
         MedicamentoRepositorio medicamentoRepositorio;
+
+        @Autowired
+        RoleRepository roleRepository;
+
+        @Autowired
+        UserRepository userRepository;
+
+        @Autowired
+        PasswordEncoder passwordEncoder;
 
         private static final boolean GENERAR_DATOS = true;
 
@@ -292,6 +304,7 @@ public class DataBaseInit implements ApplicationRunner {
 
         @Override
         public void run(ApplicationArguments args) throws Exception {
+
                 if (!GENERAR_DATOS) {
                         System.out.println("Generación de datos desactivada.");
                         return;
@@ -303,6 +316,28 @@ public class DataBaseInit implements ApplicationRunner {
                 duenoRepositorio.deleteAll();
                 veterinarioRepositorio.deleteAll();
                 medicamentoRepositorio.deleteAll();
+                userRepository.deleteAll();
+                roleRepository.deleteAll();
+
+                System.out.println("Creando roles...");
+                Role roleDueno = Role.builder()
+                                .name(Role.DUENO)
+                                .displayName("Dueño de Mascota")
+                                .build();
+
+                Role roleVeterinario = Role.builder()
+                                .name(Role.VETERINARIO)
+                                .displayName("Veterinario")
+                                .build();
+
+                Role roleAdmin = Role.builder()
+                                .name(Role.ADMIN)
+                                .displayName("Administrador")
+                                .build();
+
+                roleRepository.save(roleDueno);
+                roleRepository.save(roleVeterinario);
+                roleRepository.save(roleAdmin);
 
                 System.out.println("Generando datos de prueba...");
                 Random random = new Random(0);
