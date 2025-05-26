@@ -1,8 +1,10 @@
 package com.proyecto.buckys_vet.entidad;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -302,6 +304,100 @@ public class DataBaseInit implements ApplicationRunner {
                                 .toString();
         }
 
+        /**
+         * Función privada para guardar un dueño siguiendo el patrón:
+         * 1. Crear el objeto Dueno
+         * 2. Guardarlo en la tabla UserEntity
+         * 3. Agregar al objeto Dueno el UserEntity obtenido en el paso 2
+         * 4. Guardar el objeto en tabla Dueno
+         */
+        private Dueno guardarDueno(Long cedula, String nombre, String email, String telefono,
+                        String imagenUrl, String password, Role roleDueno) {
+                // 1. Crear el objeto Dueno
+                Dueno dueno = Dueno.builder()
+                                .cedula(cedula)
+                                .nombre(nombre)
+                                .email(email)
+                                .telefono(telefono)
+                                .imagenUrl(imagenUrl)
+                                .password(password)
+                                .build();
+
+                // 2. Guardarlo en la tabla UserEntity
+                Set<Role> roles = new HashSet<>();
+                roles.add(roleDueno);
+
+                UserEntity userEntity = UserEntity.builder()
+                                .username(email) // Usar email como username
+                                .password(passwordEncoder.encode(password))
+                                .email(email)
+                                .nombre(nombre)
+                                .roles(roles)
+                                .cedula(cedula)
+                                .telefono(telefono)
+                                .imagenUrl(imagenUrl)
+                                .build();
+
+                UserEntity savedUser = userRepository.save(userEntity);
+
+                // 3. Agregar al objeto Dueno el UserEntity obtenido en el paso 2
+                dueno.setUser(savedUser);
+
+                // 4. Guardar el objeto en tabla Dueno
+                return duenoRepositorio.save(dueno);
+        }
+
+        /**
+         * Función privada para guardar un veterinario siguiendo el patrón:
+         * 1. Crear el objeto Veterinario
+         * 2. Guardarlo en la tabla UserEntity
+         * 3. Agregar al objeto Veterinario el UserEntity obtenido en el paso 2
+         * 4. Guardar el objeto en tabla Veterinario
+         */
+        private Veterinario guardarVeterinario(Long cedula, String nombre, String contrasena,
+                        String especialidad, String foto, int numeroAtenciones,
+                        String estado, Role roleVeterinario) {
+                // 1. Crear el objeto Veterinario
+                Veterinario veterinario = Veterinario.builder()
+                                .cedula(cedula)
+                                .nombre(nombre)
+                                .contrasena(contrasena)
+                                .especialidad(especialidad)
+                                .foto(foto)
+                                .numeroAtenciones(numeroAtenciones)
+                                .estado(estado)
+                                .build();
+
+                // 2. Guardarlo en la tabla UserEntity
+                Set<Role> roles = new HashSet<>();
+                roles.add(roleVeterinario);
+
+                // Generar email para veterinario basado en su nombre
+                String email = nombre.toLowerCase()
+                                .replace("dr. ", "")
+                                .replace("dra. ", "")
+                                .replace(" ", ".") + "@buckysvet.com";
+
+                UserEntity userEntity = UserEntity.builder()
+                                .username(email)
+                                .password(passwordEncoder.encode(contrasena))
+                                .email(email)
+                                .nombre(nombre)
+                                .roles(roles)
+                                .cedula(cedula)
+                                .especialidad(especialidad)
+                                .numeroAtenciones(numeroAtenciones)
+                                .build();
+
+                UserEntity savedUser = userRepository.save(userEntity);
+
+                // 3. Agregar al objeto Veterinario el UserEntity obtenido en el paso 2
+                veterinario.setUser(savedUser);
+
+                // 4. Guardar el objeto en tabla Veterinario
+                return veterinarioRepositorio.save(veterinario);
+        }
+
         @Override
         public void run(ApplicationArguments args) throws Exception {
 
@@ -342,6 +438,11 @@ public class DataBaseInit implements ApplicationRunner {
                 System.out.println("Generando datos de prueba...");
                 Random random = new Random(0);
 
+                // Obtener roles guardados para usar en las funciones privadas
+                Role roleDuenoSaved = roleRepository.findByName(Role.DUENO).orElseThrow();
+                Role roleVeterinarioSaved = roleRepository.findByName(Role.VETERINARIO).orElseThrow();
+
+                System.out.println("Generando dueños con usuarios...");
                 Dueno[] duenos = new Dueno[50];
                 for (int i = 0; i < 50; i++) {
                         boolean esHombre = random.nextBoolean();
@@ -352,19 +453,20 @@ public class DataBaseInit implements ApplicationRunner {
                         String imagenUrl = esHombre
                                         ? IMAGENES_DUENOS_HOMBRES[random.nextInt(IMAGENES_DUENOS_HOMBRES.length)]
                                         : IMAGENES_DUENOS_MUJERES[random.nextInt(IMAGENES_DUENOS_MUJERES.length)];
+                        String password = generarPasswordDeterminista(nombre, i);
 
-                        Dueno dueno = Dueno.builder()
-                                        .cedula(1000000L + i)
-                                        .nombre(nombre + " " + apellido)
-                                        .email(email)
-                                        .telefono("300000000" + i)
-                                        .imagenUrl(imagenUrl)
-                                        .password(generarPasswordDeterminista(nombre, i))
-                                        .build();
-                        duenos[i] = duenoRepositorio.save(dueno);
-
+                        // Usar la función privada para guardar dueño con usuario
+                        duenos[i] = guardarDueno(
+                                        1000000L + i,
+                                        nombre + " " + apellido,
+                                        email,
+                                        "300000000" + i,
+                                        imagenUrl,
+                                        password,
+                                        roleDuenoSaved);
                 }
 
+                System.out.println("Generando veterinarios con usuarios...");
                 List<Veterinario> vets = new ArrayList<>();
                 for (int i = 0; i < 10; i++) {
                         String estado = (i % 2 == 0) ? "Activo" : "Inactivo";
@@ -378,17 +480,22 @@ public class DataBaseInit implements ApplicationRunner {
                                         : IMAGENES_VETERINARIOS_HOMBRES[random
                                                         .nextInt(IMAGENES_VETERINARIOS_HOMBRES.length)];
 
-                        Veterinario v = new Veterinario(
+                        String contrasena = generarPasswordDeterminista(estado, i);
+                        String especialidad = ESPECIALIDADES_VETERINARIOS[random
+                                        .nextInt(ESPECIALIDADES_VETERINARIOS.length)];
+
+                        // Usar la función privada para guardar veterinario con usuario
+                        Veterinario v = guardarVeterinario(
                                         100100100L + i,
                                         nombre,
-                                        generarPasswordDeterminista(estado, i),
-                                        ESPECIALIDADES_VETERINARIOS[random.nextInt(ESPECIALIDADES_VETERINARIOS.length)],
+                                        contrasena,
+                                        especialidad,
                                         imagenUrl,
                                         100 + i,
-                                        estado);
+                                        estado,
+                                        roleVeterinarioSaved);
                         vets.add(v);
                 }
-                veterinarioRepositorio.saveAll(vets);
 
                 for (int i = 0; i < 100; i++) {
                         String especie = ESPECIES[random.nextInt(ESPECIES.length)];
