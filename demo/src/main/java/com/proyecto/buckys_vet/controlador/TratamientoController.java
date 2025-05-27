@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.proyecto.buckys_vet.entidad.Tratamiento;
 import com.proyecto.buckys_vet.servicio.TratamientoServicio;
 
-@RestController 
+@RestController
 @RequestMapping("/tratamientos")
 @CrossOrigin(origins = "http://localhost:4200")
 public class TratamientoController {
@@ -37,25 +37,52 @@ public class TratamientoController {
         Tratamiento tratamiento = tratamientoServicio.obtenerPorId(id);
         if (tratamiento != null) {
             return new ResponseEntity<>(tratamiento, HttpStatus.OK);
-        }   
+        }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @PostMapping
     public ResponseEntity<Tratamiento> crearTratamiento(@RequestBody Tratamiento tratamiento) {
-        // Log de los datos recibidos para ver si llegan correctamente
-        System.out.println("Tratamiento recibido: " + tratamiento);
         try {
+            System.out.println("=== INICIANDO CREACIÓN DE TRATAMIENTO ===");
+            System.out.println("Tratamiento recibido: " + tratamiento);
+            System.out.println("Fecha: " + tratamiento.getFecha());
+            System.out.println("Descripción: " + tratamiento.getDescripcion());
+            System.out.println("Cantidad: " + tratamiento.getCantidad());
+
+            if (tratamiento.getMascota() != null) {
+                System.out.println("Mascota ID: " + tratamiento.getMascota().getMascotaId());
+            } else {
+                System.out.println("ERROR: Mascota es null");
+            }
+
+            if (tratamiento.getVeterinario() != null) {
+                System.out.println("Veterinario ID: " + tratamiento.getVeterinario().getId());
+            } else {
+                System.out.println("ERROR: Veterinario es null");
+            }
+
+            if (tratamiento.getMedicamento() != null) {
+                System.out.println("Medicamento ID: " + tratamiento.getMedicamento().getId());
+            } else {
+                System.out.println("ERROR: Medicamento es null");
+            }
+
+            System.out.println("Guardando tratamiento...");
             Tratamiento nuevoTratamiento = tratamientoServicio.guardar(tratamiento);
+            System.out.println("Tratamiento guardado con ID: " + nuevoTratamiento.getId());
+            System.out.println("=== TRATAMIENTO CREADO EXITOSAMENTE ===");
             return new ResponseEntity<>(nuevoTratamiento, HttpStatus.CREATED);
         } catch (Exception e) {
+            System.out.println("ERROR CREANDO TRATAMIENTO: " + e.getMessage());
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-    }    
+    }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Tratamiento> actualizarTratamiento(@PathVariable Long id, @RequestBody Tratamiento tratamiento) {
+    public ResponseEntity<Tratamiento> actualizarTratamiento(@PathVariable Long id,
+            @RequestBody Tratamiento tratamiento) {
         tratamiento.setId(id);
         Tratamiento tratamientoActualizado = tratamientoServicio.update(tratamiento);
         if (tratamientoActualizado != null) {
@@ -68,7 +95,7 @@ public class TratamientoController {
     public ResponseEntity<Void> eliminarTratamiento(@PathVariable Long id) {
         tratamientoServicio.eliminar(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }  
+    }
 
     @GetMapping("/ultimo-mes/total")
     public ResponseEntity<Long> contarTratamientosUltimoMes() {

@@ -365,8 +365,10 @@ public class DataBaseInit implements ApplicationRunner {
                                 .especialidad(especialidad)
                                 .foto(foto)
                                 .numeroAtenciones(numeroAtenciones)
-                                .estado(estado)
                                 .build();
+
+                // Usar el setter personalizado para mantener la lógica del atributo activo
+                veterinario.setEstado(estado);
 
                 // 2. Guardarlo en la tabla UserEntity
                 Set<Role> roles = new HashSet<>();
@@ -438,10 +440,6 @@ public class DataBaseInit implements ApplicationRunner {
                 System.out.println("Generando datos de prueba...");
                 Random random = new Random(0);
 
-                // Obtener roles guardados para usar en las funciones privadas
-                Role roleDuenoSaved = roleRepository.findByName(Role.DUENO).orElseThrow();
-                Role roleVeterinarioSaved = roleRepository.findByName(Role.VETERINARIO).orElseThrow();
-
                 System.out.println("Generando dueños con usuarios...");
                 Dueno[] duenos = new Dueno[50];
                 for (int i = 0; i < 50; i++) {
@@ -463,7 +461,7 @@ public class DataBaseInit implements ApplicationRunner {
                                         "300000000" + i,
                                         imagenUrl,
                                         password,
-                                        roleDuenoSaved);
+                                        roleDueno);
                 }
 
                 System.out.println("Generando veterinarios con usuarios...");
@@ -493,7 +491,7 @@ public class DataBaseInit implements ApplicationRunner {
                                         imagenUrl,
                                         100 + i,
                                         estado,
-                                        roleVeterinarioSaved);
+                                        roleVeterinario);
                         vets.add(v);
                 }
 

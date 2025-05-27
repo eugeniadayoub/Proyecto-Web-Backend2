@@ -17,7 +17,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.Transient;
 @Entity
 @Data
 @NoArgsConstructor
@@ -31,6 +32,7 @@ public class Veterinario {
 
     private Long cedula;
     private String nombre;
+    
     private String contrasena; // Usamos "contrasena" sin ñ para evitar problemas de codificación
     private String especialidad;
     private String foto; // Ruta o URL de la foto
@@ -48,6 +50,7 @@ public class Veterinario {
     @JsonIgnoreProperties({ "veterinario", "dueno" })
     private List<Mascota> mascotas;
 
+    @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private UserEntity user;

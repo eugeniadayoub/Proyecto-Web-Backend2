@@ -19,7 +19,10 @@ import org.springframework.web.server.ResponseStatusException;
 import com.proyecto.buckys_vet.dto.DuenoDTO;
 import com.proyecto.buckys_vet.dto.DuenoMapper;
 import com.proyecto.buckys_vet.entidad.Dueno;
+import com.proyecto.buckys_vet.entidad.UserEntity;
 import com.proyecto.buckys_vet.servicio.DuenoServicio;
+import com.proyecto.buckys_vet.repositorio.UserRepository;
+import com.proyecto.buckys_vet.security.CustomUserDetailService;
 
 @RestController
 @RequestMapping("/duenos")
@@ -31,6 +34,12 @@ public class DuenoController {
 
     @Autowired
     private DuenoMapper duenoMapper;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private CustomUserDetailService customUserDetailService;
 
     @GetMapping
     public List<Dueno> listarDuenos() {
@@ -45,10 +54,30 @@ public class DuenoController {
     @PostMapping
     public ResponseEntity<DuenoDTO> agregarDueno(@RequestBody Dueno dueno) {
         try {
+            System.out.println("=== INICIANDO CREACIÓN DE DUEÑO ===");
+            System.out.println("Datos recibidos: " + dueno.getNombre() + ", " + dueno.getEmail());
+
+            String username = "dueno_" + dueno.getNombre().toLowerCase().replace(" ", "_");
+            if (userRepository.existsByUsername(username)) {
+                System.out.println("ERROR: Username ya existe: " + username);
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            }
+
+            System.out.println("Creando UserEntity...");
+            UserEntity user = customUserDetailService.DuenoToUser(dueno);
+            System.out.println("UserEntity creado: " + user.getUsername());
+
+            dueno.setUser(user);
+            System.out.println("Guardando dueño...");
             Dueno nuevoDueno = duenoServicio.guardar(dueno);
+            System.out.println("Dueño guardado con ID: " + nuevoDueno.getIdDueno());
+
             DuenoDTO duenoDTO = duenoMapper.toDTO(nuevoDueno);
+            System.out.println("=== DUEÑO CREADO EXITOSAMENTE ===");
             return ResponseEntity.status(HttpStatus.CREATED).body(duenoDTO);
         } catch (Exception e) {
+            System.out.println("ERROR CREANDO DUEÑO: " + e.getMessage());
+            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }

@@ -17,9 +17,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import com.proyecto.buckys_vet.entidad.Veterinario;
+import com.proyecto.buckys_vet.entidad.UserEntity;
 import com.proyecto.buckys_vet.servicio.VeterinarioServicio;
+import com.proyecto.buckys_vet.repositorio.UserRepository;
+import com.proyecto.buckys_vet.security.CustomUserDetailService;
 
 @RestController
 @RequestMapping("/veterinarios")
@@ -27,6 +29,12 @@ public class VeterinarioController {
 
     @Autowired
     private VeterinarioServicio veterinarioServicio;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private CustomUserDetailService customUserDetailService;
 
     // Obtener todos los veterinarios
     @GetMapping
@@ -110,8 +118,33 @@ public class VeterinarioController {
 
     // Crear un nuevo veterinario
     @PostMapping
-    public Veterinario agregarVeterinario(@RequestBody Veterinario veterinario) {
-        return veterinarioServicio.guardar(veterinario);
+    public ResponseEntity<Veterinario> agregarVeterinario(@RequestBody Veterinario veterinario) {
+        try {
+            System.out.println("=== INICIANDO CREACIÓN DE VETERINARIO ===");
+            System.out.println("Datos recibidos: " + veterinario.getNombre() + ", " + veterinario.getEspecialidad());
+
+            String username = "vet_" + veterinario.getNombre().toLowerCase().replace(" ", "_");
+            if (userRepository.existsByUsername(username)) {
+                System.out.println("ERROR: Username ya existe: " + username);
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            }
+
+            System.out.println("Creando UserEntity...");
+            UserEntity user = customUserDetailService.VetToUser(veterinario);
+            System.out.println("UserEntity creado: " + user.getUsername());
+
+            veterinario.setUser(user);
+            System.out.println("Guardando veterinario...");
+            Veterinario nuevoVeterinario = veterinarioServicio.guardar(veterinario);
+            System.out.println("Veterinario guardado con ID: " + nuevoVeterinario.getId());
+
+            System.out.println("=== VETERINARIO CREADO EXITOSAMENTE ===");
+            return ResponseEntity.status(HttpStatus.CREATED).body(nuevoVeterinario);
+        } catch (Exception e) {
+            System.out.println("ERROR CREANDO VETERINARIO: " + e.getMessage());
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 
     // Eliminar un veterinario por ID
